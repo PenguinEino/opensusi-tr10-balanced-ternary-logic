@@ -21,7 +21,10 @@ TRACKS = {name:128+6*i for i,name in enumerate(['a','b','t','u','na','carry','d'
 
 def build():
     sources = [ROOT/'inverter.gds', ROOT/'nany.gds']
-    lib = db.Library.library_by_name('BT') or db.Library.library_from_files([str(p) for p in sources], 'BT')
+    lib = db.Library.library_by_name('BT')
+    assert lib is not None, 'Install layout/klayout/bt_library_context.lym before building'
+    assert lib.layout().technology_name == 'TR-1um'
+    assert all('defunct' not in c.display_title() for c in lib.layout().each_cell())
     layout = db.Layout(); layout.dbu = DBU; layout.technology_name = 'TR-1um'
     top = layout.create_cell('half_adder')
     cells = {name:layout.cell(layout.add_lib_cell(lib,lib.layout().cell(name).cell_index())) for name in ('inverter','nany')}

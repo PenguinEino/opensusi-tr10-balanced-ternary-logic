@@ -16,33 +16,48 @@ Existing running windows have not been remotely updated.
 Original files are backed up under layout/backups/.
 TR-1um-readable.lyp now contains the restored PDK styles.
 
-# Updating imported child cells
+# BT library and nested PCells
 
-Ordinary Import makes independent copies. It does not track the source file.
-A static library provides a refreshable link; existing ordinary instances need a
-one-time replacement with library instances, preserving placement and wiring.
-The installed KLayout 0.30.9 supports `klayout.lib` declarations. Installed in `~/.klayout/klayout.lib`:
+One library, `BT`, exposes `inverter` and `nany`. The canonical editable sources
+remain the project-root GDS files. File → Refresh Libraries rereads both files.
+BT copies are included in saved parent GDS files, so layout delivery does not
+require the registration macro.
 
+Registration uses `bt_library_context.lym`, installed at
+`~/.klayout/macros/bt_library_context.lym`. The macro runs after the PDK's startup
+macro (priority 100 vs 0), sets the library/source layouts' technology to TR-1um,
+and preserves the nested live PCell variants while importing both sources.
+Its Python implementation is mirrored in `bt_library_context.py`.
+
+The earlier two `define("BT", ...)` declarations in `~/.klayout/klayout.lib`
+were removed. KLayout's file-library loader left the library layout technology
+empty; TR-1um's PCells are registered only for technology TR-1um. That caused the
+first imported GDS's nested PCell references to become `<defunct>` despite their
+saved shapes remaining present. In addition, the loader's multi-file merge copied
+the later file's children as static geometry. The new registration keeps both
+primitives' nested PCells live instead of just removing their context metadata.
+
+Save existing GUI work and restart KLayout to apply the installed registration.
+Alternatively run `bt_library_context.lym` in the macro editor. It replaces the
+BT library registration and updates its linked instances. It does not change
+primitive GDS files, the saved HA GDS, display colors, or device dimensions.
+
+Validation in a fresh GUI process and after Refresh Libraries:
+- 12 live PCell variants; zero `<defunct>` cells in BT or the loaded HA.
+- Source primitive and saved HA geometry compare identically on every layer.
+- Default GUI Drawing DRC 0, strict LVS Match.
+See `reports/bt_library.json` and `reports/half_adder_gui.json`.
+
+Recheck with:
+
+```sh
+QT_QPA_PLATFORM=offscreen klayout -z -t -r scripts/check_bt_library.py
 ```
-define("BT", "/home/ishi-kai/balanced-ternary-logic/inverter.gds");
-define("BT", "/home/ishi-kai/balanced-ternary-logic/nany.gds");
-```
 
-Registration was verified in a fresh KLayout process: BT/inverter and
-BT/nany are available, use DBU 0.001 µm, and their imported geometry matches
-the source GDS on every layer. See `reports/klayout_libraries.json`.
-Restart KLayout after saving existing work to discover the new declarations.
-Select BT (not Local), then inverter or nany when placing an instance.
-The two same-name declarations merge both GDS sources into one library.
-Refreshing BT rereads both files; all-layer geometry equality was checked after refresh.
-Previous BT_INV/BT_NANY instances keep their stored geometry, but need their
-library changed to BT in instance properties to resume source synchronization.
-The existing half_adder.gds instances have not been converted.
-Edit/save the source GDS, then File → Refresh Libraries.
-Automatic library synchronization is currently disabled in user settings.
-KLayout context metadata must be retained when saving to preserve library links.
-
-Official documentation: https://klayout.org/downloads/master/doc-qt5/about/about_libraries.html
+For a new environment, install the TR-1um PDK and copy this macro into
+`~/.klayout/macros/`. Update its ROOT path if the project resides elsewhere.
+This is needed for editable, refreshable library references, not for reading
+the delivered GDS geometry.
 
 # Local editing of a library instance
 

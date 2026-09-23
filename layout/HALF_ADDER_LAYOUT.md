@@ -9,6 +9,8 @@ hierarchy; `klayout.lib` is not needed to read the geometry.
 - Bounding box: (0, 0)–(660, 315) µm; area: 207900 µm² = 0.2079 mm².
 - 44 MOS (22 PMOS, 22 NMOS), 14 diffusion resistors.
 - All seven primitive instances use R0, magnification 1, with BT library links.
+  BT registration uses `layout/klayout/bt_library_context.lym` to retain the
+  TR-1um technology context and live nested PCells.
 - Two rows, with a central horizontal M1 signal channel and M2 vertical access.
 - VDD/VSS use M1 row rails and separate M2 spines. VMID has its own channel track.
 - No internal load capacitors, no DRC waiver layers, no changed PDK rules.
