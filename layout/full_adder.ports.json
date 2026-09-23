@@ -1,0 +1,191 @@
+{
+  "top_cell": "full_adder",
+  "dbu_um": 0.001,
+  "grid_um": 0.05,
+  "gds_sha256": "1bf31dfe2323cff80d45e4f4686e0a4f59642abb613944dfadea76e01ba6ef81",
+  "ports": {
+    "a": {
+      "label_layer": [
+        48,
+        0
+      ],
+      "metal_layer": [
+        13,
+        0
+      ],
+      "position_um": [
+        -128.45,
+        29.5
+      ],
+      "direction": "input"
+    },
+    "sum": {
+      "label_layer": [
+        48,
+        0
+      ],
+      "metal_layer": [
+        13,
+        0
+      ],
+      "position_um": [
+        1340.9,
+        78.10000000000001
+      ],
+      "direction": "output"
+    },
+    "cout": {
+      "label_layer": [
+        48,
+        0
+      ],
+      "metal_layer": [
+        13,
+        0
+      ],
+      "position_um": [
+        1576.25,
+        -59.1
+      ],
+      "direction": "output"
+    },
+    "cin": {
+      "label_layer": [
+        48,
+        0
+      ],
+      "metal_layer": [
+        13,
+        0
+      ],
+      "position_um": [
+        620.9,
+        35.75
+      ],
+      "direction": "input"
+    },
+    "b": {
+      "label_layer": [
+        48,
+        0
+      ],
+      "metal_layer": [
+        13,
+        0
+      ],
+      "position_um": [
+        -128.75,
+        36.1
+      ],
+      "direction": "input"
+    },
+    "VDD": {
+      "label_layer": [
+        48,
+        0
+      ],
+      "metal_layer": [
+        13,
+        0
+      ],
+      "position_um": [
+        -123.15,
+        215.5
+      ],
+      "direction": "inout"
+    },
+    "VSS": {
+      "label_layer": [
+        48,
+        0
+      ],
+      "metal_layer": [
+        13,
+        0
+      ],
+      "position_um": [
+        -123.15,
+        104.15
+      ],
+      "direction": "inout"
+    },
+    "VMID": {
+      "label_layer": [
+        48,
+        0
+      ],
+      "metal_layer": [
+        13,
+        0
+      ],
+      "position_um": [
+        -121.65,
+        83.8
+      ],
+      "direction": "inout"
+    }
+  },
+  "instances": [
+    {
+      "cell": "half_adder",
+      "transform": "r0 *1 -96.05,-98.25"
+    },
+    {
+      "cell": "half_adder",
+      "transform": "r0 *1 600.9,-98.25"
+    },
+    {
+      "cell": "inverter",
+      "transform": "r0 *1 1468.45,-98.25"
+    },
+    {
+      "cell": "nany",
+      "transform": "r0 *1 1312,-98.25"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 575.55,31.8"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 575.55,-121.5"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 1286.35,-121.5"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 1297.2,30.65"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 1297.2,-23.45"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 1310.3,-52.25"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 1466.75,-73.25"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 1554.15,-59.75"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 1265.7,-60.25"
+    },
+    {
+      "cell": "via_1",
+      "transform": "r0 *1 1310.3,-60.25"
+    }
+  ],
+  "extracted_devices": {
+    "PMOS": 49,
+    "NMOS": 49,
+    "F_RR": 32
+  }
+}
