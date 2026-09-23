@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "scope": "LVS-extracted MOS/RR network with device geometry and intrinsic PDK capacitances. No interconnect RC.",
+  "gds_sha256": "592dcd2f119b57d5a580c4c08423a48db2513533a0f54628050f6eb1d253e7a5",
+  "extracted_sha256": "44cfcf95c294cc711159aaa79144c7c826ca6aa4f4c836426d03b6150caac1a2",
+  "reference_sha256": "1f5ac18dc802197dfb1350f26982bf31841d631b3ae12bcd4174b7308ff9ff98",
+  "temperature_C": 27,
+  "supplies_V": [
+    -5,
+    0,
+    5
+  ],
+  "tolerance_V": 0.5,
+  "cases": [
+    {
+      "mode": "all_81_inputs",
+      "load_fF": 10,
+      "samples": 82,
+      "transitions": 81,
+      "max_output_error_V": 0.002574967214379747,
+      "max_product_error_V": 0.2082903020881459,
+      "max_settle_ns": 55.014360000000124,
+      "unsettled": 0,
+      "passed": true
+    },
+    {
+      "mode": "all_6480_10f",
+      "load_fF": 10,
+      "max_step_ns": 2,
+      "hold_ns": 120,
+      "transitions": 6480,
+      "unique_directed_transitions": 6480,
+      "samples": 6488,
+      "max_output_error_V": 0.002589043705940882,
+      "max_product_error_V": 0.2083073644590164,
+      "max_settle_ns": 66.75899999999092,
+      "unsettled": 0,
+      "passed": true,
+      "chunks": [
+        {
+          "mode": "all_6480_10f/chunk_0",
+          "load_fF": 10,
+          "max_step_ns": 2,
+          "hold_ns": 120,
+          "samples": 1622,
+          "transitions": 1621,
+          "max_output_error_V": 0.0025830443133335337,
+          "max_product_error_V": 0.2083073644590164,
+          "max_settle_ns": 64.72179999999935,
+          "unsettled": 0,
+          "passed": true
+        },
+        {
+          "mode": "all_6480_10f/chunk_1",
+          "load_fF": 10,
+          "max_step_ns": 2,
+          "hold_ns": 120,
+          "samples": 1622,
+          "transitions": 1621,
+          "max_output_error_V": 0.002589043705940882,
+          "max_product_error_V": 0.20830649265765752,
+          "max_settle_ns": 65.45960000000196,
+          "unsettled": 0,
+          "passed": true
+        },
+        {
+          "mode": "all_6480_10f/chunk_2",
+          "load_fF": 10,
+          "max_step_ns": 2,
+          "hold_ns": 120,
+          "samples": 1622,
+          "transitions": 1621,
+          "max_output_error_V": 0.0025827241010711747,
+          "max_product_error_V": 0.20828715711280424,
+          "max_settle_ns": 62.06599999999162,
+          "unsettled": 0,
+          "passed": true
+        },
+        {
+          "mode": "all_6480_10f/chunk_3",
+          "load_fF": 10,
+          "max_step_ns": 2,
+          "hold_ns": 120,
+          "samples": 1622,
+          "transitions": 1621,
+          "max_output_error_V": 0.00258781330334976,
+          "max_product_error_V": 0.20828176430831974,
+          "max_settle_ns": 66.75899999999092,
+          "unsettled": 0,
+          "passed": true
+        }
+      ],
+      "initialization": "Four slices of the Euler circuit, each prefixed by the common initial state and a full source-state hold; 6480 original edges plus setup transitions."
+    },
+    {
+      "mode": "single_input_648_100f",
+      "load_fF": 100,
+      "max_step_ns": 2,
+      "hold_ns": 120,
+      "samples": 649,
+      "transitions": 648,
+      "max_output_error_V": 0.0025769612442286217,
+      "max_product_error_V": 0.20828880108414238,
+      "max_settle_ns": 68.68419999999605,
+      "unsettled": 0,
+      "passed": true
+    }
+  ],
+  "model_sha256": {
+    "libs.tech/spice/models/models_IP62_cap_v5p1.lib": "265c1e2b5228381633ec936f208101b64a0538905c41bdf53e760df10f347bed",
+    "libs.tech/spice/models/models_IP62_diode_v2.lib": "37c19bd4f6d631a5862f2b6aeda62e5eb73ed15fe0de9932296a81a144f1550f",
+    "libs.tech/spice/models/models_IP62_res_v5.lib": "0d6e2e4b7739fd68946c746830ed8896f4ec5ee98e984fdb5c8dd1116ad78311",
+    "libs.tech/spice/models/models_IP62_mos_v2.lib": "251864d489d0e15a3081871763af29e1bbc8654ae55662bede40e0a7bbac1400",
+    "libs.tech/spice/models/ip62_models": "219ca479adc7d6d960f83e18e0081da153a479f34615333d74c946869bc4c6ec"
+  }
+}

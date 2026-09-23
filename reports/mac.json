@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "scope": "schematic",
+  "cases": [
+    {
+      "mode": "all_81_inputs",
+      "load_fF": 10,
+      "samples": 82,
+      "transitions": 81,
+      "max_output_error_V": 0.002574979157675894,
+      "max_product_error_V": 0.20829032623095498,
+      "max_settle_ns": 54.745640000000094,
+      "unsettled": 0,
+      "passed": true
+    },
+    {
+      "mode": "all_6480_10f",
+      "load_fF": 10,
+      "max_step_ns": 2,
+      "hold_ns": 120,
+      "samples": 6481,
+      "transitions": 6480,
+      "max_output_error_V": 0.0025839861359503143,
+      "max_product_error_V": 0.20830320356756762,
+      "max_settle_ns": 67.3530000000028,
+      "unsettled": 0,
+      "passed": true
+    },
+    {
+      "mode": "single_input_648_100f",
+      "load_fF": 100,
+      "max_step_ns": 2,
+      "hold_ns": 120,
+      "samples": 649,
+      "transitions": 648,
+      "max_output_error_V": 0.0025792651417536486,
+      "max_product_error_V": 0.2082888153363451,
+      "max_settle_ns": 69.02599999999802,
+      "unsettled": 0,
+      "passed": true
+    }
+  ],
+  "temperature_C": 27,
+  "supplies_V": [
+    -5,
+    0,
+    5
+  ],
+  "source_sha256": {
+    "mac.sch": "5d024c34c9fc352d6444cbdce403bf0761e6a6c6e23d31deb0b1660e597ae70e",
+    "mac.sym": "78c67e270303a8e41c4ebe36124066d900fd2964637b863574d9cea605e0967f",
+    "mac_tb.sch": "6e26a3ee457a911e1a605d37c90b450c498e660704b17a61dcc80eaf428796c1",
+    "mul.sch": "a3ab37c9750dce3444f305e042219681880c2af65ac17a0f922e379e0389652b",
+    "mul_nand.sch": "ce797d2dd581aab66b9da0768c3e292a4217dcdf992ecdf7f8603f36134f1a03",
+    "mul_nor.sch": "b71df77441c92ae3fa271ec392cb4452b893eb933afa607701086e6633801a51",
+    "mul_inv.sch": "991208956eabcea4b0614b78b82afc3b492f30933297ee6916ff3e7e19a4aeee",
+    "full_adder.sch": "dc0a3a0b776e23fad1a34190746a4eafe2dfdbeb6fa18cdcf8bc24e28805ee26",
+    "half_adder.sch": "2523ef16811218c7b62f45d1a17ee22349f92e07c0d40a8c2f43d3e6cd41333b",
+    "inverter.sch": "290c8ce9aa810cf83f9b24eaa435c5b729892daff5f1e42d4e43dc7d7e89274d",
+    "nany.sch": "ccb2fe30da68a0ef2bbcda8836d70b65579f0c6be58fd024a511a6e90fdb64cc"
+  },
+  "model_sha256": {
+    "libs.tech/spice/models/models_IP62_cap_v5p1.lib": "265c1e2b5228381633ec936f208101b64a0538905c41bdf53e760df10f347bed",
+    "libs.tech/spice/models/models_IP62_diode_v2.lib": "37c19bd4f6d631a5862f2b6aeda62e5eb73ed15fe0de9932296a81a144f1550f",
+    "libs.tech/spice/models/models_IP62_res_v5.lib": "0d6e2e4b7739fd68946c746830ed8896f4ec5ee98e984fdb5c8dd1116ad78311",
+    "libs.tech/spice/models/models_IP62_mos_v2.lib": "251864d489d0e15a3081871763af29e1bbc8654ae55662bede40e0a7bbac1400",
+    "libs.tech/spice/models/ip62_models": "219ca479adc7d6d960f83e18e0081da153a479f34615333d74c946869bc4c6ec"
+  }
+}
