@@ -215,3 +215,8 @@ entries have been replaced; see [layout/klayout/README.md](layout/klayout/README
 
 `ternary_latch.sch` はINV×2の保持セル、`ternary_sram.sch` はNMOSアクセス×2を加えた6 MOS＋4 RRのセルです。
 保持・書き込み・浮遊ビット線読み出しのTBと、実行方法・読み出し負荷の限界は [TERNARY_SRAM.md](TERNARY_SRAM.md) にまとめています。
+
+## 1-trit MUL
+
+`mul.sch` / `mul.sym` はNAND×2＋NOR＋INVの平衡3値乗算器です。MUL専用の子セルをサイジングし、`mul_tb.sch` と全72方向の遷移・入力マージン・負荷・温度／電源変動を検証しました。
+寸法と結果、実行方法は [MUL.md](MUL.md) を参照してください。

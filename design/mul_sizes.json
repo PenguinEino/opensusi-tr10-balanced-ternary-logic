@@ -1,0 +1,44 @@
+{
+  "units": "um",
+  "order": [
+    "NAND Wp",
+    "NAND Wn",
+    "NAND RR L",
+    "NOR Wp",
+    "NOR Wn",
+    "NOR RR L",
+    "INV Wp",
+    "INV Wn",
+    "INV RR L"
+  ],
+  "mos_L": 1,
+  "rr_W": 2.8,
+  "baseline": [
+    24,
+    16,
+    15,
+    46,
+    6.5,
+    17,
+    13.5,
+    5,
+    20
+  ],
+  "selected": [
+    19,
+    13,
+    15,
+    37,
+    6.5,
+    15,
+    13.5,
+    5,
+    15
+  ],
+  "selection": "Smallest area proxy among the 184 sampled DC candidates with nominal error <=0.25 V and +/-1 V band error <=0.4 V; also fastest among the 12 transient-shortlisted candidates. Not a global optimum.",
+  "existing_primitives_unchanged": [
+    "inverter.sch",
+    "nand.sch",
+    "nor.sch"
+  ]
+}
