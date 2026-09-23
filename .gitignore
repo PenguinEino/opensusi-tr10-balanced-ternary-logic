@@ -1,0 +1,6 @@
+simulation/
+__pycache__/
+*.py[cod]
+layout/backups/
+*.bak
+*.swp

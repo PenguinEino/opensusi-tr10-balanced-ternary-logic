@@ -1,0 +1,2 @@
+define("BT", "/home/ishi-kai/balanced-ternary-logic/inverter.gds", description="Balanced ternary primitives");
+define("BT", "/home/ishi-kai/balanced-ternary-logic/nany.gds", description="Balanced ternary primitives");

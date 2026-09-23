@@ -1,0 +1,51 @@
+{
+  "source_sha256": "42bc2c653b2c5287d169be09d208bde4e7e9eecf50f5a3238f10762b18e4a5eb",
+  "gap_um": 12,
+  "placements": [
+    {
+      "orientation": "R0",
+      "origin_um": [
+        0,
+        0
+      ]
+    },
+    {
+      "orientation": "MY",
+      "origin_um": [
+        180.0,
+        0
+      ]
+    },
+    {
+      "orientation": "MX",
+      "origin_um": [
+        0,
+        144.0
+      ]
+    },
+    {
+      "orientation": "R180",
+      "origin_um": [
+        180.0,
+        144.0
+      ]
+    }
+  ],
+  "drc": {
+    "passed": false,
+    "items": 4,
+    "categories": {
+      "GC.ANT:GC must electrically connect to Substrate (or text if not chip level)": 4
+    }
+  },
+  "mask_drc": {
+    "passed": false,
+    "items": 4,
+    "categories": {
+      "WAR06: Floating SG Detected": 4
+    },
+    "gds_sha256": "cbc6865ed8a7466657e6e37cdc3a81122165ac554d4375cfa9133fc305caa5bd"
+  },
+  "scope": "Four isolated replicas: geometric spacing with mirrors/rotation, no inter-cell routing. No zero-gap abutment claim.",
+  "passed": false
+}
