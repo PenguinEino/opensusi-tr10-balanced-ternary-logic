@@ -62,15 +62,35 @@ def prepare():
  logic.VECTORS=' '.join(f'v({mapping.get(n,n)})' for n in logic.PROBES)
  return base,report,raw
 
+def exhaustive_parallel(base):
+ sequence=logic.route();parts=[];covered=[]
+ # Prefix each slice with the same initial operating point and one complete
+ # hold at its first source state. Only original directed edges are counted.
+ for i in range(4):
+  lo=6480*i//4;hi=6480*(i+1)//4
+  seq=[logic.STATES[0]]+sequence[lo:hi+1]
+  parts.append((seq,f'all_6480_10f/chunk_{i}'));covered.extend(zip(sequence[lo:hi],sequence[lo+1:hi+1]))
+ assert len(covered)==6480 and len(set(covered))==6480
+ with ThreadPoolExecutor(max_workers=4) as pool:
+  fs=[pool.submit(logic.transitions,base,WORK,10,False,seq,name) for seq,name in parts]
+  rows=[f.result() for f in fs]
+ result=dict(mode='all_6480_10f',load_fF=10,max_step_ns=2,hold_ns=120,transitions=6480,unique_directed_transitions=6480,
+  samples=sum(r['samples'] for r in rows),max_output_error_V=max(r['max_output_error_V'] for r in rows),max_product_error_V=max(r['max_product_error_V'] for r in rows),
+  max_settle_ns=max(r['max_settle_ns'] for r in rows),unsettled=sum(r['unsettled'] for r in rows),passed=all(r['passed'] for r in rows),
+  chunks=rows,initialization='Four slices of the Euler circuit, each prefixed by the common initial state and a full source-state hold; 6480 original edges plus setup transitions.')
+ (WORK/'all_6480_10f/results_summary.json').write_text(json.dumps(result,indent=2)+'\n')
+ return result
+
 def main():
  base,layout,raw=prepare();rows=[logic.native(base,WORK)];print(rows[0],flush=True)
- with ThreadPoolExecutor(max_workers=2) as pool:
-  fs=[pool.submit(logic.transitions,base,WORK,10,False),pool.submit(logic.transitions,base,WORK,100,True)]
-  for f in fs:rows.append(f.result());print(rows[-1],flush=True)
+ rows.append(exhaustive_parallel(base));print(rows[-1],flush=True)
+ rows.append(logic.transitions(base,WORK,100,True));print(rows[-1],flush=True)
  r=dict(passed=all(x['passed'] for x in rows),scope='LVS-extracted MOS/RR network with device geometry and intrinsic PDK capacitances. No interconnect RC.',
   gds_sha256=layout['gds_sha256'],extracted_sha256=logic.sha(ROOT/'mac.extracted'),reference_sha256=layout['reference_sha256'],temperature_C=27,supplies_V=[-5,0,5],tolerance_V=.5,cases=rows,
   model_sha256={str(p.relative_to(verify.PDK)):logic.sha(p) for p in (verify.PDK/'libs.tech/spice/models').rglob('*') if p.is_file()})
  assert logic.sha(ROOT/'mac.gds')==r['gds_sha256']
  (ROOT/'reports/mac_extracted.json').write_text(json.dumps(r,indent=2)+'\n')
  if not r['passed']:raise RuntimeError('Extracted MAC failed')
-if __name__=='__main__':main()
+if __name__=='__main__':
+ import argparse
+ p=argparse.ArgumentParser();p.add_argument('--resume',action='store_true',help='Reuse completed runs only when their exact SPICE deck matches; re-evaluate saved waveforms.');a=p.parse_args();logic.REUSE_VALIDATED=a.resume;main()

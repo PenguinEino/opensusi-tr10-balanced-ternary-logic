@@ -5,6 +5,7 @@ import argparse,hashlib,itertools,json,re,subprocess
 import numpy as np
 from build_mac import STATES,oracle
 ROOT=Path(__file__).resolve().parents[1];PDK=Path('/home/ishi-kai/pdk/TR-1um');WORK=ROOT/'simulation/mac'
+REUSE_VALIDATED=False
 PROBES=['x','a','b','cin','sum','cout','xdut.p'];VECTORS=' '.join(f'v({n})' for n in PROBES)
 
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -17,10 +18,21 @@ def netlist():
  return re.sub(r'\n\+\s*',' ',(d/'mac_tb.spice').read_text())
 
 def simulate(d,s):
- d.mkdir(parents=True,exist_ok=True);(d/'tb.spice').write_text(s)
+ d.mkdir(parents=True,exist_ok=True)
+ dependencies={str(p):sha(p) for p in (PDK/'libs.tech/spice/models').rglob('*') if p.is_file()}
+ for quoted,plain in re.findall(r'(?im)^\s*\.include\s+(?:"([^"]+)"|(\S+))',s):
+  p=Path(quoted or plain);p=p if p.is_absolute() else d/p
+  dependencies[str(p.resolve())]=sha(p)
+ context=d/'input_dependencies.json'
+ if REUSE_VALIDATED and context.exists() and json.loads(context.read_text())==dependencies and (d/'tb.spice').exists() and (d/'tb.spice').read_text()==s and (d/'results.json').exists():
+  previous=json.loads((d/'results.json').read_text());log=(d/'run.log').read_text()
+  if previous.get('passed') and 'ngspice-46+ done' in log and ((d/'data.txt').exists() or (d/'mac_tran.txt').exists()):return log
+ (d/'tb.spice').write_text(s)
  with (d/'run.log').open('w') as f:p=subprocess.run(['ngspice','-b','tb.spice'],cwd=d,stdout=f,stderr=subprocess.STDOUT,timeout=7200)
  log=(d/'run.log').read_text()
  if p.returncode or re.search(r'Error:|FAIL:|Timestep too small|failed',log,re.I):raise RuntimeError(str(d)+' failed: '+log[-1000:])
+ assert all(Path(p).exists() and sha(p)==h for p,h in dependencies.items()),'Simulation dependency changed during run'
+ context.write_text(json.dumps(dependencies,indent=2)+'\n')
  return log
 
 def evaluate(path,sequence,hold,edge=1):
@@ -55,9 +67,9 @@ def native(base,root):
  (d/'view.spice').write_text(base);(d/'results.json').write_text(json.dumps(r,indent=2)+'\n')
  return dict(mode='all_81_inputs',load_fF=10,**{k:v for k,v in r.items() if k!='rows'})
 
-def transitions(base,root,cap=10,single=False):
- sequence=route(single);hold=120
- name=f'{"single_input_648" if single else "all_6480"}_{cap}f';d=root/name;s=base
+def transitions(base,root,cap=10,single=False,sequence=None,name=None):
+ sequence=route(single) if sequence is None else sequence;hold=120
+ name=name or f'{"single_input_648" if single else "all_6480"}_{cap}f';d=root/name;s=base
  for j,net in enumerate(PROBES[:4]):
   pts=[f'0 {sequence[0][j]}']
   for k in range(1,len(sequence)):pts.extend([f'{hold*k}n {sequence[k-1][j]}',f'{hold*k+1}n {sequence[k][j]}'])
