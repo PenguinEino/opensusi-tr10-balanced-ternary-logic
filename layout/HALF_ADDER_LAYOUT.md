@@ -92,3 +92,10 @@ interconnect RC extraction.
 Git was initialized at the user's request. Initial state is commit `ee85147`;
 the routed HA checkpoint is `302fc08`. Existing project files are committed;
 simulation outputs, caches, and configuration backups are ignored.
+
+## Extracted-netlist simulation
+
+`python3 scripts/check_half_adder_extracted.py` re-extracts the current GDS and
+checks nine DC states and all 72 transitions at 10/100 fF and ±2 ns input skew,
+with a schematic baseline. See `HALF_ADDER_POST_LAYOUT.md`. This includes device
+geometry/intrinsic capacitances but no metal interconnect RC.

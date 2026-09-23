@@ -201,3 +201,12 @@ for placement, pin coordinates, verification commands, and integration limits.
 
 The project is now tracked in Git. Simulation working files and local backups
 are ignored; schematics, GDS, tools, and concise verification reports are tracked.
+
+Extracted-netlist simulation is available with
+`python3 scripts/check_half_adder_extracted.py`. See
+[HALF_ADDER_POST_LAYOUT.md](HALF_ADDER_POST_LAYOUT.md) for native ngspice plots,
+port order, DC initialization, and the distinction from full interconnect-RC PEX.
+
+BT library registration uses `layout/klayout/bt_library_context.lym` to preserve
+the TR-1um technology context and live nested PCells. The earlier `klayout.lib`
+entries have been replaced; see [layout/klayout/README.md](layout/klayout/README.md).
