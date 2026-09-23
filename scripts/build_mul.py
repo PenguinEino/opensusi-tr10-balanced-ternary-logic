@@ -22,7 +22,7 @@ def gate(kind,values):
  text=re.sub(r'NMOS: W = [\d.]+ um',f'NMOS: W = {n:g} um',text)
  text=re.sub(r'RR1 / RR2: W = 2.8 um / L = [\d.]+ um',f'RR1 / RR2: W = 2.8 um / L = {r:g} um',text)
  text=text.replace('BALANCED TERNARY','MUL VARIANT / BALANCED TERNARY',1)
- (ROOT/f'{name}.sch').write_text(text)
+ (ROOT/f'{name}.sch').write_text(text.rstrip()+'\n')
  sym=(ROOT/f'{src}.sym').read_text()
  if kind=='inv':sym=sym.replace('T {inverter}','T {mul_inv}')
  (ROOT/f'{name}.sym').write_text(sym)
