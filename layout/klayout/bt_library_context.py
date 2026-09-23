@@ -1,13 +1,14 @@
-"""Register one refreshable BT library, preserving nested TR-1um PCell references."""
+"""Register BT primitives and macros, preserving hierarchy and TR-1um PCells."""
 from pathlib import Path
 import pya
 
 ROOT=Path('/home/ishi-kai/balanced-ternary-logic')
+CELLS=('inverter','nany','half_adder')  # Dependencies before their parent macros.
 
 class BalancedTernaryLibrary(pya.Library):
     def __init__(self):
         super().__init__()
-        self.description='Balanced ternary primitives'
+        self.description='Balanced ternary primitives and arithmetic cells'
         self.reload()
         self.register('BT')
 
@@ -16,18 +17,25 @@ class BalancedTernaryLibrary(pya.Library):
         target.clear()
         target.dbu=.001
         target.technology_name='TR-1um'
-        for name in ('inverter','nany'):
+        for name in CELLS:
             source=pya.Layout()
             source.technology_name='TR-1um'
             source.read(str(ROOT/(name+'.gds')))
-            assert source.dbu==.001, 'BT primitives must use DBU 0.001 um'
+            assert source.dbu==.001, 'BT cells must use DBU 0.001 um'
             original=source.cell(name)
             assert original is not None, name
             copied={}
             def copy_cell(cell):
                 if cell.cell_index() in copied:
                     return copied[cell.cell_index()]
-                if cell.is_pcell_variant():
+                if cell.library_name()=='BT':
+                    # HA's saved BT references may be live proxies or cold proxies
+                    # at startup. Reuse this library's already loaded primitives;
+                    # do not create copies or a reference back into BT itself.
+                    dependency=cell.library_cell_name()
+                    result=target.cell(dependency)
+                    assert result is not None, 'Load BT dependency first: '+dependency
+                elif cell.is_pcell_variant():
                     index=target.add_pcell_variant(cell.pcell_library(),cell.pcell_id(),cell.pcell_parameters())
                     result=target.cell(index)
                 else:
@@ -45,4 +53,4 @@ class BalancedTernaryLibrary(pya.Library):
         return 'BT'
 
 bt_library=BalancedTernaryLibrary()
-print('BT library registered with TR-1um technology and nested PCell references.')
+print('BT library registered: '+', '.join(CELLS)+' (TR-1um, live nested PCells).')
