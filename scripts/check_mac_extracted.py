@@ -51,6 +51,13 @@ def prepare():
  base=re.sub(r'v\(([^)]+)\)',remap,base,flags=re.I)
  include=WORK/'mac_extracted.spice';include.write_text(extracted+'\n')
  base=re.sub(r'^\.end\s*$',lambda _:f'.include "{include}"\n.end',base,flags=re.M|re.I)
+ # Reject a formally converged but nonphysical extracted operating point.
+ op=re.sub(r'\.control.*?\.endc','.control\nop\nprint all\nquit\n.endc',base,flags=re.S)
+ oplog=logic.simulate(WORK/'extracted_op_check',op)
+ opvals={m[1].lower():float(m[2]) for m in re.finditer(r'(?m)^(\S+)\s+=\s+([-+]?\d[\d.eE+-]*)\s*$',oplog)}
+ assert opvals and all(abs(v)<6 for k,v in opvals.items() if not k.endswith('#branch'))
+ for n,target in [('sum',-5),('cout',0),(mapping['xdut.p'],5)]:assert abs(opvals[n]-target)<.5,(n,opvals[n])
+ (WORK/'operating_point.json').write_text(json.dumps(opvals,indent=2)+'\n')
  (WORK/'node_mapping.json').write_text(json.dumps(mapping,indent=2)+'\n');(WORK/'extracted_tb.spice').write_text(base)
  logic.VECTORS=' '.join(f'v({mapping.get(n,n)})' for n in logic.PROBES)
  return base,report,raw

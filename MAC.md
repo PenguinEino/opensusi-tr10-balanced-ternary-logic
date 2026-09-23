@@ -21,6 +21,15 @@
 - `mul.gds` と `mul_nand.gds` / `mul_nor.gds` / `mul_inv.gds`：サイジング済みMULと専用primitive。
 - `layout/mac.ports.json` / `layout/mul.ports.json`：端子座標、配置、配線、元ファイルのハッシュ。
 
+MUL専用ゲートは回路図のサイジング結果をそのままレイアウトした。
+全MOSのL=1 µm、抵抗のW=2.8 µm。
+
+| セル | PMOS W (µm) | NMOS W (µm) | RR L (µm) |
+|---|---:|---:|---:|
+| mul_nand（2個使用） | 19 | 13 | 15 |
+| mul_nor | 37 | 6.5 | 15 |
+| mul_inv | 13.5 | 5 | 15 |
+
 合計112 MOS＋40 RR。セル内に明示的な負荷容量は置かず、TBのSum/Coutに各10 fFを置く。
 既存の汎用NAND/NOR/INV、FA回路は変更していない。
 ユーザー作業中の `full_adder.gds` も変更せず、MAC内のFAコピーだけに不足していたa/bのTXM1を戻した。
