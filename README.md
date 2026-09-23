@@ -190,3 +190,14 @@ INVのPMOSも寸法13.5/1 µmのlive PCellに戻しています。
 DBUを0.001 µmに戻し、RRのGCコンタクトを認識領域の外へ移した現行GDSは、
 dev版のDrawing DRC 0件、strict LVS一致です。単体maskの未接続入力警告は保持しています。
 GUI・実配線fixtureの再検証結果は`reports/`を参照してください。
+
+## HA layout
+
+`half_adder.gds` is a hierarchical 660 × 315 µm macro using unchanged NANY×5 and
+INV×2. Drawing DRC is clean and strict LVS matches the schematic. Standalone mask
+DRC retains 10 external-input floating-gate warnings; a separate input-connected
+fixture has zero mask warnings/errors. See [layout/HALF_ADDER_LAYOUT.md](layout/HALF_ADDER_LAYOUT.md)
+for placement, pin coordinates, verification commands, and integration limits.
+
+The project is now tracked in Git. Simulation working files and local backups
+are ignored; schematics, GDS, tools, and concise verification reports are tracked.
