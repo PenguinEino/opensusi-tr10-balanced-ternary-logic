@@ -210,3 +210,8 @@ port order, DC initialization, and the distinction from full interconnect-RC PEX
 BT library registration uses `layout/klayout/bt_library_context.lym` to preserve
 the TR-1um technology context and live nested PCells. The earlier `klayout.lib`
 entries have been replaced; see [layout/klayout/README.md](layout/klayout/README.md).
+
+## 平衡3値 SRAM 試作
+
+`ternary_latch.sch` はINV×2の保持セル、`ternary_sram.sch` はNMOSアクセス×2を加えた6 MOS＋4 RRのセルです。
+保持・書き込み・浮遊ビット線読み出しのTBと、実行方法・読み出し負荷の限界は [TERNARY_SRAM.md](TERNARY_SRAM.md) にまとめています。
