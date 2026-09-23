@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "cells": {
+    "mul": {
+      "gds_sha256": "42907170aa2f0491b548c3e6ff2502813325b4f87a06b58d522e13361c90f3ce",
+      "drawing_drc_items": 0,
+      "lvs_errors": [],
+      "lvs_logs": [],
+      "circuits": [
+        "Match",
+        "Match",
+        "Match",
+        "Match"
+      ],
+      "default_macro_paths": true,
+      "passed": true
+    },
+    "mac": {
+      "gds_sha256": "592dcd2f119b57d5a580c4c08423a48db2513533a0f54628050f6eb1d253e7a5",
+      "drawing_drc_items": 0,
+      "lvs_errors": [],
+      "lvs_logs": [],
+      "circuits": [
+        "Match",
+        "Match",
+        "Match",
+        "Match",
+        "Match",
+        "Match",
+        "Match",
+        "Match",
+        "Match"
+      ],
+      "default_macro_paths": true,
+      "passed": true
+    }
+  }
+}

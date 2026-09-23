@@ -1,0 +1,254 @@
+{
+  "top_cell": "mul_inv",
+  "dbu_um": 0.001,
+  "placement_grid_um": 0.05,
+  "bbox_um": [
+    0,
+    0,
+    84,
+    66
+  ],
+  "width_um": 84,
+  "height_um": 66,
+  "ports": {
+    "vin": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        2,
+        25
+      ]
+    },
+    "vout": {
+      "layer": [
+        20,
+        0
+      ],
+      "label_layer": [
+        49,
+        0
+      ],
+      "position_um": [
+        82,
+        38.5
+      ]
+    },
+    "VDD": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        42,
+        64.3
+      ]
+    },
+    "VSS": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        42,
+        1.7
+      ]
+    }
+  },
+  "instances": [
+    {
+      "role": "MP",
+      "cell": "fet_p",
+      "pcell": "fet_p",
+      "origin_um": [
+        13.2,
+        44
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "cont_between_gates": true,
+        "l": 1.0,
+        "n": 1,
+        "type": "PFET",
+        "w": 13.5,
+        "y0": "c"
+      }
+    },
+    {
+      "role": "MN",
+      "cell": "fet_n",
+      "pcell": "fet_n",
+      "origin_um": [
+        13.2,
+        14
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "cont_between_gates": true,
+        "l": 1.0,
+        "n": 1,
+        "type": "NFET",
+        "w": 5,
+        "y0": "c"
+      }
+    },
+    {
+      "role": "R1",
+      "cell": "res_diff",
+      "pcell": "res_diff",
+      "origin_um": [
+        58,
+        45
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "l": 15,
+        "w": 2.8
+      }
+    },
+    {
+      "role": "R2",
+      "cell": "res_diff",
+      "pcell": "res_diff",
+      "origin_um": [
+        58,
+        32
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "l": 15,
+        "w": 2.8
+      }
+    },
+    {
+      "role": "PMOS well",
+      "cell": "cont_n",
+      "pcell": "cont_n",
+      "origin_um": [
+        13.2,
+        55
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "hole": false,
+        "x": 2.6,
+        "x0": "c",
+        "y": 2.6,
+        "y0": "c"
+      }
+    },
+    {
+      "role": "RR well",
+      "cell": "cont_n",
+      "pcell": "cont_n",
+      "origin_um": [
+        58,
+        54
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "hole": false,
+        "x": 2.6,
+        "x0": "c",
+        "y": 2.6,
+        "y0": "c"
+      }
+    },
+    {
+      "role": "NMOS bulk",
+      "cell": "cont_p",
+      "pcell": "cont_p",
+      "origin_um": [
+        5.8,
+        14
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "hole": false,
+        "x": 2.6,
+        "x0": "c",
+        "y": 2.6,
+        "y0": "c"
+      }
+    },
+    {
+      "role": "RR GC tie",
+      "cell": "cont_g",
+      "pcell": "cont_g",
+      "origin_um": [
+        73.0,
+        32
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "x": 2.6,
+        "x0": "c",
+        "y": 2.6,
+        "y0": "c"
+      }
+    },
+    {
+      "role": "RR GC tie",
+      "cell": "cont_g",
+      "pcell": "cont_g",
+      "origin_um": [
+        73.0,
+        45
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "x": 2.6,
+        "x0": "c",
+        "y": 2.6,
+        "y0": "c"
+      }
+    },
+    {
+      "role": "input contact",
+      "cell": "cont_g",
+      "pcell": "cont_g",
+      "origin_um": [
+        13.2,
+        25
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "x": 2.6,
+        "x0": "c",
+        "y": 2.6,
+        "y0": "c"
+      }
+    },
+    {
+      "role": "output access",
+      "cell": "via_1",
+      "pcell": "via_1",
+      "origin_um": [
+        66.0,
+        38.5
+      ],
+      "rotation_deg": 0,
+      "parameters": {
+        "x": 3.4,
+        "x0": "c",
+        "y": 3.4,
+        "y0": "c"
+      }
+    }
+  ],
+  "schematic": "/home/ishi-kai/balanced-ternary-logic/mul_inv.sch",
+  "gds_sha256": "ca48216a540ba03cca26bf62f56fc8e2e7568b23f75ce04494cf24506b984d9e"
+}

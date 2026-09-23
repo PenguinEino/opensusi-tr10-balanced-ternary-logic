@@ -220,3 +220,8 @@ entries have been replaced; see [layout/klayout/README.md](layout/klayout/README
 
 `mul.sch` / `mul.sym` はNAND×2＋NOR＋INVの平衡3値乗算器です。MUL専用の子セルをサイジングし、`mul_tb.sch` と全72方向の遷移・入力マージン・負荷・温度／電源変動を検証しました。
 寸法と結果、実行方法は [MUL.md](MUL.md) を参照してください。
+
+## Multiply-add slice
+
+`mac.sch` / `mac.sym` / `mac_tb.sch` は `X + A×B + Cin = Sum + 3×Cout` の組合せ算術スライス。
+`mac.gds` はMULと既存FAを階層化したコア全体。運用、検証、抽出シミュレーションは [MAC.md](MAC.md)。
