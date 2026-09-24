@@ -20,7 +20,7 @@
 - 乗算加算：X + A×B + Cin = Sum + 3×Cout
 - AND / OR：and_out=min(A,B)、or_out=max(A,B)
 - Coutを次段のCinへ接続でき、5段の連結試験も実施
-- primitive → HA → FA → MACの階層構成。HAの中間信号をSUMとCARRYで共有
+- primitive（基本セル）として、MOSと抵抗から直接組んだinverter、nany、mul_nand、mul_nor、mul_invの5種類を用意。これらをMUL、HA、FAで組み合わせてMACを構成し、HAの中間信号はSUMとCARRYで共有
 - 電源はVDD=+5 V、VMID=0 V、VSS=−5 V。59 PMOS、59 NMOS、46 RRで構成
 
 TR-1um dev PDKでDrawing DRC 0件、strict LVS一致。最終抽出回路では81入力、全6,480有向遷移、単一入力648遷移を検証しました。評価条件は27 ℃、理想電源、各出力10 pF || 1 MΩです。

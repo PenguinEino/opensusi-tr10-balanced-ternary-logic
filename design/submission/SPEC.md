@@ -62,6 +62,8 @@ KLayoutではmac.gdsのトップmacを開きます。通常LVSの回路参照は
 
 ## セル階層
 
+ここでprimitive（基本セル）は、MOSと抵抗から直接作り、他の論理セルを内部に含まない再利用単位を指します。該当するセルはinverter、nany、mul_nand、mul_nor、mul_invの5種類です。NANYは−sat(A+B)、NANDは−min(A,B)、NORは−max(A,B)、INVは入力の符号反転を行います。
+
 | セル | 構成 |
 |---|---|
 | MAC | MUL ×1、FA ×1、出力復元用INV ×3 |

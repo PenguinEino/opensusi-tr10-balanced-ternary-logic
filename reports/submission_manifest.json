@@ -1,16 +1,16 @@
 {
-  "source_commit": "8bc00116d2ee87f2fa4576c191b5e77bb12d3cc9",
+  "source_commit": "bcd47e4ae474f08750c7599768fe407cb03b1cda",
   "source_worktree_dirty": true,
   "provenance_note": "source_commit is the base revision; file hashes identify the exact packaged working-tree content.",
   "source_gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
   "files": {
     "README.md": {
-      "bytes": 1738,
-      "sha256": "1c74320dfd1da32106187d20a94325be1f8fed6032424897c9a62d5bcc0cace0"
+      "bytes": 1893,
+      "sha256": "4cb962f61482426c342c1c816fc859aaae89d43fedab315653de961570589021"
     },
     "SPEC.md": {
-      "bytes": 4534,
-      "sha256": "1614e702d6748fadd40b3c1549af477ec71f95565cdcc4c4538f41964c63400d"
+      "bytes": 4879,
+      "sha256": "2cc9fd2bb5fd662b5d915036fcb33d844afc0e6efff3844cb9f1be0aee7997c6"
     },
     "full_adder.sch": {
       "bytes": 2669,
@@ -114,5 +114,5 @@
     }
   },
   "archive": "simulation/submission/mac_submission_66299d3dcbe0.zip",
-  "archive_sha256": "7f7cc4b2bd2563d142c4398b4af1c51e335a1ea502cbf0748d45803ddfcd1475"
+  "archive_sha256": "7047690739f7cd648ab50945c4e9024d79575b046ff7f66732753370800b5d68"
 }
