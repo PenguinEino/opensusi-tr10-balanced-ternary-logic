@@ -9,10 +9,14 @@ from arithmetic_helpers import Route,port
 def main():
  root=verify.ROOT;ly=db.Layout();ly.read(str(root/'mac.gds'));mac=ly.cell('mac')
  top=ly.create_cell('mac_driver_check');top.insert(db.CellInstArray(mac.cell_index(),db.Trans()));d=Route(ly,top)
- # a/b reach the MUL's VDD spine at x=4. x/cin reach the global VDD bus.
- for net,y in [('a',138),('b',144)]:d.route(net,'M1',[(4,y),(20,y)]);d.via(net,4,y)
- for net,x in [('x',492),('cin',1229)]:d.route(net,'M2',[(x,350),(x,365)]);d.via(net,x,365)
- for n,l,x,y in [('sum','M1',1980.9,201.3),('cout','M1',2230,64.1),('VDD','M1',2230,365),('VSS','M1',2230,371),('VMID','M1',2230,377)]:port(d,n,l,x,y)
+ # Physically tie the four inputs to existing VDD spines, using the
+ # current floorplan's dedicated gap between MUL and FA.
+ for net,y in [('a',558),('b',564)]:d.route(net,'M1',[(24,y),(40,y)]);d.via(net,24,y)
+ d.route('VDD','M1',[(8,392),(769,392)])
+ for x in (8,32,769):d.via('VDD',x,392)
+ meta=json.loads((root/'layout/mac.ports.json').read_text())
+ for n in ('sum','cout','VDD','VSS','VMID'):
+  p=meta['ports'][n];port(d,n,'M1' if p['layer']==[13,0] else 'M2',*p['position_um'])
  folder=verify.WORK/'mac_driver';folder.mkdir(parents=True,exist_ok=True);gds=folder/'driver.gds';ly.write(str(gds))
  ref=folder/'reference.spice';ref.write_text(verify.reference('mac').read_text()+'\n.subckt mac_driver_check sum cout VDD VSS VMID\nXdut VDD VDD VDD VDD sum cout VDD VSS VMID mac\n.ends\n')
  with ThreadPoolExecutor(max_workers=3) as pool:

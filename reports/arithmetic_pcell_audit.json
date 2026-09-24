@@ -374,7 +374,7 @@
       ]
     },
     "mac": {
-      "gds_sha256": "592dcd2f119b57d5a580c4c08423a48db2513533a0f54628050f6eb1d253e7a5",
+      "gds_sha256": "50897ebc7495732838c8eee3447b92ce1e3cf16c062068164a54505a7517e326",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
@@ -562,7 +562,14 @@
         "full_adder",
         "mul",
         "mac"
-      ]
+      ],
+      "allocation_um": [
+        0,
+        0,
+        1800,
+        1000
+      ],
+      "fits_allocation": true
     }
   },
   "pdk_sources_sha256": {

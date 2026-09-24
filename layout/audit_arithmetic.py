@@ -33,7 +33,11 @@ def main():
      for pt in poly.each_point_hole(h):
       if pt.x%50 or pt.y%50:bad.append([str(old.get_info(li)),pt.x,pt.y])
   assert not bad,(name,bad[:10]);assert variants
+  b=old.cell(name).dbbox()
+  if name=='mac':assert b.left>=0 and b.bottom>=0 and b.right<=1800 and b.top<=1000,('Outside 1800 x 1000 um allocation',b)
   result[name]=dict(gds_sha256=sha(ROOT/f'{name}.gds'),dbu_um=.001,grid_um=.05,saved_vs_regenerated_xor_um2=0,off_grid_polygon_points=0,placements=placements,all_magnifications_one=True,pcell_variants=variants,logical_cells=[c.name for c in new.each_cell() if not c.is_pcell_variant()])
+ result['mac']['allocation_um']=[0,0,1800,1000]
+ result['mac']['fits_allocation']=True
  r=dict(passed=True,cold_read_before_library_registration=True,cells=result,pdk_sources_sha256={str(p):sha(p) for p in sorted((PDK/'libs.tech/klayout/tech/python/cells').glob('*.py'))})
  (ROOT/'reports/arithmetic_pcell_audit.json').write_text(json.dumps(r,indent=2)+'\n');print('PASS: cold geometry, live PCells, grid, hierarchy, and unit magnifications')
 if __name__=='__main__':main()

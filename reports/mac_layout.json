@@ -1,14 +1,14 @@
 {
   "top": "mac",
-  "gds_sha256": "592dcd2f119b57d5a580c4c08423a48db2513533a0f54628050f6eb1d253e7a5",
+  "gds_sha256": "50897ebc7495732838c8eee3447b92ce1e3cf16c062068164a54505a7517e326",
   "schematic_sha256": "5d024c34c9fc352d6444cbdce403bf0761e6a6c6e23d31deb0b1660e597ae70e",
   "reference_sha256": "1f5ac18dc802197dfb1350f26982bf31841d631b3ae12bcd4174b7308ff9ff98",
   "dbu_um": 0.001,
   "bbox_um": [
-    -1.7,
-    0.0,
-    2231.7000000000003,
-    378.7
+    0.3,
+    24.95,
+    1771.7,
+    783.7
   ],
   "waiver_regions": 0,
   "drawing_drc": {
@@ -41,7 +41,7 @@
     "categories": {
       "WAR06: Floating SG Detected": 14
     },
-    "gds_sha256": "219a3931dbe91b0745a23e4c85e90a9f0456bd6c517c9308af28202e75ffa570"
+    "gds_sha256": "24f62d0af3f5c1080671f33f97b0ab5bfd0a45d8e9f8ab7f13eb4a3eac87aa94"
   },
   "rules_sha256": {
     "libs.tech/klayout/tech/drc/00_Layers.drc": "6e029f7adeb58062bd8f5a1983d8c71188d23b5d5c5a2c404501026df8174e86",
