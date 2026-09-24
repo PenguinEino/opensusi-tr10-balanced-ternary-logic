@@ -1,6 +1,6 @@
 # 平衡3値 Multiply-Add / AND / OR — OpenSUSI TR-1um
 
-−1/0/+1を−5/0/+5 Vで表す、1 tritの乗算加算・AND・OR回路です。共通VSSを除く10端子で、ADD / SUB / MUL / NEG / multiply-addを入力の与え方で選べます。コア外形は1774.7 × 779.35 µmで、1800 × 1000 µmの領域に収まります。
+−1/0/+1を−5/0/+5 Vで表す、1 tritの乗算加算・AND・OR回路です。共通VSSを除く10端子で、ADD / SUB / MUL / NEG / multiply-addを入力の与え方で選べます。コア外形は1783.7 × 779.35 µmで、1800 × 1000 µmの領域に収まります。
 
 ## 提出物
 
@@ -24,6 +24,8 @@
 - 電源はVDD=+5 V、VMID=0 V、VSS=−5 V。59 PMOS、59 NMOS、46 RRで構成
 
 TR-1um dev PDKでDrawing DRC 0件、strict LVS一致。最終抽出回路では81入力、全6,480有向遷移、単一入力648遷移を検証しました。評価条件は27 ℃、理想電源、各出力10 pF || 1 MΩです。
+
+右上の空間には、M2で「EINOSUKE / OKAZAKI」とペンギンのシリコンアートを配置しています。
 
 ## レイアウト全体
 

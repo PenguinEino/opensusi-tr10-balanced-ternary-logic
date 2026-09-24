@@ -1,16 +1,16 @@
 {
-  "source_commit": "667bbf89f4c66d8e246d2aa722a9d1c232ed1ef2",
+  "source_commit": "a15d63a058eb08b40bf1792b65177c9a52eb9572",
   "source_worktree_dirty": true,
   "provenance_note": "source_commit is the base revision; file hashes identify the exact packaged working-tree content.",
-  "source_gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
+  "source_gds_sha256": "ca53a54953e8da90ea40b992f6d52c59af7e2e77311f42c6d4e724ad1e3bc964",
   "files": {
     "README.md": {
-      "bytes": 1893,
-      "sha256": "4cb962f61482426c342c1c816fc859aaae89d43fedab315653de961570589021"
+      "bytes": 2014,
+      "sha256": "a3cb360fc4210e5a2fc4d0dedf9ff544fe84297afb2541e7890ebdbb818470a3"
     },
     "SPEC.md": {
-      "bytes": 6380,
-      "sha256": "ee1c93ef306dfaff58665acfca9673de94d8cf3f4e42745a22edd289f51a783a"
+      "bytes": 6376,
+      "sha256": "fa14951de4650547dd212172b82e99c749055f78ab4c0afeef50aeee7df0a3dd"
     },
     "full_adder.sch": {
       "bytes": 2669,
@@ -41,8 +41,8 @@
       "sha256": "e48a046cf3b58eedce493e841368e2fb8c5877e21d56edb88a2b1cd5277524a0"
     },
     "mac.gds": {
-      "bytes": 94784,
-      "sha256": "66299d3dcbe0bb877e9014607ac4cb35b85d079cc12ffe0d6c3752778236b937"
+      "bytes": 106148,
+      "sha256": "fdb89fe42ce90053ab3cecc25f5b7f06cf49374cfc269c46ff5404707720c383"
     },
     "mac.sch": {
       "bytes": 3164,
@@ -53,12 +53,12 @@
       "sha256": "1148a5a1f53d5f301fee32d0a16af7db76ff871f93410ffcdf5e31dd4f197000"
     },
     "mac_layout.png": {
-      "bytes": 296181,
-      "sha256": "b868f7e7e78667f7406e1e63b19ae77aaf0c7d48206fcc016f2549f976e6b38d"
+      "bytes": 317965,
+      "sha256": "dcaad397a3cdd96c423170b1baefa662ba30c12c0d7b71dd1c3eb60f6e5ab59e"
     },
     "mac_pins.png": {
-      "bytes": 206052,
-      "sha256": "f49a997b673c17ed2e6a003665881c1dc930ea224f8211be4c03d486a6f475ea"
+      "bytes": 208043,
+      "sha256": "869841ff4c761eb1038bd60652c3f2ea6e79f56f9ae02ade1ebc5ccf4197a895"
     },
     "mac_schematic.svg": {
       "bytes": 22538,
@@ -113,6 +113,6 @@
       "sha256": "d349d8c5deff1faa163d7a18358ac7b7c8002b9d4002cdfeaae80daeda3b5e7d"
     }
   },
-  "archive": "simulation/submission/mac_submission_66299d3dcbe0.zip",
-  "archive_sha256": "01124a7fec4d2fad9ca0300fec787e2721a51314d8317992afc360f3018a11a5"
+  "archive": "simulation/submission/mac_submission_fdb89fe42ce9.zip",
+  "archive_sha256": "f02abd5d3c9a8599fd73df5cd518a7746e3445b869ad6895fb2ebcf1207cb0af"
 }

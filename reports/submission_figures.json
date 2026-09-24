@@ -1,33 +1,33 @@
 {
   "passed": true,
-  "gds_sha256": "66299d3dcbe0bb877e9014607ac4cb35b85d079cc12ffe0d6c3752778236b937",
+  "gds_sha256": "fdb89fe42ce90053ab3cecc25f5b7f06cf49374cfc269c46ff5404707720c383",
   "pins_verified_on_metal": {
     "and_out": {
       "layer": [
-        13,
+        20,
         0
       ],
       "label_layer": [
-        48,
+        49,
         0
       ],
       "position_um": [
-        1086,
-        638.5
+        1780,
+        715
       ]
     },
     "or_out": {
       "layer": [
-        13,
+        20,
         0
       ],
       "label_layer": [
-        48,
+        49,
         0
       ],
       "position_um": [
-        1486,
-        638.5
+        1780,
+        705
       ]
     },
     "a": {
@@ -124,7 +124,7 @@
         0
       ],
       "position_um": [
-        1480,
+        1780,
         744.6
       ]
     },
@@ -158,8 +158,8 @@
     }
   },
   "images": {
-    "mac_layout.png": "b868f7e7e78667f7406e1e63b19ae77aaf0c7d48206fcc016f2549f976e6b38d",
-    "mac_pins.png": "f49a997b673c17ed2e6a003665881c1dc930ea224f8211be4c03d486a6f475ea",
+    "mac_layout.png": "dcaad397a3cdd96c423170b1baefa662ba30c12c0d7b71dd1c3eb60f6e5ab59e",
+    "mac_pins.png": "869841ff4c761eb1038bd60652c3f2ea6e79f56f9ae02ade1ebc5ccf4197a895",
     "mac_schematic.svg": "5918c14a48dd882d986b3b6e22fbd9d829718dd21ffee4e92e785dd7f6b1ec3d"
   }
 }

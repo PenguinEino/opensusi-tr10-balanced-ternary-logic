@@ -5,36 +5,36 @@
   "bbox_um": [
     6.3,
     12.35,
-    1781.0,
+    1790.0,
     791.7
   ],
   "ports": {
     "and_out": {
       "layer": [
-        13,
+        20,
         0
       ],
       "label_layer": [
-        48,
+        49,
         0
       ],
       "position_um": [
-        1086,
-        638.5
+        1780,
+        715
       ]
     },
     "or_out": {
       "layer": [
-        13,
+        20,
         0
       ],
       "label_layer": [
-        48,
+        49,
         0
       ],
       "position_um": [
-        1486,
-        638.5
+        1780,
+        705
       ]
     },
     "a": {
@@ -131,7 +131,7 @@
         0
       ],
       "position_um": [
-        1480,
+        1780,
         744.6
       ]
     },
@@ -662,13 +662,52 @@
         ]
       ],
       "width_um": 3.4
+    },
+    {
+      "net": "and_out",
+      "layer": "M2",
+      "points_um": [
+        [
+          1080,
+          638.5
+        ],
+        [
+          1080,
+          715
+        ],
+        [
+          1780,
+          715
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "or_out",
+      "layer": "M2",
+      "points_um": [
+        [
+          1480,
+          638.5
+        ],
+        [
+          1480,
+          705
+        ],
+        [
+          1780,
+          705
+        ]
+      ],
+      "width_um": 3.4
     }
   ],
-  "gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
+  "gds_sha256": "ca53a54953e8da90ea40b992f6d52c59af7e2e77311f42c6d4e724ad1e3bc964",
   "sources": {
     "/home/ishi-kai/balanced-ternary-logic/mul.gds": "71c9fae39518de9fa1d7fec9c334e717d7456199f2f65f4199542019c0b8e0fe",
     "/home/ishi-kai/balanced-ternary-logic/full_adder.gds": "e159fbbf0bfd6b9ea943f7d53e1d88fe74aa811bb4f313da34b0e4a9430c2fbd",
-    "/home/ishi-kai/balanced-ternary-logic/inverter.gds": "66242f8be89020ec65350f12ffcc2a7301bc632955dfde345016224138e7e3a4"
+    "/home/ishi-kai/balanced-ternary-logic/inverter.gds": "66242f8be89020ec65350f12ffcc2a7301bc632955dfde345016224138e7e3a4",
+    "/home/ishi-kai/balanced-ternary-logic/layout/art/original_inverter_art.gds": "ee621b3a0946d31eec72cba42a02a07c68afb21f34fd757de1e1f2bc76212ec3"
   },
   "device_counts": {
     "PMOS": 59,
@@ -684,5 +723,17 @@
   "fits_allocation": true,
   "aligned_upper_cell_origin_y_um": 600,
   "main_supply_width_um": 44,
-  "scope": "Core macro without pad frame or interconnect RC extraction"
+  "scope": "Core macro without pad frame or interconnect RC extraction",
+  "silicon_art": {
+    "cell": "silicon_art",
+    "layer": [
+      20,
+      0
+    ],
+    "name": [
+      "EINOSUKE",
+      "OKAZAKI"
+    ],
+    "drawing": "Penguin from original inverter GDS"
+  }
 }

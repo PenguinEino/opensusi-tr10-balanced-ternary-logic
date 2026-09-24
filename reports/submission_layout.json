@@ -1,5 +1,5 @@
 {
-  "gds_sha256": "66299d3dcbe0bb877e9014607ac4cb35b85d079cc12ffe0d6c3752778236b937",
+  "gds_sha256": "fdb89fe42ce90053ab3cecc25f5b7f06cf49374cfc269c46ff5404707720c383",
   "reference_sha256": "d349d8c5deff1faa163d7a18358ac7b7c8002b9d4002cdfeaae80daeda3b5e7d",
   "drawing_drc": {
     "passed": true,
@@ -31,7 +31,7 @@
     "categories": {
       "WAR06: Floating SG Detected": 14
     },
-    "gds_sha256": "0458e769fec2c29f8239e5972bd09ee38944250db4ce145b892bdb65ca6ff297"
+    "gds_sha256": "d741cb0b2acf31a7144743fa4a1f5b98f0776bc0d0a6129bf45a9026cac8bb9d"
   },
   "extracted_electrically_identical": true,
   "passed": true,

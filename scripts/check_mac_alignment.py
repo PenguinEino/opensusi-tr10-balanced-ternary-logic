@@ -9,7 +9,7 @@ def main():
  top=ly.cell('mac');m1=db.Region(top.begin_shapes_rec(ly.layer(13,0))).merged();m2=db.Region(top.begin_shapes_rec(ly.layer(20,0))).merged();via=db.Region(top.begin_shapes_rec(ly.layer(19,0))).merged()
  def box(b):return db.Region(db.Box(*(round(v/ly.dbu) for v in b)))
  rails=[]
- for name,left,right,y in [('upper_VDD',20,1480,744.6),('upper_VSS',20,1480,581.4),('FA_VDD',48,1781,358.2),('FA_VSS',48,1781,418.2)]:
+ for name,left,right,y in [('upper_VDD',20,1790,744.6),('upper_VSS',20,1480,581.4),('FA_VDD',48,1781,358.2),('FA_VSS',48,1781,418.2)]:
   bounds=[left,y-22,right,y+22];assert (box(bounds)-m1).is_empty(),name
   rails.append(dict(name=name,box_um=bounds,width_um=44,missing_area_um2=0))
  spines=[]

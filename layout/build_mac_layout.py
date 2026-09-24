@@ -2,6 +2,7 @@
 import json
 import klayout.db as db
 from arithmetic_helpers import ROOT,import_tree,Route,port
+from silicon_art import add_art
 
 ALLOCATION_UM=(0,0,1800,1000)
 ROW_Y=600
@@ -52,7 +53,13 @@ def build():
  d.route('VMID','M1',[(58.35,207),(8,207)]);d.via('VMID',8,207)
  d.route('VMID','M2',[(8,207),(8,790)]);d.via('VMID',8,790)
  d.route('VMID','M1',[(8,790),(100,790)])
- ports={n:port(d,n,l,x,y) for n,l,x,y in [('and_out','M1',1086,638.5),('or_out','M1',1486,638.5),('a','M1',40,500),('b','M1',40,506),('x','M2',32,485),('cin','M2',800.9,485),('sum','M1',1520.9,201.3),('cout','M1',1770,64.1),('VDD','M1',1480,VDD_Y),('VSS','M1',1480,VSS_Y),('VMID','M1',100,790)]}
+ # Right-edge access: M2 signal routes cross the existing M1 supply connections.
+ d.box('M1',1480,VDD_Y-22,1790,VDD_Y+22)
+ d.route('and_out','M2',[(1080,638.5),(1080,715),(1780,715)])
+ d.route('or_out','M2',[(1480,638.5),(1480,705),(1780,705)])
+ add_art(ly,top)
+ ports={n:port(d,n,l,x,y) for n,l,x,y in [('and_out','M2',1780,715),('or_out','M2',1780,705),('a','M1',40,500),('b','M1',40,506),('x','M2',32,485),('cin','M2',800.9,485),('sum','M1',1520.9,201.3),('cout','M1',1770,64.1),('VDD','M1',1780,VDD_Y),('VSS','M1',1480,VSS_Y),('VMID','M1',100,790)]}
  b=top.dbbox();assert b.left>=0 and b.bottom>=0 and b.right<=1800 and b.top<=1000,b
- d.save('mac',ports,sources,dict(device_counts=dict(PMOS=59,NMOS=59,F_RR=46),allocation_um=list(ALLOCATION_UM),fits_allocation=True,aligned_upper_cell_origin_y_um=ROW_Y,main_supply_width_um=MAIN_WIDTH,scope='Core macro without pad frame or interconnect RC extraction'))
+ sources.append(ROOT/'layout/art/original_inverter_art.gds')
+ d.save('mac',ports,sources,dict(device_counts=dict(PMOS=59,NMOS=59,F_RR=46),allocation_um=list(ALLOCATION_UM),fits_allocation=True,aligned_upper_cell_origin_y_um=ROW_Y,main_supply_width_um=MAIN_WIDTH,silicon_art=dict(cell='silicon_art',layer=[20,0],name=['EINOSUKE','OKAZAKI'],drawing='Penguin from original inverter GDS'),scope='Core macro without pad frame or interconnect RC extraction'))
 if __name__=='__main__':build()

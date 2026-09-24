@@ -813,12 +813,12 @@
       ]
     },
     "mac": {
-      "gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
+      "gds_sha256": "ca53a54953e8da90ea40b992f6d52c59af7e2e77311f42c6d4e724ad1e3bc964",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
       "off_grid_polygon_points": 0,
-      "placements": 130,
+      "placements": 131,
       "all_magnifications_one": true,
       "pcell_variants": [
         {
@@ -984,6 +984,7 @@
         "mul_inv",
         "mul_nor",
         "mul_nand",
+        "silicon_art",
         "full_adder",
         "mul",
         "mac"

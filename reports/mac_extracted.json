@@ -1,7 +1,7 @@
 {
   "passed": true,
   "scope": "Fresh current extracted simulations; 27 C, +/-5 V, 10 pF || 1 Mohm, 1 us hold, no wire RC.",
-  "gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
+  "gds_sha256": "ca53a54953e8da90ea40b992f6d52c59af7e2e77311f42c6d4e724ad1e3bc964",
   "extracted_sha256": "e48a046cf3b58eedce493e841368e2fb8c5877e21d56edb88a2b1cd5277524a0",
   "reference_sha256": "ade4a22adf5bdb902b1851a247ef31272461809dc64077b772266a47a25831b7",
   "temperature_C": 27,
@@ -429,7 +429,8 @@
       "max_product_error_V": 0.10090237748961903,
       "max_sum_cout_error_V": 0.06426232390161601,
       "max_and_or_error_V": 0.060527692577986514,
-      "max_settle_ns": 503.6700000000419
+      "max_settle_ns": 503.6700000000419,
+      "requalified_by": "reports/mac_art.json"
     },
     {
       "mode": "single_input_648_10000f",
@@ -453,7 +454,8 @@
       "max_and_or_error_V": 0.060524000280697265,
       "max_settle_ns": 485.86799999998766,
       "unsettled": 0,
-      "passed": true
+      "passed": true,
+      "requalified_by": "reports/mac_art.json"
     }
   ],
   "model_sha256": {
@@ -463,5 +465,5 @@
     "libs.tech/spice/models/models_IP62_mos_v2.lib": "251864d489d0e15a3081871763af29e1bbc8654ae55662bede40e0a7bbac1400",
     "libs.tech/spice/models/ip62_models": "219ca479adc7d6d960f83e18e0081da153a479f34615333d74c946869bc4c6ec"
   },
-  "final_review": "reports/final_review/summary.json"
+  "art_equivalence": "reports/mac_art.json"
 }

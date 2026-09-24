@@ -1,13 +1,13 @@
 {
   "passed": true,
-  "gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
+  "gds_sha256": "ca53a54953e8da90ea40b992f6d52c59af7e2e77311f42c6d4e724ad1e3bc964",
   "rails": [
     {
       "name": "upper_VDD",
       "box_um": [
         20,
         722.6,
-        1480,
+        1790,
         766.6
       ],
       "width_um": 44,
