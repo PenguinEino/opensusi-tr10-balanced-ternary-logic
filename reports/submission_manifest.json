@@ -1,5 +1,5 @@
 {
-  "source_commit": "bcd47e4ae474f08750c7599768fe407cb03b1cda",
+  "source_commit": "667bbf89f4c66d8e246d2aa722a9d1c232ed1ef2",
   "source_worktree_dirty": true,
   "provenance_note": "source_commit is the base revision; file hashes identify the exact packaged working-tree content.",
   "source_gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
@@ -9,8 +9,8 @@
       "sha256": "4cb962f61482426c342c1c816fc859aaae89d43fedab315653de961570589021"
     },
     "SPEC.md": {
-      "bytes": 4879,
-      "sha256": "2cc9fd2bb5fd662b5d915036fcb33d844afc0e6efff3844cb9f1be0aee7997c6"
+      "bytes": 6380,
+      "sha256": "ee1c93ef306dfaff58665acfca9673de94d8cf3f4e42745a22edd289f51a783a"
     },
     "full_adder.sch": {
       "bytes": 2669,
@@ -114,5 +114,5 @@
     }
   },
   "archive": "simulation/submission/mac_submission_66299d3dcbe0.zip",
-  "archive_sha256": "7047690739f7cd648ab50945c4e9024d79575b046ff7f66732753370800b5d68"
+  "archive_sha256": "01124a7fec4d2fad9ca0300fec787e2721a51314d8317992afc360f3018a11a5"
 }
