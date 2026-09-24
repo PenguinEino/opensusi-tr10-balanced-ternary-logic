@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "gds_sha256": "c826b7af8ef71a58b0b60417c1d4ad46129ed50c9d4e1dc67afdb9242a999226",
+  "gds_sha256": "e5aaab51a1722560c7929a5e841455afdde426caee79fbc41a3e42aec8c6452c",
   "m1_overlay_box_um": [
     520,
     378.2,
@@ -78,5 +78,6 @@
     }
   ],
   "source_sha256": "d55ab44e97612a4a19e2673fec91619d82364330ed815354c1f06f77044fa78a",
-  "scope": "Correlated DC currents from all 81 states, -40 C; parent MAC VSS overlay only. No AC/current-crowding/EM signoff."
+  "scope": "Correlated DC currents from all 81 states, -40 C; parent MAC VSS overlay only. No AC/current-crowding/EM signoff.",
+  "requalified_by": "reports/mac_improvements/power_placement_equivalence.json"
 }

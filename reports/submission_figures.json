@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "gds_sha256": "c6be67275558d6110bf3dff4989dc9faa76fb68f83121839cc0dd1ab69247863",
+  "gds_sha256": "26bb7125f4264e97a8b1b6b84e8a8b61ff5b53d350507f53e7ed9cd064f74047",
   "pins_verified_on_metal": {
     "and_out": {
       "layer": [
@@ -125,7 +125,7 @@
       ],
       "position_um": [
         1720,
-        900
+        744.3
       ]
     },
     "VSS": {
@@ -139,7 +139,7 @@
       ],
       "position_um": [
         1720,
-        960
+        804.3
       ]
     },
     "VMID": {
@@ -158,8 +158,8 @@
     }
   },
   "images": {
-    "mac_layout.png": "0f322afb6b1d800bc53520055f0103d5d2d8db28a3f191721cb00453982a201d",
-    "mac_pins.png": "4e0be73075bde45861b5b856b4ba07ea64585e8364342c0bf9b54f6456308e2a",
+    "mac_layout.png": "697546869cb44fd26f2808061e071563cca90c1eb5cbaf337103ac76dd087ab2",
+    "mac_pins.png": "5c0a86dbb92e761120377c4a19f12eb3696aaef216142a4aba5aa747a3a58c52",
     "mac_schematic.svg": "5918c14a48dd882d986b3b6e22fbd9d829718dd21ffee4e92e785dd7f6b1ec3d"
   }
 }

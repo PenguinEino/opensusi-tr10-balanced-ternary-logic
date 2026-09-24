@@ -1,5 +1,5 @@
 {
-  "source_sha256": "c826b7af8ef71a58b0b60417c1d4ad46129ed50c9d4e1dc67afdb9242a999226",
+  "source_sha256": "e5aaab51a1722560c7929a5e841455afdde426caee79fbc41a3e42aec8c6452c",
   "scope": "Separate fixture tying the four external inputs to VDD. Functional MAC unchanged. No waivers.",
   "drawing_drc": {
     "passed": true,
@@ -30,7 +30,7 @@
     "passed": true,
     "items": 0,
     "categories": {},
-    "gds_sha256": "513944a1a46d630f43e68ef51a322e65769cdc4c939fcd02343766743a650994"
+    "gds_sha256": "9a9e335fa92eb783cd29c262e973941df62fe8eb53a5babd8b48b124af1d2144"
   },
   "passed": true
 }
