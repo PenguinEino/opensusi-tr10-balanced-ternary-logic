@@ -101,7 +101,7 @@ def docs(final=False):
   rows.append(f'| `{name}` | {direction} | {desc} | {layer} | {x:g} | {y:g} |')
  table='\n'.join(rows)
  if final:
-  results='\n'.join(f"| {r['scope']} | {r['mode']} | {r['load_fF']} fF/出力 | {r['max_error_mV']:.3f} mV | {r['max_settle_ns']:.2f} ns | PASS |" for r in summary['cases'])
+  results='\n'.join(f"| {r['scope']} | {r['mode']} | {r['load_fF']/1000:g} pF/出力 | {r['max_error_mV']:.3f} mV | {r['max_settle_ns']:.2f} ns | PASS |" for r in summary['cases'])
  else:results='| 検証更新中 | 全遷移の実行完了後に結果を反映 | — | — | — | 実行中 |'
  for name in ('README.md','SPEC.md'):
   s=(ROOT/'design/submission'/name).read_text().replace('{{PORTS}}',table).replace('{{RESULTS}}',results).replace('{{ERROR_DETAIL}}',f"SUM/Coutの最大誤差は {max(r['sum_cout_error_mV'] for r in summary['cases']):.3f} mV、AND/ORの最大誤差は {max(r['and_or_error_mV'] for r in summary['cases']):.3f} mV。" if final else '各出力群の誤差は全検証終了後に集計する。').replace('{{STATUS}}','検証完了。条件と未評価範囲は仕様書を参照。' if final else '全遷移検証を実行中。完了後に仕様書の検証結果を更新する。')
@@ -114,7 +114,7 @@ def manifest():
  with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
   for p in paths:z.write(p,'submission/'+str(p.relative_to(OUT)))
  with zipfile.ZipFile(archive) as z:assert z.testzip() is None
- result=dict(source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),source_gds_sha256=sha(ROOT/'mac.gds'),files=records,archive=str(archive.relative_to(ROOT)),archive_sha256=sha(archive))
+ result=dict(source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),source_worktree_dirty=bool(subprocess.check_output(['git','status','--porcelain'],cwd=ROOT,text=True).strip()),provenance_note='source_commit is the base revision; file hashes identify the exact packaged working-tree content.',source_gds_sha256=sha(ROOT/'mac.gds'),files=records,archive=str(archive.relative_to(ROOT)),archive_sha256=sha(archive))
  (ROOT/'reports/submission_manifest.json').write_text(json.dumps(result,indent=2)+'\n');return result
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--final',action='store_true');p.add_argument('--docs-only',action='store_true');a=p.parse_args()

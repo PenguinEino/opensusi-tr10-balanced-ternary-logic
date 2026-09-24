@@ -49,6 +49,11 @@ def build():
   d.route(net,'M1',[(560,high),(1720,high)],44)
   d.route(net,'M2',[(x,low),(x,high)],14)
   array(net,x,low);array(net,x,high)
+ # MUL and both HAs share this return: 8.145 mA on the left branch,
+ # 9.040 mA including the merge/Cout branch at the main VSS landing.
+ # 40 um gives a conservative 10 mA M1-over-step continuous allowance.
+ # Start beyond x=520 to clear the product signal at (510,378).
+ d.route('VSS','M1',[(540,398.2),(850,398.2)],40)
  # MUL gets its own VDD feed; its bottom VSS rail overlaps the FA VSS trunk.
  d.route('VDD','M1',[(24,744.3),(530,744.3)],11.4)
  d.route('VDD','M2',[(530,744.3),(530,850)],4)

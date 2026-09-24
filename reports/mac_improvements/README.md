@@ -11,6 +11,7 @@
 - `solver_comparison.json`：81入力列の収束設定による整定後電圧差。
 - `worst_tight_*.json`：全遷移で見つかった最大誤差/遅延の遷移を、厳しい収束設定・2 ns刻みで再確認。
 - `nany_regression.json`：RR30更新後NANYのDC近傍、全72遷移、入力スキュー回帰試験。
+- `power_join.json`：MUL＋FAの共有VSS合流電流と40 µm M1形状。`vss_equivalence.json` / `vss_before*`は最終拡幅前後の回路同一性と波形再判定の証拠。
 - `rr*.json`、`candidate*.json`、`hot*.json`、`finite_rr_hot.json`：実装前の電気的候補・収束診断の履歴。現在の物理レイアウト合格証としては使用しません。
 - `supply_T-40.0_fixed0_num0_power0_1.9_2.5_0.05.json`は旧走査器の上り区間エラーを含む診断履歴。修正後の`2.0_2.5`報告を優先します。
 

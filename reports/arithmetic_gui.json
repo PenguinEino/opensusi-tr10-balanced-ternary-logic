@@ -16,7 +16,7 @@
       "passed": true
     },
     "mac": {
-      "gds_sha256": "83a38ddc0e8dbc2aab769d2b50253850a343b6e1863eb4ad9c0464ce39502155",
+      "gds_sha256": "c826b7af8ef71a58b0b60417c1d4ad46129ed50c9d4e1dc67afdb9242a999226",
       "drawing_drc_items": 0,
       "lvs_errors": [],
       "lvs_logs": [],

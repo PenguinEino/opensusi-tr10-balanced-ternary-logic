@@ -1,14 +1,16 @@
 {
-  "source_commit": "3dc8b7e23fe148ccba685ed4d44864a7526517ef",
-  "source_gds_sha256": "83a38ddc0e8dbc2aab769d2b50253850a343b6e1863eb4ad9c0464ce39502155",
+  "source_commit": "ac97b6d037542a8278cf4eab629e02203575ee13",
+  "source_worktree_dirty": true,
+  "provenance_note": "source_commit is the base revision; file hashes identify the exact packaged working-tree content.",
+  "source_gds_sha256": "c826b7af8ef71a58b0b60417c1d4ad46129ed50c9d4e1dc67afdb9242a999226",
   "files": {
     "README.md": {
-      "bytes": 2746,
-      "sha256": "8fbe239dc795d64b632cd9967a0567f96c928ad91fbe048a15b6a4230496f1bc"
+      "bytes": 2725,
+      "sha256": "164b9c5d0418a60d805205ad2fc22a2a5f327c99d8c745c7dacd8812b7851fd5"
     },
     "SPEC.md": {
-      "bytes": 10646,
-      "sha256": "6d6b2c55685ab8683550411b9026efaae66a066722fa4d09143020ff343794ab"
+      "bytes": 11549,
+      "sha256": "410f0e7c6583725ff3bed6b46e09b693825dfee336bb9e161adc50f321f4c63a"
     },
     "full_adder.sch": {
       "bytes": 2669,
@@ -36,11 +38,11 @@
     },
     "mac.extracted": {
       "bytes": 5861,
-      "sha256": "b4c1e39c7dd836e189b41689689047a2ed0d9e35ebac944a7ba2009f4b888b21"
+      "sha256": "501c92703ea991e3596949643a82ac317202e3919b216cd5cf24185d6c0254dd"
     },
     "mac.gds": {
-      "bytes": 104926,
-      "sha256": "75002d934a770020c9c8924cdff9bffc60f8d379c5592bb11f4d4bb81541c6e4"
+      "bytes": 104990,
+      "sha256": "c6be67275558d6110bf3dff4989dc9faa76fb68f83121839cc0dd1ab69247863"
     },
     "mac.sch": {
       "bytes": 3164,
@@ -51,12 +53,12 @@
       "sha256": "1148a5a1f53d5f301fee32d0a16af7db76ff871f93410ffcdf5e31dd4f197000"
     },
     "mac_layout.png": {
-      "bytes": 250461,
-      "sha256": "59e076ff97d14deebdb2dba0884407a71fea9be376974c54a4b81c6e23d858e8"
+      "bytes": 251192,
+      "sha256": "0f322afb6b1d800bc53520055f0103d5d2d8db28a3f191721cb00453982a201d"
     },
     "mac_pins.png": {
-      "bytes": 207878,
-      "sha256": "2fc5f07f19782cddc2a427fe458f2267cd87c034f739a966a940cd8075bddf41"
+      "bytes": 207867,
+      "sha256": "4e0be73075bde45861b5b856b4ba07ea64585e8364342c0bf9b54f6456308e2a"
     },
     "mac_schematic.svg": {
       "bytes": 22538,
@@ -111,6 +113,6 @@
       "sha256": "d349d8c5deff1faa163d7a18358ac7b7c8002b9d4002cdfeaae80daeda3b5e7d"
     }
   },
-  "archive": "simulation/submission/mac_submission_75002d934a77.zip",
-  "archive_sha256": "ca6ff49f4d714b23a620a7cebc7a7f7a06380434d2678918f95c67bb7c614ec3"
+  "archive": "simulation/submission/mac_submission_c6be67275558.zip",
+  "archive_sha256": "27056fc8ec7c3d532a3e74090dfa0892bc62f973f4238c44c79f8582b3665509"
 }

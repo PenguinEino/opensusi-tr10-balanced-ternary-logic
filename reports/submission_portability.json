@@ -1,8 +1,8 @@
 {
   "passed": true,
   "layout": {
-    "source_sha256": "83a38ddc0e8dbc2aab769d2b50253850a343b6e1863eb4ad9c0464ce39502155",
-    "submitted_sha256": "75002d934a770020c9c8924cdff9bffc60f8d379c5592bb11f4d4bb81541c6e4",
+    "source_sha256": "c826b7af8ef71a58b0b60417c1d4ad46129ed50c9d4e1dc67afdb9242a999226",
+    "submitted_sha256": "c6be67275558d6110bf3dff4989dc9faa76fb68f83121839cc0dd1ab69247863",
     "geometry_and_labels_identical": true,
     "hierarchy_preserved": true,
     "external_library_context_removed": true,

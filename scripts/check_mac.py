@@ -114,4 +114,4 @@ def main(quick=False):
  (ROOT/f'reports/mac{"_quick" if quick else ""}.json').write_text(json.dumps(r,indent=2)+'\n')
  if not r['passed']:raise RuntimeError('MAC verification failed')
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--quick',action='store_true');a=p.parse_args();main(a.quick)
+ p=argparse.ArgumentParser();p.add_argument('--quick',action='store_true');p.add_argument('--resume',action='store_true',help='Reuse only exact, dependency-validated decks and re-evaluate all saved waveforms.');a=p.parse_args();REUSE_VALIDATED=a.resume;main(a.quick)

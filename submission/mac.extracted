@@ -17,11 +17,11 @@
 * cell instance $1 r0 *1 180,123.2
 X$1 cout VMID VDD x \$3 cin sum VSS full_adder
 * cell instance $2 r0 *1 20,420
-X$2 \$11 VDD a b \$9 \$3 VSS mul
+X$2 \$10 VDD a b \$9 \$3 VSS mul
 * cell instance $3 r0 *1 1080,520
 X$3 VDD \$12 or_out VSS inverter
 * cell instance $4 r0 *1 920,520
-X$4 VDD \$11 \$12 VSS inverter
+X$4 VDD \$10 \$12 VSS inverter
 * cell instance $5 r0 *1 600,520
 X$5 VDD \$9 and_out VSS inverter
 .ENDS mac

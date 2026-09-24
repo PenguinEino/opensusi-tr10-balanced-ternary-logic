@@ -58,6 +58,25 @@ def main():
             for k,x,y in [('VDS',d,s),('VGS',g,s),('VGD',g,d),('VGB',g,b),('VDB',d,b),('VSB',s,b)]:peak[k]=max(peak[k],float(np.max(abs(x-y))))
         slew[edge]=dict(max_terminal_difference_V=peak,wave_sha256=sha(q))
     save('slew_stress_summary',dict(cases=slew,scope='Cold 81-state sequence, +/-5 V. Full transient terminal differences; not breakdown modeling.'))
+    import klayout.db as db
+    layout=db.Layout();layout.read(str(ROOT/'mac.gds'));top=layout.cell('mac')
+    target=db.Region(db.Box(520000,378200,870000,418200))
+    assert layout.dbu==.001 and (target-db.Region(top.begin_shapes_rec(layout.layer(13,0)))).is_empty()
+    source=WORK/'supply_T-40.0_fixed0_num0_power1_4.5_5.5_0.5/all_states.json'
+    states=json.loads(source.read_text());joins=[]
+    for rail in ('5.0','5.5'):
+        for label,roles in [('left branch',('x_mul','x_ha1','x_ha2')),('main landing',('x_mul','x_fa'))]:
+            values=[]
+            for state in states:
+                row=state['rows'][rail];currents=row['branch_currents_A']
+                terms={k:v for k,v in currents.items() if any(f'.vprobe_{role}_vss#' in k for role in roles)}
+                assert len(terms)==len(roles)
+                values.append(dict(current_A=abs(sum(terms.values())),state=row['state'],terms=terms))
+            peak=max(values,key=lambda r:r['current_A'])
+            joins.append(dict(rail_V=float(rail),segment=label,states=len(values),**peak))
+    assert max(r['current_A'] for r in joins if r['rail_V']==5)<.010
+    save('power_join',dict(passed=True,gds_sha256=sha(ROOT/'mac.gds'),m1_overlay_box_um=[520,378.2,870,418.2],width_um=40,conservative_continuous_capacity_A=.010,
+        currents=joins,source_sha256=sha(source),scope='Correlated DC currents from all 81 states, -40 C; parent MAC VSS overlay only. No AC/current-crowding/EM signoff.'))
     print('solver differences',delta)
     print('largest RMS',sorted(stats.items(),key=lambda p:p[1]['rms_A'],reverse=True)[:7])
 
