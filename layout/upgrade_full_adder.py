@@ -52,17 +52,17 @@ def build():
  # The wider lower-row VDD occupies the former C1 channel. Lift only C1
  # above the power trunks, retaining the original endpoints and logic.
  d.route('c1','M1',[(561.65,59.75),(568.5,59.75)]);d.via('c1',568.5,59.75)
- d.route('c1','M2',[(568.5,59.75),(568.5,300)]);d.via('c1',568.5,300)
- d.route('c1','M1',[(568.5,300),(1308.45,300)]);d.via('c1',1308.45,300)
- d.route('c1','M2',[(1308.45,300),(1308.45,22.35)])
+ d.route('c1','M2',[(568.5,59.75),(568.5,330)]);d.via('c1',568.5,330)
+ d.route('c1','M1',[(568.5,330),(1308.45,330)]);d.via('c1',1308.45,330)
+ d.route('c1','M2',[(1308.45,330),(1308.45,22.35)])
 
  def array(net,x,y,nx=4,ny=2):
   for j in range(ny):
    for i in range(nx):d.via(net,x+4*(i-(nx-1)/2),y+4*(j-(ny-1)/2))
   for layer in ('M1','M2'):d.box(layer,x-2*(nx-1)-1.7,y-2*(ny-1)-1.7,x+2*(nx-1)+1.7,y+2*(ny-1)+1.7)
 
- # 32 um trunks: conservative M1-over-step continuous capacity 8 mA.
- for net,y in [('VDD',235),('VSS',275)]:d.route(net,'M1',[(-116,y),(1585,y)],32)
+ # Uniform 44 um trunks, 60 um center spacing; no alternating-width overlay.
+ for net,y in [('VDD',235),('VSS',295)]:d.box('M1',-132,y-22,1601,y+22)
  for hx in (-96.05,600.9):
   # Distributed VDD injection over the whole top row; lower-row feed has 3 cuts.
   d.box('M1',hx,213.35,hx+660,235)
@@ -70,19 +70,19 @@ def build():
   x=hx-20
   d.box('M1',x-8,89.15,hx+16,105.15)
   array('VSS',x,97.15)
-  d.route('VSS','M2',[(x,97.15),(x,275)],4)
-  array('VSS',x,275)
+  d.route('VSS','M2',[(x,97.15),(x,295)],4)
+  array('VSS',x,295)
  # Merge NANY and output INV share a widened bottom VSS rail, with a separate feed.
  d.box('M1',1312,-110.85,1593,-94.85)
  array('VSS',1585,-102.85)
- d.route('VSS','M2',[(1585,-102.85),(1585,275)],4)
- array('VSS',1585,275)
+ d.route('VSS','M2',[(1585,-102.85),(1585,295)],4)
+ array('VSS',1585,295)
  for x,y,x0,x1 in [(1432,15.05,1312,1460),(1542,-33.95,1468.45,1564.45)]:
   d.box('M1',x0+8,y-1.7,x1,y+10.3)
   array('VDD',x,y+4)
   d.route('VDD','M2',[(x,y+4),(x,235)],3.4)
   array('VDD',x,235)
- ports={n:port(d,n,'M1',x,y) for n,x,y in [('a',-128.45,29.5),('b',-128.75,36.1),('cin',620.9,35.75),('sum',1340.9,78.1),('cout',1576.25,-59.1),('VMID',-121.65,83.8),('VDD',600,235),('VSS',650,275)]}
+ ports={n:port(d,n,'M1',x,y) for n,x,y in [('a',-128.45,29.5),('b',-128.75,36.1),('cin',620.9,35.75),('sum',1340.9,78.1),('cout',1576.25,-59.1),('VMID',-121.65,83.8),('VDD',600,235),('VSS',650,295)]}
  d.save('full_adder',ports,[ROOT/'half_adder.gds',ROOT/'nany.gds',ROOT/'inverter.gds',TEMPLATE],dict(device_counts=dict(PMOS=49,NMOS=49,F_RR=32),manual_signal_routing_preserved_except=['C1 lifted over widened power rails','Cout via moved outside widened RR guard tie'],power_paths_replaced=removed))
 
 if __name__=='__main__':

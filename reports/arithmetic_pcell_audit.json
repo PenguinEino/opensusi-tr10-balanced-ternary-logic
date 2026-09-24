@@ -314,7 +314,7 @@
       ]
     },
     "full_adder": {
-      "gds_sha256": "8da06e19207e97f183959d32ace7a30034a8895fab7252edfdf097570cace621",
+      "gds_sha256": "7e17ca5abaf686b62df4c97bd6b2a9216fd5832bd88ea4d38a5e39fe3b5828d8",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
@@ -685,7 +685,7 @@
       ]
     },
     "mul": {
-      "gds_sha256": "fd10a53c5e3081ba686b7d44ff54cef931d024d1b3129ea9f4b14051ffc61367",
+      "gds_sha256": "71c9fae39518de9fa1d7fec9c334e717d7456199f2f65f4199542019c0b8e0fe",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
@@ -813,7 +813,7 @@
       ]
     },
     "mac": {
-      "gds_sha256": "e5aaab51a1722560c7929a5e841455afdde426caee79fbc41a3e42aec8c6452c",
+      "gds_sha256": "13a8c4415aac8f88be5a9fc05792727665c7352ef444de89f1c39f2e7bcbafd6",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,

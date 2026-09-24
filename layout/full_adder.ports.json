@@ -6,7 +6,7 @@
     -132.0,
     -110.85000000000001,
     1601.0,
-    301.7
+    331.7
   ],
   "ports": {
     "a": {
@@ -118,7 +118,7 @@
       ],
       "position_um": [
         650,
-        275
+        295
       ]
     }
   },
@@ -179,7 +179,7 @@
         ],
         [
           568.5,
-          300
+          330
         ]
       ],
       "width_um": 3.4
@@ -190,11 +190,11 @@
       "points_um": [
         [
           568.5,
-          300
+          330
         ],
         [
           1308.45,
-          300
+          330
         ]
       ],
       "width_um": 3.4
@@ -205,7 +205,7 @@
       "points_um": [
         [
           1308.45,
-          300
+          330
         ],
         [
           1308.45,
@@ -213,36 +213,6 @@
         ]
       ],
       "width_um": 3.4
-    },
-    {
-      "net": "VDD",
-      "layer": "M1",
-      "points_um": [
-        [
-          -116,
-          235
-        ],
-        [
-          1585,
-          235
-        ]
-      ],
-      "width_um": 32
-    },
-    {
-      "net": "VSS",
-      "layer": "M1",
-      "points_um": [
-        [
-          -116,
-          275
-        ],
-        [
-          1585,
-          275
-        ]
-      ],
-      "width_um": 32
     },
     {
       "net": "VSS",
@@ -254,7 +224,7 @@
         ],
         [
           -116.05,
-          275
+          295
         ]
       ],
       "width_um": 4
@@ -269,7 +239,7 @@
         ],
         [
           580.9,
-          275
+          295
         ]
       ],
       "width_um": 4
@@ -284,7 +254,7 @@
         ],
         [
           1585,
-          275
+          295
         ]
       ],
       "width_um": 4
@@ -320,7 +290,7 @@
       "width_um": 3.4
     }
   ],
-  "gds_sha256": "8da06e19207e97f183959d32ace7a30034a8895fab7252edfdf097570cace621",
+  "gds_sha256": "7e17ca5abaf686b62df4c97bd6b2a9216fd5832bd88ea4d38a5e39fe3b5828d8",
   "sources": {
     "/home/ishi-kai/balanced-ternary-logic/half_adder.gds": "4ae02d9027d72ed279b6e016f4f48c2be1d0bc626206fd6fb8bee9c504aafaf9",
     "/home/ishi-kai/balanced-ternary-logic/nany.gds": "3403d325575c08cee2765c459d40985ee041db48a1ed21f1e13f3d9306af6282",

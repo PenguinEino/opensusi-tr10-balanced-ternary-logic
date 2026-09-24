@@ -44,13 +44,14 @@ MULのt1=-min(A,B)を反転して `and_out=min(A,B)`、t3は2段INVで復元・�
 元GDSを含む退避は`layout/backups/mac_improvements_FIzCF0/design_before.tgz`。
 
 GDSはDBU=0.001 µm、製造・配置格子0.05 µm、全インスタンス倍率1。
-MULの外形480×346.6 µm。MACはMULをFAの上段へ配置し、外接矩形 **1774.7×813.95 µm**。
-全形状の範囲は x=6.3〜1781 µm、y=12.35〜826.3 µmで、指定の **1800×1000 µm** 領域内に収まる。
-生成スクリプトにも領域外へ出ないことの検査を追加した。
-主電源M1は44 µm、M2幹線は14 µm、接続部は24カット。FA幹線・子セルの電源も更新した。
-上側VDD/VSSの中心はy=744.3/804.3 µm。VDDを左側MULと同じ高さに揃え、MULへの迂回と不要な層間接続を除去した。
-セル配置と信号配線は維持し、幹線間隔も60 µmのまま。変更前GDSは`layout/backups/mac_power_lower_oSKpjb/`に退避した。
-MUL＋FAの共有VSS合流区間は親MAC上で40 µmへ拡幅した。
+MULの外形820×235.7 µm。MACの外接矩形は **1774.7×779.35 µm**。
+全形状の範囲はx=6.3〜1781 µm、y=12.35〜791.7 µmで、指定の **1800×1000 µm** 領域内。
+2026-09-25の整理で、MULの4ゲートとAND/OR用の3 INVを原点y=600 µmの一列に配置した。
+上段・中段のVDD/VSS計4本をM1 44 µm幅に統一。上段中心はVDD=744.6、VSS=581.4 µm、
+中段はVDD=358.2、VSS=418.2 µm。上段のレール端はx=1480 µmで止めた。
+M2幹線14 µm・主接続24カットを維持し、FAのM1幹線も32→44 µmに拡幅した。
+旧MUL＋FA共有VSS合流部40 µmは廃止。MUL・追加INV群とFAの帰路は別の水平レールから幹線へ接続する。
+素子寸法・HA内部形状・118 MOS＋46 RRの回路構成は変更していない。
 既存FAの配置を再利用したコアで、パッドフレームやESD保護は含まない。
 GDS内に子セルの図形を収録しているので、外部BTライブラリを同梱しなくても図形は完結する。
 
@@ -106,7 +107,7 @@ Drawing DRC 0件、階層内全セルとトップ端子を含めたstrict LVS一
 抽出波形を純正plotで見る場合：
 
 ```sh
-cd simulation/mac/extracted/tb_sequence
+cd simulation/mac/alignment_extracted/tb_sequence
 ngspice view.spice
 ```
 
@@ -117,7 +118,7 @@ ngspice view.spice
 要約は `reports/mac.json` / `reports/mac_extracted.json`。
 
 <!-- verification-results -->
-## 検証結果（2026-09-24）
+## 検証結果（2026-09-25）
 
 | 回路 | 試験 | 負荷 | 最大出力誤差（4出力） | 最大整定時間 | 判定 |
 |---|---|---:|---:|---:|---|
@@ -133,10 +134,8 @@ SUM/Coutの最大誤差は 64.297 mV、AND/ORの最大誤差は 60.530 mV。
 表の整定時間は波形サンプルによる値であり、最大時間刻みより細かい精度を保証しない。
 今回は単体算術コアの検証。5チップ直列接続の負荷・遅延は含まない。
 
-共有VSS配線40 µm化の時点でDrawing DRC/LVSと抽出81入力を再実行した。
-匿名ネット1本の名前以外、抽出SPICEは全バイト一致。モデル・参照回路・LVSルールも同一で、全6,480/648遷移の波形を再判定して合格を継承。
-証跡は `reports/mac_improvements/vss_equivalence.json`。配線R/Cは抽出されていないため、拡幅による遅延改善は主張しない。
-
-その後、VDD/VSS幹線をy=744.3/804.3 µmへ移動し、Drawing DRC/LVS・マスクDRC・入力接続fixtureを再実行した。
-抽出SPICEはコメント・匿名ノード名・素子パラメータも含め全バイト一致し、モデル・参照回路・ルールも不変。上表は同一回路の既存合格結果を継承しており、移動後に全過渡解析を再実行したものではない。
-証跡は `reports/mac_improvements/power_placement_equivalence.json`。セル配置・素子形状・信号配線は変更していない。
+配置整理後にDrawing DRC/LVS、マスクDRC、入力接続fixtureと抽出81入力＋復帰を新規実行し、合格した。
+全9階層回路について、端子名・素子端子の役割・全パラメータを区別したグラフ同型性を照合し、変更前と電気的に同一であることを確認。
+モデル・参照回路・ルールも一致するため、全6,480/648遷移は変更前の合格結果を継承した（今回は全遷移の再実行ではない）。
+証跡は `reports/mac_alignment/electrical_equivalence.json`。新規81入力波形は `simulation/mac/alignment_extracted/tb_sequence/`。
+配線寄生R/Cは抽出に含まれず、今回の整理による遅延改善は主張しない。

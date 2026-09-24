@@ -6,7 +6,7 @@
     6.3,
     12.35,
     1781.0,
-    826.3000000000001
+    791.7
   ],
   "ports": {
     "and_out": {
@@ -19,8 +19,8 @@
         0
       ],
       "position_um": [
-        706,
-        558.5
+        1086,
+        638.5
       ]
     },
     "or_out": {
@@ -33,8 +33,8 @@
         0
       ],
       "position_um": [
-        1200,
-        558.5
+        1486,
+        638.5
       ]
     },
     "a": {
@@ -48,7 +48,7 @@
       ],
       "position_um": [
         40,
-        558
+        500
       ]
     },
     "b": {
@@ -62,7 +62,7 @@
       ],
       "position_um": [
         40,
-        564
+        506
       ]
     },
     "x": {
@@ -76,7 +76,7 @@
       ],
       "position_um": [
         32,
-        392
+        485
       ]
     },
     "cin": {
@@ -90,7 +90,7 @@
       ],
       "position_um": [
         800.9,
-        392
+        485
       ]
     },
     "sum": {
@@ -131,8 +131,8 @@
         0
       ],
       "position_um": [
-        1720,
-        744.3
+        1480,
+        744.6
       ]
     },
     "VSS": {
@@ -145,8 +145,8 @@
         0
       ],
       "position_um": [
-        1720,
-        804.3
+        1480,
+        581.4
       ]
     },
     "VMID": {
@@ -160,7 +160,7 @@
       ],
       "position_um": [
         100,
-        820
+        790
       ]
     }
   },
@@ -170,7 +170,7 @@
       "cell": "mul",
       "origin_um": [
         20,
-        420
+        500
       ],
       "magnification": 1
     },
@@ -187,8 +187,8 @@
       "role": "x_and",
       "cell": "inverter",
       "origin_um": [
-        600,
-        520
+        960,
+        600
       ],
       "magnification": 1
     },
@@ -196,8 +196,8 @@
       "role": "x_or1",
       "cell": "inverter",
       "origin_um": [
-        920,
-        520
+        1160,
+        600
       ],
       "magnification": 1
     },
@@ -205,32 +205,111 @@
       "role": "x_or2",
       "cell": "inverter",
       "origin_um": [
-        1080,
-        520
+        1360,
+        600
       ],
       "magnification": 1
     }
   ],
   "routes": [
     {
+      "net": "VDD",
+      "layer": "M1",
+      "points_um": [
+        [
+          1054.3,
+          664.3
+        ],
+        [
+          1074,
+          664.3
+        ],
+        [
+          1074,
+          744.6
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "VDD",
+      "layer": "M1",
+      "points_um": [
+        [
+          1254.3,
+          664.3
+        ],
+        [
+          1274,
+          664.3
+        ],
+        [
+          1274,
+          744.6
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "VDD",
+      "layer": "M1",
+      "points_um": [
+        [
+          1454.3,
+          664.3
+        ],
+        [
+          1474,
+          664.3
+        ],
+        [
+          1474,
+          744.6
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
       "net": "nmin",
       "layer": "M1",
       "points_um": [
         [
-          496,
-          570
+          816,
+          512
         ],
         [
-          560,
-          570
+          940,
+          512
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "nmin",
+      "layer": "M2",
+      "points_um": [
+        [
+          940,
+          512
         ],
         [
-          560,
-          545
+          940,
+          625
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "nmin",
+      "layer": "M1",
+      "points_um": [
+        [
+          940,
+          625
         ],
         [
-          602,
-          545
+          962,
+          625
         ]
       ],
       "width_um": 3.4
@@ -240,20 +319,12 @@
       "layer": "M1",
       "points_um": [
         [
-          496,
-          582
+          816,
+          524
         ],
         [
-          540,
-          582
-        ],
-        [
-          540,
-          610
-        ],
-        [
-          900,
-          610
+          1140,
+          524
         ]
       ],
       "width_um": 3.4
@@ -263,12 +334,12 @@
       "layer": "M2",
       "points_um": [
         [
-          900,
-          610
+          1140,
+          524
         ],
         [
-          900,
-          545
+          1140,
+          625
         ]
       ],
       "width_um": 3.4
@@ -278,12 +349,12 @@
       "layer": "M1",
       "points_um": [
         [
-          900,
-          545
+          1140,
+          625
         ],
         [
-          922,
-          545
+          1162,
+          625
         ]
       ],
       "width_um": 3.4
@@ -293,12 +364,12 @@
       "layer": "M2",
       "points_um": [
         [
-          1014,
-          558.5
+          1254,
+          638.5
         ],
         [
-          1040,
-          558.5
+          1280,
+          638.5
         ]
       ],
       "width_um": 3.4
@@ -308,46 +379,16 @@
       "layer": "M1",
       "points_um": [
         [
-          1040,
-          558.5
+          1280,
+          638.5
         ],
         [
-          1040,
-          545
+          1280,
+          625
         ],
         [
-          1082,
-          545
-        ]
-      ],
-      "width_um": 3.4
-    },
-    {
-      "net": "or_out",
-      "layer": "M2",
-      "points_um": [
-        [
-          1174,
-          558.5
-        ],
-        [
-          1190,
-          558.5
-        ]
-      ],
-      "width_um": 3.4
-    },
-    {
-      "net": "or_out",
-      "layer": "M1",
-      "points_um": [
-        [
-          1190,
-          558.5
-        ],
-        [
-          1200,
-          558.5
+          1362,
+          625
         ]
       ],
       "width_um": 3.4
@@ -357,12 +398,12 @@
       "layer": "M2",
       "points_um": [
         [
-          682,
-          558.5
+          1054,
+          638.5
         ],
         [
-          700,
-          558.5
+          1080,
+          638.5
         ]
       ],
       "width_um": 3.4
@@ -372,147 +413,42 @@
       "layer": "M1",
       "points_um": [
         [
-          700,
-          558.5
+          1080,
+          638.5
         ],
         [
-          706,
-          558.5
+          1086,
+          638.5
         ]
       ],
       "width_um": 3.4
     },
     {
-      "net": "VDD",
+      "net": "or_out",
       "layer": "M2",
       "points_um": [
         [
-          672,
-          584.3
+          1454,
+          638.5
         ],
         [
-          672,
-          744.3
+          1480,
+          638.5
         ]
       ],
       "width_um": 3.4
     },
     {
-      "net": "VSS",
+      "net": "or_out",
       "layer": "M1",
       "points_um": [
         [
-          601.7,
-          521.7
+          1480,
+          638.5
         ],
         [
-          588,
-          521.7
-        ]
-      ],
-      "width_um": 3.4
-    },
-    {
-      "net": "VSS",
-      "layer": "M2",
-      "points_um": [
-        [
-          588,
-          521.7
-        ],
-        [
-          588,
-          804.3
-        ]
-      ],
-      "width_um": 3.4
-    },
-    {
-      "net": "VDD",
-      "layer": "M2",
-      "points_um": [
-        [
-          992,
-          584.3
-        ],
-        [
-          992,
-          744.3
-        ]
-      ],
-      "width_um": 3.4
-    },
-    {
-      "net": "VSS",
-      "layer": "M1",
-      "points_um": [
-        [
-          921.7,
-          521.7
-        ],
-        [
-          908,
-          521.7
-        ]
-      ],
-      "width_um": 3.4
-    },
-    {
-      "net": "VSS",
-      "layer": "M2",
-      "points_um": [
-        [
-          908,
-          521.7
-        ],
-        [
-          908,
-          804.3
-        ]
-      ],
-      "width_um": 3.4
-    },
-    {
-      "net": "VDD",
-      "layer": "M2",
-      "points_um": [
-        [
-          1152,
-          584.3
-        ],
-        [
-          1152,
-          744.3
-        ]
-      ],
-      "width_um": 3.4
-    },
-    {
-      "net": "VSS",
-      "layer": "M1",
-      "points_um": [
-        [
-          1081.7,
-          521.7
-        ],
-        [
-          1068,
-          521.7
-        ]
-      ],
-      "width_um": 3.4
-    },
-    {
-      "net": "VSS",
-      "layer": "M2",
-      "points_um": [
-        [
-          1068,
-          521.7
-        ],
-        [
-          1068,
-          804.3
+          1486,
+          638.5
         ]
       ],
       "width_um": 3.4
@@ -522,12 +458,12 @@
       "layer": "M1",
       "points_um": [
         [
-          496,
-          588
+          816,
+          530
         ],
         [
-          510,
-          588
+          810,
+          530
         ]
       ],
       "width_um": 3.4
@@ -537,12 +473,12 @@
       "layer": "M2",
       "points_um": [
         [
-          510,
-          588
+          810,
+          530
         ],
         [
-          510,
-          378
+          810,
+          385
         ]
       ],
       "width_um": 3.4
@@ -553,11 +489,11 @@
       "points_um": [
         [
           24,
-          378
+          385
         ],
         [
-          510,
-          378
+          810,
+          385
         ]
       ],
       "width_um": 3.4
@@ -568,7 +504,7 @@
       "points_um": [
         [
           24,
-          378
+          385
         ],
         [
           24,
@@ -617,7 +553,7 @@
         ],
         [
           32,
-          392
+          485
         ]
       ],
       "width_um": 3.4
@@ -632,7 +568,7 @@
         ],
         [
           800.9,
-          392
+          485
         ]
       ],
       "width_um": 3.4
@@ -654,21 +590,6 @@
     },
     {
       "net": "VDD",
-      "layer": "M1",
-      "points_um": [
-        [
-          560,
-          744.3
-        ],
-        [
-          1720,
-          744.3
-        ]
-      ],
-      "width_um": 44
-    },
-    {
-      "net": "VDD",
       "layer": "M2",
       "points_um": [
         [
@@ -677,70 +598,25 @@
         ],
         [
           880,
-          744.3
+          744.6
         ]
       ],
       "width_um": 14
-    },
-    {
-      "net": "VSS",
-      "layer": "M1",
-      "points_um": [
-        [
-          560,
-          804.3
-        ],
-        [
-          1720,
-          804.3
-        ]
-      ],
-      "width_um": 44
     },
     {
       "net": "VSS",
       "layer": "M2",
       "points_um": [
         [
-          830,
-          398.2
+          860,
+          418.2
         ],
         [
-          830,
-          804.3
+          860,
+          581.4
         ]
       ],
       "width_um": 14
-    },
-    {
-      "net": "VSS",
-      "layer": "M1",
-      "points_um": [
-        [
-          540,
-          398.2
-        ],
-        [
-          850,
-          398.2
-        ]
-      ],
-      "width_um": 40
-    },
-    {
-      "net": "VDD",
-      "layer": "M1",
-      "points_um": [
-        [
-          24,
-          744.3
-        ],
-        [
-          560,
-          744.3
-        ]
-      ],
-      "width_um": 11.4
     },
     {
       "net": "VMID",
@@ -767,7 +643,7 @@
         ],
         [
           8,
-          820
+          790
         ]
       ],
       "width_um": 3.4
@@ -778,20 +654,20 @@
       "points_um": [
         [
           8,
-          820
+          790
         ],
         [
           100,
-          820
+          790
         ]
       ],
       "width_um": 3.4
     }
   ],
-  "gds_sha256": "e5aaab51a1722560c7929a5e841455afdde426caee79fbc41a3e42aec8c6452c",
+  "gds_sha256": "13a8c4415aac8f88be5a9fc05792727665c7352ef444de89f1c39f2e7bcbafd6",
   "sources": {
-    "/home/ishi-kai/balanced-ternary-logic/mul.gds": "fd10a53c5e3081ba686b7d44ff54cef931d024d1b3129ea9f4b14051ffc61367",
-    "/home/ishi-kai/balanced-ternary-logic/full_adder.gds": "8da06e19207e97f183959d32ace7a30034a8895fab7252edfdf097570cace621",
+    "/home/ishi-kai/balanced-ternary-logic/mul.gds": "71c9fae39518de9fa1d7fec9c334e717d7456199f2f65f4199542019c0b8e0fe",
+    "/home/ishi-kai/balanced-ternary-logic/full_adder.gds": "7e17ca5abaf686b62df4c97bd6b2a9216fd5832bd88ea4d38a5e39fe3b5828d8",
     "/home/ishi-kai/balanced-ternary-logic/inverter.gds": "66242f8be89020ec65350f12ffcc2a7301bc632955dfde345016224138e7e3a4"
   },
   "device_counts": {
@@ -799,7 +675,6 @@
     "NMOS": 59,
     "F_RR": 46
   },
-  "embedded_fa_labels_restored": [],
   "allocation_um": [
     0,
     0,
@@ -807,5 +682,7 @@
     1000
   ],
   "fits_allocation": true,
+  "aligned_upper_cell_origin_y_um": 600,
+  "main_supply_width_um": 44,
   "scope": "Core macro without pad frame or interconnect RC extraction"
 }

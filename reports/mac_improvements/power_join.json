@@ -79,5 +79,8 @@
   ],
   "source_sha256": "d55ab44e97612a4a19e2673fec91619d82364330ed815354c1f06f77044fa78a",
   "scope": "Correlated DC currents from all 81 states, -40 C; parent MAC VSS overlay only. No AC/current-crowding/EM signoff.",
-  "requalified_by": "reports/mac_improvements/power_placement_equivalence.json"
+  "requalified_by": "reports/mac_improvements/power_placement_equivalence.json",
+  "historical": true,
+  "superseded_by": "reports/mac_alignment/power_geometry.json",
+  "applicability": "Historical 40 um shared return in the identified old GDS; absent from current aligned layout."
 }

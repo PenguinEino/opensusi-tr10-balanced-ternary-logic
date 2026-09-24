@@ -1,43 +1,39 @@
-"""Route a hierarchical MUL from its separately qualified gate variants."""
+"""Single aligned row of four qualified MUL gates above a shared signal channel."""
 import json
 import klayout.db as db
 from arithmetic_helpers import ROOT,import_tree,Route,port
+
+ROW_Y=100
+WIDTH=820
 
 def build():
  ly=db.Layout();ly.dbu=.001;ly.technology_name='TR-1um';top=ly.create_cell('mul');d=Route(ly,top)
  sources=[ROOT/f'mul_{k}.gds' for k in ('nand','nor','inv')]
  cells={k:import_tree(ly,ROOT/f'mul_{k}.gds','mul_'+k) for k in ('nand','nor','inv')}
  meta={k:json.loads((ROOT/f'layout/mul_{k}.ports.json').read_text()) for k in cells}
- tracks={n:138+6*i for i,n in enumerate(('a','b','t1','t2','t3','p'))};ends={n:[] for n in tracks}
- places=[('x_t1','nand',40,200,{'a':'a','b':'b','vout':'t1'}),('x_t2','nor',60,0,{'a':'a','b':'b','vout':'t2'}),('x_t3','inv',220,0,{'vin':'t2','vout':'t3'}),('x_p','nand',340,200,{'a':'t1','b':'t3','vout':'p'})]
- for role,kind,x,y,pins in places:
-  d.instance(cells[kind],role,x,y);ports=meta[kind]['ports'];width=meta[kind]['width_um']
+ tracks={n:6*i for i,n in enumerate(('a','b','t1','t2','t3','p'))};ends={n:[] for n in tracks}
+ places=[('x_t1','nand',40,{'a':'a','b':'b','vout':'t1'}),('x_t2','nor',240,{'a':'a','b':'b','vout':'t2'}),('x_t3','inv',440,{'vin':'t2','vout':'t3'}),('x_p','nand',640,{'a':'t1','b':'t3','vout':'p'})]
+ for role,kind,x,pins in places:
+  y=ROW_Y;d.instance(cells[kind],role,x,y);ports=meta[kind]['ports'];width=meta[kind]['width_um']
   for pin,net in pins.items():
    px,py=ports[pin]['position_um'];px+=x;py+=y;layer='M1' if ports[pin]['layer']==[13,0] else 'M2'
-   if pin=='vout':ex=x+width-4
-   elif pin=='vin':ex=x-18
-   else:ex=x-({'a':12,'b':18}[pin] if y else {'a':18,'b':12}[pin])
+   ex=x+width+8 if pin=='vout' else x-12 if pin=='a' else x-18
    d.route(net,layer,[(px,py),(ex,py)])
    if layer=='M1':d.via(net,ex,py)
    d.route(net,'M2',[(ex,py),(ex,tracks[net])]);d.via(net,ex,tracks[net]);ends[net].append(ex)
-  if kind=='inv':d.route('VDD','M1',[(x+width-1.7,64.3),(x+width+12,64.3),(x+width+12,124.3)])
- for y in (0,200):
-  for net,yy,x in [('VSS',y+1.7,10),('VDD',y+124.3,4)]:
-   lo,hi=(-14.3,1.7) if net=='VSS' else (-1.7,9.7)
-   d.box('M1',0,yy+lo,480,yy+hi)
-   direction=-1 if net=='VSS' else 1
-   count=4 if net=='VSS' else 3
-   for j in range(count):d.via(net,x,yy+direction*4*j)
-   d.route(net,'M2',[(x,yy),(x,yy+direction*4*(count-1))])
- d.route('VDD','M2',[(4,124.3),(4,324.3)]);d.route('VSS','M2',[(10,1.7),(10,201.7)])
+  if kind=='inv':
+   yy=y+64.3
+   d.route('VDD','M1',[(x+width-1.7,yy),(x+width+18,yy),(x+width+18,y+124.3)])
+ # Shared straight supply rails; parent MAC widens them outward to 44 um.
+ d.box('M1',0,ROW_Y-12.6,WIDTH,ROW_Y+3.4)
+ d.box('M1',0,ROW_Y+122.6,WIDTH,ROW_Y+134)
  ports={}
  for net,yy in tracks.items():
   xs=ends[net].copy()
   if net in ('a','b'):xs.append(20)
-  if net in ('p','t1','t3'):xs.append(476)
+  if net in ('p','t1','t3'):xs.append(796)
   d.route(net,'M1',[(min(xs),yy),(max(xs),yy)])
-  if net in ('a','b','p','t1','t3'):ports[net]=port(d,net,'M1',20 if net in ('a','b') else 476,yy)
- for net,yy in [('VDD',324.3),('VSS',1.7)]:ports[net]=port(d,net,'M1',476,yy)
- assert top.dbbox()==db.DBox(0,-12.6,480,334),top.dbbox()
- d.save('mul',ports,sources,dict(device_counts=dict(PMOS=7,NMOS=7,F_RR=8)))
+  if net in ('a','b','p','t1','t3'):ports[net]=port(d,net,'M1',20 if net in ('a','b') else 796,yy)
+ for net,yy in [('VDD',ROW_Y+124.3),('VSS',ROW_Y+1.7)]:ports[net]=port(d,net,'M1',WIDTH-4,yy)
+ d.save('mul',ports,sources,dict(device_counts=dict(PMOS=7,NMOS=7,F_RR=8),aligned_cell_origin_y_um=ROW_Y))
 if __name__=='__main__':build()

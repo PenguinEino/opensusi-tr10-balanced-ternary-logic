@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "gds_sha256": "26bb7125f4264e97a8b1b6b84e8a8b61ff5b53d350507f53e7ed9cd064f74047",
+  "gds_sha256": "ac570a0144a04f9fa69a23c5c309e77dcc50fc468a2d7340f0bed4000fe62d5b",
   "pins_verified_on_metal": {
     "and_out": {
       "layer": [
@@ -12,8 +12,8 @@
         0
       ],
       "position_um": [
-        706,
-        558.5
+        1086,
+        638.5
       ]
     },
     "or_out": {
@@ -26,8 +26,8 @@
         0
       ],
       "position_um": [
-        1200,
-        558.5
+        1486,
+        638.5
       ]
     },
     "a": {
@@ -41,7 +41,7 @@
       ],
       "position_um": [
         40,
-        558
+        500
       ]
     },
     "b": {
@@ -55,7 +55,7 @@
       ],
       "position_um": [
         40,
-        564
+        506
       ]
     },
     "x": {
@@ -69,7 +69,7 @@
       ],
       "position_um": [
         32,
-        392
+        485
       ]
     },
     "cin": {
@@ -83,7 +83,7 @@
       ],
       "position_um": [
         800.9,
-        392
+        485
       ]
     },
     "sum": {
@@ -124,8 +124,8 @@
         0
       ],
       "position_um": [
-        1720,
-        744.3
+        1480,
+        744.6
       ]
     },
     "VSS": {
@@ -138,8 +138,8 @@
         0
       ],
       "position_um": [
-        1720,
-        804.3
+        1480,
+        581.4
       ]
     },
     "VMID": {
@@ -153,13 +153,13 @@
       ],
       "position_um": [
         100,
-        820
+        790
       ]
     }
   },
   "images": {
-    "mac_layout.png": "697546869cb44fd26f2808061e071563cca90c1eb5cbaf337103ac76dd087ab2",
-    "mac_pins.png": "5c0a86dbb92e761120377c4a19f12eb3696aaef216142a4aba5aa747a3a58c52",
+    "mac_layout.png": "b0ad308d383869f4085de424bcce4daf46c12664d4c0f8fff6da5d97001b7108",
+    "mac_pins.png": "cf60c0b7dc0a6515625a3952401631203fa938adc50fc520c24b27ecaebba46f",
     "mac_schematic.svg": "5918c14a48dd882d986b3b6e22fbd9d829718dd21ffee4e92e785dd7f6b1ec3d"
   }
 }

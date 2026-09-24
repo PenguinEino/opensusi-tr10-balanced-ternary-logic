@@ -16,13 +16,13 @@
 .SUBCKT mac VDD VMID VSS a and_out b cin cout or_out sum x
 * cell instance $1 r0 *1 180,123.2
 X$1 cout VMID VDD x \$3 cin sum VSS full_adder
-* cell instance $2 r0 *1 20,420
-X$2 \$10 VDD a b \$9 \$3 VSS mul
-* cell instance $3 r0 *1 1080,520
-X$3 VDD \$12 or_out VSS inverter
-* cell instance $4 r0 *1 920,520
-X$4 VDD \$10 \$12 VSS inverter
-* cell instance $5 r0 *1 600,520
+* cell instance $2 r0 *1 20,500
+X$2 a b \$9 \$12 VDD \$3 VSS mul
+* cell instance $3 r0 *1 1360,600
+X$3 VDD \$14 or_out VSS inverter
+* cell instance $4 r0 *1 1160,600
+X$4 VDD \$12 \$14 VSS inverter
+* cell instance $5 r0 *1 960,600
 X$5 VDD \$9 and_out VSS inverter
 .ENDS mac
 
@@ -47,22 +47,22 @@ X$5 VDD \$5 VMID \$10 \$7 VSS nany
 .ENDS full_adder
 
 * cell mul
-* pin t3
-* pin VDD
 * pin a
 * pin b
 * pin t1
+* pin t3
+* pin VDD
 * pin p
 * pin VSS
-.SUBCKT mul t3 VDD a b t1 p VSS
-* cell instance $1 r0 *1 220,0
-X$1 VDD \$3 t3 VSS mul_inv
-* cell instance $2 r0 *1 340,200
-X$2 VDD t1 t3 p VSS mul_nand
-* cell instance $3 r0 *1 60,0
-X$3 VDD a b \$3 VSS mul_nor
-* cell instance $4 r0 *1 40,200
-X$4 VDD a b t1 VSS mul_nand
+.SUBCKT mul a b t1 t3 VDD p VSS
+* cell instance $1 r0 *1 240,100
+X$1 VDD a b \$4 VSS mul_nor
+* cell instance $2 r0 *1 40,100
+X$2 VDD a b t1 VSS mul_nand
+* cell instance $3 r0 *1 640,100
+X$3 VDD t1 t3 p VSS mul_nand
+* cell instance $4 r0 *1 440,100
+X$4 VDD \$4 t3 VSS mul_inv
 .ENDS mul
 
 * cell half_adder
