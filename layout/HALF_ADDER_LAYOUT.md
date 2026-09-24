@@ -1,5 +1,8 @@
 # Half adder layout
 
+Update: the current MAC revision uses 30 µm RR and wider power rails. Its bounds are (0, −12.6)–(660, 323.6) µm.
+The older placement figures/results below are historical. Current ports are in `half_adder.ports.json`; see [MAC_IMPROVEMENTS.md](../MAC_IMPROVEMENTS.md) for requalification.
+
 `half_adder.gds` implements the unchanged `half_adder.sch` using five NANY and
 two INV instances. The child transistor/resistor dimensions and all child-layer
 geometry match `nany.gds` and `inverter.gds`. The GDS contains the complete cell

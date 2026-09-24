@@ -1,5 +1,9 @@
 # NANY primitive v1
 
+この文書と `design/nany_v1.json` は旧v1の記録です。2026-09-24のMAC改善でRR長を30 µmへ変更しました。
+現行版の寸法・検証は [MAC_IMPROVEMENTS.md](MAC_IMPROVEMENTS.md) と `nany.sch`、`layout/nany.ports.json` を参照してください。
+現行の照合基準は `design/nany_mac_rr30.json`。`scripts/check_nany.py` もこの基準で再検証しています。
+
 IC向け正本：`nany.sch` / `nany.sym`。試験：`nany_tb.sch`。
 回路基準の素子接続・寸法・ネットリストdigestは `design/nany_v1.json` に記録。
 

@@ -1,5 +1,5 @@
 {
-  "source_sha256": "d7d071a8bd197239d1959d5e8680fe69c28d66cc9e2e3e27cf98d712bd381bae",
+  "source_sha256": "3403d325575c08cee2765c459d40985ee041db48a1ed21f1e13f3d9306af6282",
   "gap_um": 12,
   "placements": [
     {
@@ -12,7 +12,7 @@
     {
       "orientation": "MY",
       "origin_um": [
-        276.0,
+        308.0,
         0
       ]
     },
@@ -26,7 +26,7 @@
     {
       "orientation": "R180",
       "origin_um": [
-        276.0,
+        308.0,
         242.0
       ]
     }
@@ -44,8 +44,10 @@
     "categories": {
       "WAR06: Floating SG Detected": 24
     },
-    "gds_sha256": "1b4d627cf1fc7b3714766986edd00e418c941b4e2ccb0fa24f50f567e9cbb9aa"
+    "gds_sha256": "5a5b6f5b664c9a445f739eec2880ba082c2b2d703478cc517b637f167a5c2c66"
   },
   "scope": "Four isolated replicas: geometric spacing with mirrors/rotation, no inter-cell routing. No zero-gap abutment claim.",
-  "passed": false
+  "passed": false,
+  "spacing_only_passed": true,
+  "open_input_warning_note": "Isolated replicas intentionally have no input discharge path. Raw Drawing/mask failures are retained; spacing-only is not manufacturing acceptance."
 }

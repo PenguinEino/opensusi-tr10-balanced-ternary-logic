@@ -12,10 +12,9 @@ import review_mac as r
 ROOT=r.ROOT;WORK=ROOT/'simulation/mac_improvements/corners';REPORT=ROOT/'reports/mac_improvements'
 
 def seed(base,temp,rail):
-    tags={27:'supply_T27.0_fixed0_num1_power0_0.5_7.0_0.05',
-          125:'supply_T125.0_fixed0_num1_power0_0.5_7.0_0.05',
-          -40:'rr30.0_buf1_T-40.0_fixed0'}
-    folder=ROOT/'simulation/mac_improvements'/tags[temp]/'0'
+    tag=(f'supply_T{float(temp)}_fixed0_num0_power0_2.0_2.5_0.05' if rail<=5 else
+         f'supply_T{float(temp)}_fixed0_num1_power0_0.5_7.0_0.05')
+    folder=ROOT/'simulation/mac_improvements'/tag/'0'
     path=folder/('up.txt' if rail>5 else 'down.txt')
     with path.open() as f:names=f.readline().split()
     data=np.atleast_2d(np.loadtxt(path,skiprows=1));row=data[np.argmin(abs(data[:,0]-rail))]
@@ -42,6 +41,12 @@ def main(group):
         mos=r.mos_instances(base)
         vectors=[f'@m.{m["name"]}.m1[id]' for m in mos]
         cases=[('cold_current',seed(base,-40,5),dict(temp=-40,stress=True,extra_vectors=vectors))]
+    elif group=='boundary':
+        for rail in (2.1,2.15):cases.append((f'T27_rail{rail}',seed(base,27,rail),dict(rail=rail)))
+        cases.append(('slow_edge_100ns',base,dict(edge_ns=100)))
+    elif group=='slew_stress':
+        for edge in (10,100):
+            cases.append((f'cold_edge_{edge}ns',seed(base,-40,5),dict(temp=-40,edge_ns=edge,stress=True)))
     else:raise ValueError(group)
     results={}
     with ThreadPoolExecutor(max_workers=2) as pool:
@@ -56,4 +61,4 @@ def main(group):
             print(name,{k:v for k,v in result.items() if k not in ('mos_stress','extra_vector_peaks','transient_vector_peaks','failure_examples')},flush=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('group',choices=['supply','integration','stress']);main(p.parse_args().group)
+    p=argparse.ArgumentParser();p.add_argument('group',choices=['supply','integration','stress','boundary','slew_stress']);main(p.parse_args().group)

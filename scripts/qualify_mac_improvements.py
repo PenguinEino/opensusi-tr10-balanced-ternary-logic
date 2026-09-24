@@ -29,6 +29,23 @@ def write_native_seed():
     (ROOT/'design/mac_op_seed.json').write_text(json.dumps(data,indent=2)+'\n')
 
 
+def write_seed_bank():
+    """Retain only reusable Newton estimates, not DC scans/waveforms."""
+    tag='rr30.0_buf1_T27_fixed0';rows=[];hashes=[];vectors=None
+    for i,state in enumerate(STATES):
+        path=WORK/tag/str(i)/'down.txt'
+        with path.open() as f:names=f.readline().split();values=list(map(float,f.readline().split()))
+        assert values[0]==5
+        vv={n:v for n,v in zip(names,values) if n.startswith('v(')}
+        if vectors is None:vectors=list(vv)
+        assert list(vv)==vectors and all(abs(v)<6 for v in vv.values())
+        assert max(abs(vv[f'v({n})']-e*5) for n,e in zip(('sum','cout','and_out','or_out','xdut.p'),review.oracle(state)))<.5
+        rows.append(list(vv.values()));hashes.append(review.sha(path))
+    data=dict(scope='Newton starting estimates for each input state at +/-5 V, 27 C, RR30 and buffered OR. Never fixed IC/UIC.',
+              provenance=tag,source_wave_sha256=hashes,states=STATES,vectors=vectors,values=rows)
+    (ROOT/'design/mac_dc_seeds.json').write_text(json.dumps(data,separators=(',',':'))+'\n')
+
+
 def candidate(base,length=0,buffer=False):
     text=base
     if length:
@@ -83,17 +100,11 @@ def sweep_state(base,tag,state,temp=27,low=2.5,high=6.5,step=.05,buffer=False,fi
     for net in ('sum','cout','and_out','or_out'):
         text=re.sub(r'(?im)^Rload_'+net+r' .*\n','',text)
         extra.append(f'Rload_{net} {net} 0 1meg')
-    old=json.loads((ROOT/'simulation/review_mac/simulations/nominal/sampled_states.json').read_text())
+    old=json.loads((ROOT/'design/mac_dc_seeds.json').read_text())
     idx=old['states'].index(list(state))
-    for vector,value in zip(old['vectors'],old['samples'][idx]):
+    for vector,value in zip(old['vectors'],old['values'][idx]):
         if not vector.startswith('v('):continue
-        if buffer and vector=='v(or_out)':vector='v(xdut.or_raw)'
         extra.append(f'.nodeset {vector}={value:.12g}')
-    if buffer:
-        target=max(state[1:3])*5
-        extra.extend([f'.nodeset v(xdut.or_n)={-target} v(or_out)={target}',
-                      '.nodeset v(xdut.x_or1.net1)=5 v(xdut.x_or1.net2)=-5',
-                      '.nodeset v(xdut.x_or2.net1)=5 v(xdut.x_or2.net2)=-5'])
     devices=review.mos_instances(base)
     nodes=['sum','cout','and_out','or_out','xdut.p']
     nodes+=sorted(set(n for m in devices for n in m['terminals'])-set(nodes))
@@ -103,6 +114,7 @@ def sweep_state(base,tag,state,temp=27,low=2.5,high=6.5,step=.05,buffer=False,fi
     if low<=5:scans.append(('down',low,-step))
     if high>=5:scans.append(('up',high,step))
     for name,end,increment in scans:
+        (folder/(name+'.txt')).unlink(missing_ok=True)
         ctrl+=f'\ndc VRAIL 5 {end} {increment}\nwrdata {name}.txt '+' '.join(vectors)
     ctrl+='\nquit\n.endc\n'
     text=re.sub(r'(?im)^\.end\s*$',lambda _:'\n'.join(extra)+'\n'+ctrl+'.end',text)
@@ -123,7 +135,7 @@ def sweep_state(base,tag,state,temp=27,low=2.5,high=6.5,step=.05,buffer=False,fi
             target=np.array(review.oracle(state))*v
             actual=row[1:6]
             node_max=np.max(abs(row[1:len(nodes)+1]))
-            physical=bool(np.isfinite(row).all() and node_max<max(7,1.3*v))
+            physical=bool(p.returncode==0 and np.isfinite(row).all() and node_max<max(7,1.3*v))
             error=abs(actual-target)
             decode=np.where(actual<-v/2,-1,np.where(actual>v/2,1,0))
             rows[v]=dict(state=state,rail_V=v,actual_V=actual.tolist(),expected_V=target.tolist(),
@@ -169,10 +181,10 @@ def sweep(length=0,buffer=False,temp=27,low=2.5,high=6.5,step=.05,fixed=False,nu
             branch_peak_A={p:max(abs(r['branch_currents_A'][p]) for r in rr) for p in probes} if rr else {}))
     (WORK/tag/'all_states.json').write_text(json.dumps(done)+'\n')
     save(tag,dict(length_override_um=length or None,rr_length_parameters=sorted(set(re.findall(r'(?im)^.*\bF_RR\b.*\bl=(\S+)',base))),or_buffer=buffer,temperature_C=temp,fixed_inputs=fixed,
-         numeric_rr=numeric,power_probes=power,netlist_sha256=hashlib.sha256(base.encode()).hexdigest(),
+         numeric_rr=numeric,power_probes=power,netlist_sha256=hashlib.sha256(base.encode()).hexdigest(),seed_bank_sha256=review.sha(ROOT/'design/mac_dc_seeds.json'),
          model_sha256={str(p.relative_to(review.PDK)):review.sha(p) for p in (review.PDK/'libs.tech/spice/models').rglob('*') if p.is_file()},
          source_sha256={str(p.relative_to(ROOT)):review.sha(p) for p in ROOT.glob('*.sch')},
-         rows=summary,failures=[{k:v for k,v in d.items() if k!='rows'} for d in done if d.get('error') or d.get('missing') or d.get('problems')],scope='DC continuation per input state; nominal model; 1 Mohm output loads; supply tracking inputs unless fixed_inputs=true.'))
+         rows=summary,failures=[{k:v for k,v in d.items() if k!='rows'} for d in done if d.get('error') or d.get('missing') or d.get('problems') or d.get('exit_code')],scope='DC continuation per input state; nominal model; 1 Mohm output loads; supply tracking inputs unless fixed_inputs=true.'))
     for r in summary:
         if abs(r['rail_V']*4-round(r['rail_V']*4))<1e-6:print({k:v for k,v in r.items() if k not in ('worst','branch_peak_A')},flush=True)
 

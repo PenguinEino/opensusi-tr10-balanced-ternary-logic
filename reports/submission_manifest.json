@@ -1,14 +1,14 @@
 {
-  "source_commit": "3765434c8534395e73996e6805b98b3000430f2a",
-  "source_gds_sha256": "822fed3eeba3e0e83213bbe9f67fcf7930cfa63994fc546cfbc9e1ff516ad870",
+  "source_commit": "3dc8b7e23fe148ccba685ed4d44864a7526517ef",
+  "source_gds_sha256": "83a38ddc0e8dbc2aab769d2b50253850a343b6e1863eb4ad9c0464ce39502155",
   "files": {
     "README.md": {
-      "bytes": 2444,
-      "sha256": "eaec0973f778e80c3e26455bf988e36b50d8c61d62cc5881e3c19be4174f06f9"
+      "bytes": 2746,
+      "sha256": "8fbe239dc795d64b632cd9967a0567f96c928ad91fbe048a15b6a4230496f1bc"
     },
     "SPEC.md": {
-      "bytes": 9300,
-      "sha256": "191638db44958e69e4097ae4ebc10a2f7830751d9682fb9bcfa9b029a0a52d54"
+      "bytes": 10646,
+      "sha256": "6d6b2c55685ab8683550411b9026efaae66a066722fa4d09143020ff343794ab"
     },
     "full_adder.sch": {
       "bytes": 2669,
@@ -28,43 +28,43 @@
     },
     "inverter.sch": {
       "bytes": 1918,
-      "sha256": "290c8ce9aa810cf83f9b24eaa435c5b729892daff5f1e42d4e43dc7d7e89274d"
+      "sha256": "db254c47b4c8c1f0bc3329fc52e70e6d8809a85122c820d12f57564d70228def"
     },
     "inverter.sym": {
       "bytes": 593,
       "sha256": "33a7d33a457877572e7bf504ae7c92db017da58adac8d5e72286d93ba17e410f"
     },
     "mac.extracted": {
-      "bytes": 5728,
-      "sha256": "d4d72b935d2519861165526518f6e60f4ae3df849405f75f776778d63bae02cc"
+      "bytes": 5861,
+      "sha256": "b4c1e39c7dd836e189b41689689047a2ed0d9e35ebac944a7ba2009f4b888b21"
     },
     "mac.gds": {
-      "bytes": 57586,
-      "sha256": "da5d981d506da9e8b37c49d053109457d773966074667dd0516f9b1e2295808e"
+      "bytes": 104926,
+      "sha256": "75002d934a770020c9c8924cdff9bffc60f8d379c5592bb11f4d4bb81541c6e4"
     },
     "mac.sch": {
-      "bytes": 2455,
-      "sha256": "2b1174fce0a7ef94b5516be0335c300aa68b03f2fa16e70c641a5078f3a13d93"
+      "bytes": 3164,
+      "sha256": "af4dd9a5ebf8c999b6418cbe2e57e7c9977c5215bc24e6a6875050a2d36b32c6"
     },
     "mac.sym": {
       "bytes": 1386,
       "sha256": "1148a5a1f53d5f301fee32d0a16af7db76ff871f93410ffcdf5e31dd4f197000"
     },
     "mac_layout.png": {
-      "bytes": 237290,
-      "sha256": "7e42143ec34c208053657f0144b886ebf1034837f57a68ca61ffd65b66a8528b"
+      "bytes": 250461,
+      "sha256": "59e076ff97d14deebdb2dba0884407a71fea9be376974c54a4b81c6e23d858e8"
     },
     "mac_pins.png": {
-      "bytes": 208297,
-      "sha256": "55dd50fbcfa62a44f689513b9c64be4d7324d39c7ddaf0540cdcc7fcb3b3c216"
+      "bytes": 207878,
+      "sha256": "2fc5f07f19782cddc2a427fe458f2267cd87c034f739a966a940cd8075bddf41"
     },
     "mac_schematic.svg": {
-      "bytes": 17550,
-      "sha256": "213f476303d3515f0f6fef6a8e8041f2101988b8b1ac35e74e125d85bef796e0"
+      "bytes": 22538,
+      "sha256": "5918c14a48dd882d986b3b6e22fbd9d829718dd21ffee4e92e785dd7f6b1ec3d"
     },
     "mac_tb.sch": {
-      "bytes": 85064,
-      "sha256": "65082d312f028234e1653ba41c7f83d214513b92f6982d6663ecae4802c63c80"
+      "bytes": 88417,
+      "sha256": "41519cbbabb17f8fb84b597e748cee1297a6013e926708386f326423cc8f7f66"
     },
     "mul.sch": {
       "bytes": 2260,
@@ -76,7 +76,7 @@
     },
     "mul_inv.sch": {
       "bytes": 1932,
-      "sha256": "991208956eabcea4b0614b78b82afc3b492f30933297ee6916ff3e7e19a4aeee"
+      "sha256": "015e068c3dc97c81e8b14964e72137bc8e1101cca91d1bed7fa820e6e7e0829e"
     },
     "mul_inv.sym": {
       "bytes": 592,
@@ -84,7 +84,7 @@
     },
     "mul_nand.sch": {
       "bytes": 2586,
-      "sha256": "ce797d2dd581aab66b9da0768c3e292a4217dcdf992ecdf7f8603f36134f1a03"
+      "sha256": "02f4bcddd1e0736c6184d16da7cdb282f65a7d27bae59a568434573ab96afea0"
     },
     "mul_nand.sym": {
       "bytes": 681,
@@ -92,7 +92,7 @@
     },
     "mul_nor.sch": {
       "bytes": 2471,
-      "sha256": "b71df77441c92ae3fa271ec392cb4452b893eb933afa607701086e6633801a51"
+      "sha256": "b06d4f999ace81c91333e52b2207f2a9a1f949561e3a494486e8b0427159c45d"
     },
     "mul_nor.sym": {
       "bytes": 680,
@@ -100,17 +100,17 @@
     },
     "nany.sch": {
       "bytes": 4122,
-      "sha256": "ccb2fe30da68a0ef2bbcda8836d70b65579f0c6be58fd024a511a6e90fdb64cc"
+      "sha256": "ed54832af23ea507d6cc0302abf85cc9f281199c8d422346cd3499aabcdb4630"
     },
     "nany.sym": {
       "bytes": 780,
       "sha256": "ce61f330d4c40e89c054bafcc896579d5fac819d95e78a45a2b1172b7e2aee56"
     },
     "simulation/mac.spice": {
-      "bytes": 2153,
-      "sha256": "c75b3119c114104664a911e22f3d50b8dc8be164b9dd5052f45c4e4c71448a23"
+      "bytes": 2223,
+      "sha256": "d349d8c5deff1faa163d7a18358ac7b7c8002b9d4002cdfeaae80daeda3b5e7d"
     }
   },
-  "archive": "simulation/submission/mac_submission_da5d981d506d.zip",
-  "archive_sha256": "51bc44c2a668ab52f3038aacd726bbf97ab50e8f4e1283d221e59f7fd55100b4"
+  "archive": "simulation/submission/mac_submission_75002d934a77.zip",
+  "archive_sha256": "ca6ff49f4d714b23a620a7cebc7a7f7a06380434d2678918f95c67bb7c614ec3"
 }

@@ -1,5 +1,9 @@
 # 平衡3値論理ゲートとテストベンチ
 
+MACレビュー後の現行版は [MAC_IMPROVEMENTS.md](MAC_IMPROVEMENTS.md)、MACの仕様・検証は [MAC.md](MAC.md) を参照してください。
+MAC配下のRRは全て2.8/30 µmへ更新し、ORを2段INVで復元、電源配線を拡幅しました。出力条件は各10 pF || 1 MΩ・1 µsです。
+以下に残る旧単体試験・連結試験の数値はその当時の寸法/負荷での記録であり、現行MACの合格結果としては使用しません。
+
 現在のIC採用方針は [IC_PLAN.md](IC_PLAN.md)。IC向けNANYの正本は `nany.sch / nany.sym`、HAは `half_adder.sch / half_adder.sym`。旧NSIGN系は過去の実験用です。NANYの回路基準と検証は [NANY_CELL.md](NANY_CELL.md)。
 
 
@@ -35,7 +39,7 @@ SRAM専用の自動切り替えフックはこのディレクトリには適用�
 - `.nodeset v(vout)=5` は初期動作点の収束補助です。出力電圧を固定する指定ではありません。
 
 調整結果と比較条件は [TUNING.md](TUNING.md) を参照してください。
-現在の寸法はPMOS W/L=13.5/1 µm、NMOS W/L=5/1 µm、RR各W/L=2.8/20 µm（各約6.06 kΩ）です。
+現在の寸法はPMOS W/L=13.5/1 µm、NMOS W/L=5/1 µm、RR各W/L=2.8/30 µmです。以下の旧測定値はRR長20 µm時の記録です。
 入力−5／0／+5 Vに対するDC出力は+5 V／約+0.067 mV／−5 Vで、過渡解析でも整定を確認しています。
 中間帯の出力も `SIMULATION` 内で測定します。
 `inverter_tb.sch` は `inverter.sym` 経由で `inverter.sch` を参照します。
@@ -160,15 +164,15 @@ DC、全6遷移、100 fF、温度/電源範囲の結果は [THRESHOLD_INVERTERS.
 
 ## INVレイアウト
 
-完成版は [inverter.gds](inverter.gds)（top `inverter`）、84×66 µm。
+完成版は [inverter.gds](inverter.gds)（top `inverter`）、96×66 µm。
 ルート直下の `inverter.gds` が完成版です。旧下書きは `layout/backups/` に退避済みです。
 公式Drawing DRC 0件、現在の回路図とのstrict LVS一致。配置用端子情報・再生成方法・未接続入力のマスク警告の扱いは [layout/INVERTER_LAYOUT.md](layout/INVERTER_LAYOUT.md)。
-INVの電源端子はVDD/VSSに統一。素子寸法は変更していません。
+INVの電源端子はVDD/VSSに統一。MOS寸法は維持し、RR長を30 µmへ変更しました。
 
 
 ## NANYレイアウト
 
-完成版は [nany.gds](nany.gds)（top `nany`）、132×115 µm、8 MOS＋2 RR。
+完成版は [nany.gds](nany.gds)（top `nany`）、148×115 µm、8 MOS＋2 RR。
 Drawing DRC 0件、strict LVS一致、標準GUIメニューからも確認済みです。
 単体maskは未接続入力の警告6件のみ。2段実配線fixtureはmaskも0件です。
 再利用条件・端子・検証結果は [layout/NANY_LAYOUT.md](layout/NANY_LAYOUT.md)。
@@ -193,8 +197,8 @@ GUI・実配線fixtureの再検証結果は`reports/`を参照してください
 
 ## HA layout
 
-`half_adder.gds` is a hierarchical 660 × 315 µm macro using unchanged NANY×5 and
-INV×2. Drawing DRC is clean and strict LVS matches the schematic. Standalone mask
+`half_adder.gds` is a hierarchical 660 × 336.2 µm macro (y = −12.6…323.6 µm) using NANY×5 and
+INV×2 with 30 µm RR and wider power rails. Drawing DRC is clean and strict LVS matches the schematic. Standalone mask
 DRC retains 10 external-input floating-gate warnings; a separate input-connected
 fixture has zero mask warnings/errors. See [layout/HALF_ADDER_LAYOUT.md](layout/HALF_ADDER_LAYOUT.md)
 for placement, pin coordinates, verification commands, and integration limits.

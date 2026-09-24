@@ -15,6 +15,8 @@ def check(gap=12):
  d=WORK/'placement';d.mkdir(parents=True,exist_ok=True);gds=d/'inverter_placement.gds';l.write(str(gds))
  result=dict(source_sha256=sha(source),gap_um=gap,placements=transforms,drc=drc(gds,top.name,d/'drawing'),mask_drc=mask(gds,top.name,d/'manufacturing'),scope='Four isolated replicas: geometric spacing with mirrors/rotation, no inter-cell routing. No zero-gap abutment claim.')
  result['passed']=result['drc']['passed'] and result['mask_drc']['passed']
+ result['spacing_only_passed']=set(result['drc']['categories'])<={'GC.ANT:GC must electrically connect to Substrate (or text if not chip level)'} and set(result['mask_drc']['categories'])<={'WAR06: Floating SG Detected'}
+ result['open_input_warning_note']='Isolated replicas intentionally have no input discharge path. Raw Drawing/mask failures are retained; spacing-only is not manufacturing acceptance.'
  (ROOT/'reports/inverter_placement.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2));return result
 if __name__=='__main__':
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--gap',type=float,default=12);a=p.parse_args();raise SystemExit(0 if check(a.gap)['passed'] else 1)

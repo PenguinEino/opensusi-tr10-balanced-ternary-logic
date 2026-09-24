@@ -1,5 +1,8 @@
 # 再利用用INV primitive
 
+更新：現在はRR長30 µm、外形96×66 µm、DBU 0.001 µm・配置格子0.05 µmです。
+以下の旧図・旧座標・旧検証値は更新前の記録です。現行座標は `inverter.ports.json`、再検証は [MAC_IMPROVEMENTS.md](../MAC_IMPROVEMENTS.md) を参照してください。
+
 `inverter.sch`と一致する2 MOS＋2 RRのレイアウトです。正規成果物は
 [inverter.gds](../inverter.gds)、top cellは`inverter`です。
 外形は **84 × 66 µm = 5,544 µm²**、原点は左下`(0,0)`、DBUと配置グリッドは0.001 µmです。

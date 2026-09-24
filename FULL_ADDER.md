@@ -1,5 +1,8 @@
 # 平衡3値 Full Adder
 
+2026-09-24のMAC改善で配下RRを30 µmへ変更し、電源配線も更新しました。以下の旧単体試験値・旧配置は当時の記録です。
+現行の仕様・検証は [MAC_IMPROVEMENTS.md](MAC_IMPROVEMENTS.md)、端子座標は `layout/full_adder.ports.json` を参照してください。
+
 `full_adder.sch` は既存の `half_adder.sch` を2個使う階層セル。
 論理値 −1 / 0 / +1 を −5 / 0 / +5 V で表す。
 

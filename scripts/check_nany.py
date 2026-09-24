@@ -9,7 +9,9 @@ from check_half_adder import route,STATES
 ROOT=Path(__file__).resolve().parents[1];WORK=ROOT/'simulation/nany_checks'
 def netlist(name):
  d=WORK/name;d.mkdir(parents=True,exist_ok=True)
- p=subprocess.run(['xschem','-r','-x','--rcfile',str(ROOT/'simulation/verify.xschemrc'),'-s','--command','xschem netlist; puts [xschem get infowindow_text]; exit','-o',str(d),str(ROOT/f'{name}.sch')],capture_output=True,text=True)
+ rc=d/'xschemrc';pdk=Path('/home/ishi-kai/pdk/TR-1um')
+ rc.write_text(f'set XSCHEM_LIBRARY_PATH {{{ROOT}:/usr/local/share/xschem/xschem_library:{pdk}/libs.tech/xschem}}\nset LIB {{{pdk}/libs.tech/spice/models}}\nset lvs_netlist 0\nset top_is_subckt 0\nset spiceprefix 1\n')
+ p=subprocess.run(['xschem','-r','-x','--rcfile',str(rc),'-s','--command','xschem netlist; puts [xschem get infowindow_text]; exit','-o',str(d),str(ROOT/f'{name}.sch')],capture_output=True,text=True)
  (d/'netlist.log').write_text(p.stdout+p.stderr)
  if p.returncode or re.search('Error:|SKIP RECORD',p.stdout+p.stderr):raise RuntimeError(name+' netlist failed')
  return re.sub(r'\n\+\s*',' ',(d/f'{name}.spice').read_text())
@@ -59,14 +61,17 @@ def main():
  assert not any(l[0].lower()=='c' for l in actual)
  manifest=dict(cell='nany',ports=['a','b','vout','VDD','VSS','VMID'],devices=actual,device_sha256=hashlib.sha256('\n'.join(actual).encode()).hexdigest(),matches_legacy_nsign=same)
  (WORK/'manifest.json').write_text(json.dumps(manifest,indent=2))
- frozen=ROOT/'design/nany_v1.json'
+ frozen=ROOT/'design/nany_mac_rr30.json'
+ assert frozen.exists(),'Missing reviewed NANY baseline'
  if frozen.exists():
   baseline=json.loads(frozen.read_text())
-  if manifest['device_sha256']!=baseline['device_sha256']:raise RuntimeError('NANY differs from the v1 schematic baseline; review before layout')
+  if manifest['device_sha256']!=baseline['device_sha256']:raise RuntimeError('NANY differs from the reviewed RR30 schematic baseline')
  jobs=[('dc',10,0),('tran_10f',10,0),('tran_100f',100,0),('skew_a',10,-2),('skew_b',10,2)]
  rows=[]
  with ThreadPoolExecutor(max_workers=3) as pool:
   for r in pool.map(lambda j:run(j,base),jobs):
    rows.append(r);print({k:v for k,v in r.items() if k not in ['points','transitions']},flush=True);(WORK/'results.json').write_text(json.dumps(rows,indent=2))
  if any(r['error']>.5 or r.get('band_error',0)>.5 or r.get('unsettled',0) for r in rows):raise RuntimeError('NANY verification failed')
+ summary=dict(passed=True,device_sha256=manifest['device_sha256'],schematic_sha256=hashlib.sha256((ROOT/'nany.sch').read_bytes()).hexdigest(),cases=[{k:v for k,v in r.items() if k not in ('points','transitions')} for r in rows],scope='Nominal +/-5 V, 27 C; all 72 transitions at 10/100 fF, input skew +/-2 ns, DC neighborhoods. Not the 10 pF MAC specification.')
+ (ROOT/'reports/mac_improvements/nany_regression.json').write_text(json.dumps(summary,indent=2)+'\n')
 if __name__=='__main__':main()

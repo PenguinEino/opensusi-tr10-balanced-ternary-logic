@@ -30,7 +30,7 @@ def simulate(d,s):
  (d/'tb.spice').write_text(s)
  with (d/'run.log').open('w') as f:p=subprocess.run(['ngspice','-b','tb.spice'],cwd=d,stdout=f,stderr=subprocess.STDOUT,timeout=7200)
  log=(d/'run.log').read_text()
- if p.returncode or re.search(r'Error:|FAIL:|Timestep too small|failed',log,re.I):raise RuntimeError(str(d)+' failed: '+log[-1000:])
+ if p.returncode or re.search(r'Error:|FAIL:|Timestep too small|failed|Nodeset on non-existent node',log,re.I):raise RuntimeError(str(d)+' failed: '+log[-1000:])
  assert all(Path(p).exists() and sha(p)==h for p,h in dependencies.items()),'Simulation dependency changed during run'
  context.write_text(json.dumps(dependencies,indent=2)+'\n')
  return log
@@ -103,12 +103,14 @@ def exhaustive_parallel(base,root,workers=4):
  return result
 
 def main(quick=False):
+ files=[name+ext for name in ('mac','mul','mul_nand','mul_nor','mul_inv','full_adder','half_adder','inverter','nany') for ext in ('.sch','.sym')]+['mac_tb.sch']
+ sources={name:sha(ROOT/name) for name in files}
  base=netlist();root=WORK/'schematic';rows=[native(base,root)];print(rows[0],flush=True)
  if not quick:
   rows.append(exhaustive_parallel(base,root));print(rows[-1],flush=True)
   rows.append(transitions(base,root,10000,True));print(rows[-1],flush=True)
- files=['mac.sch','mac.sym','mac_tb.sch','mul.sch','mul_nand.sch','mul_nor.sch','mul_inv.sch','full_adder.sch','half_adder.sch','inverter.sch','nany.sch']
- r=dict(passed=all(v['passed'] for v in rows),scope='schematic',cases=rows,temperature_C=27,supplies_V=[-5,0,5],source_sha256={name:sha(ROOT/name) for name in files},model_sha256={str(p.relative_to(PDK)):sha(p) for p in (PDK/'libs.tech/spice/models').rglob('*') if p.is_file()})
+ assert sources=={name:sha(ROOT/name) for name in files},'Schematic changed during verification'
+ r=dict(passed=all(v['passed'] for v in rows),scope='schematic',cases=rows,temperature_C=27,supplies_V=[-5,0,5],source_sha256=sources,model_sha256={str(p.relative_to(PDK)):sha(p) for p in (PDK/'libs.tech/spice/models').rglob('*') if p.is_file()})
  (ROOT/f'reports/mac{"_quick" if quick else ""}.json').write_text(json.dumps(r,indent=2)+'\n')
  if not r['passed']:raise RuntimeError('MAC verification failed')
 if __name__=='__main__':

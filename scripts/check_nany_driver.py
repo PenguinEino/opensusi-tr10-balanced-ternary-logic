@@ -23,7 +23,7 @@ def check(src=None,metadata=None):
  for name in ['VDD','VSS']:
   x,y=p[name]['position_um'];wire((13,0),[(w-1,y),(pitch+1,y)],3.4);label((48,0),name,w+gap/2,y)
  # VMID is a continuous M2 rail. Inputs b are tied to it in this fixture.
- _,my=p['VMID']['position_um'];wire((20,0),[(w-1,my),(pitch+1,my)],3.4);label((49,0),'VMID',w+gap/2,my)
+ mx,my=p['VMID']['position_um'];wire((20,0),[(mx,my),(pitch+mx,my)],3.4);label((49,0),'VMID',w+gap/2,my)
  ix,iy=p['a']['position_um'];_,by=p['b']['position_um'];_,py=p['VDD']['position_um']
  wire((20,0),[(ix,iy),(-6,iy)],3.4)
  box((19,0),-6-.7,iy-.7,-6+.7,iy+.7)

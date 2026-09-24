@@ -1,11 +1,10 @@
 """Verify the device network extracted from the strictly LVS-qualified MAC GDS."""
 from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor
 import json,re
 import klayout.db as db
 import check_mac as logic
 import verify_arithmetic_layout as verify
-from check_full_adder_extracted import normalized,mapping_for
+from check_full_adder_extracted import normalized
 from check_half_adder_extracted import subckts
 ROOT=logic.ROOT;WORK=ROOT/'simulation/mac/extracted'
 

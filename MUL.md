@@ -1,5 +1,8 @@
 # 1-trit MUL 回路図・サイジング・検証
 
+2026-09-24のMAC改善で全RRを30 µmへ変更し、電源配線も更新しました。以下の旧サイジング・試験値は当時の記録です。
+現行版は [MAC_IMPROVEMENTS.md](MAC_IMPROVEMENTS.md)、`design/mul_sizes.json`、`layout/mul.ports.json` を参照してください。
+
 [mul.sch](mul.sch) / [mul.sym](mul.sym) は、平衡3進の `P=A×B` を実装する組合せセル。
 [mul_tb.sch](mul_tb.sch) からXschemの **Netlist → Simulate** で動かす。
 出力容量はTB側の `Cload=10f`。セル内に明示的な負荷容量はない。

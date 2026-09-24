@@ -30,6 +30,7 @@ DBU=0.001 µm、製造/配置格子0.05 µm、全倍率1。展開後の各子セ
 MAC単体のマスクDRCは未接続入力のFloating SG警告14件のみ。
 別の入力接続診断セルはDrawing/LVS/マスクDRCが全て合格、マーカー0件。免除領域は追加していない。
 証跡：`reports/*_layout.json`、`reports/arithmetic_pcell_audit.json`、`reports/arithmetic_gui.json`、`reports/mac_driver.json`。
+INV/NANYの2セル実配線fixtureもDrawing/LVS/マスク0件。4方向の孤立配置fixtureは寸法/間隔違反なしだが、未接続入力に対応するDrawing GC.ANT/マスクFloating SGは保持したままで、製造合格とは扱わない。
 
 ## 電源配線の電流確認
 
@@ -50,6 +51,14 @@ HA下段給電は2 NANY＋1 INVの電流を3カットで供給し、上段はFA�
 これはDCの容量スクリーニング。周波数依存RMS/ピーク電流、電流分布、配線IRドロップを含む正式なEM/PEXサインオフとは区別する。
 証跡：`reports/mac_improvements/supply_T-40.0_fixed0_num0_power1_4.5_5.5_0.5.json`。
 
+追加の−40 ℃・81入力列・1 nsエッジでは、VDD電源の過渡ピーク21.85 mA/RMS 4.434 mA、
+個別MOSドレイン電流の最大6.856 mA、個別最大RMS 0.382 mA。
+ドレイン電流を全金属/ビアの電流と同一視せず、共用配線や容量充放電も含むEMは未サインオフとする。
+過渡のMOS端子間には最大VDS 11.011 V、VGD 11.238 Vが発生した。10 V電源差でも瞬間的な素子ストレスは10 Vを超える。
+このモデルには実物の破壊・寿命保証はなく、ユーザー採用の定格逸脱に加えて、このオーバーシュートも実測確認が必要。
+証跡：`reports/mac_improvements/transient_stress_summary.json`。
+入力エッジ10 ns/100 nsでも最大端子間電圧は10.909 V/10.765 V。論理試験は合格したが、エッジを緩めるだけでは10 V以下に収まらない（`slew_stress_summary.json`）。
+
 ## 電圧範囲と過渡応答
 
 電源はVDD=+R、VSS=−R、VMID=0とし、特記なければ入力も−R/0/+Rへ追従させる。
@@ -61,6 +70,18 @@ HA下段給電は2 NANY＋1 INVの電流を3カットで供給し、上段はFA�
 全6,480遷移・648単一入力遷移・電源/温度追加試験は実行中で、完了後に結果表を更新する。
 
 直流の50 mV刻み評価では、室温の全81入力±0.5 V合格は±2.15 Vから、復号だけなら±2.10 Vから。
+未変更PDKで2.0〜2.5 Vを再走査し、等価RR式だけに依存しないことも確認した。
+
+| 温度 | 直流・全81入力の復号合格下限 | ±0.5 V精度合格下限 | ±2.5 V・10 pF・1 µs |
+|---|---:|---:|---|
+| −40 ℃ | ±2.05 V | ±2.10 V | 81入力列＋復帰で合格 |
+| 27 ℃ | ±2.10 V | ±2.15 V | 81入力列＋復帰で合格 |
+| 125 ℃ | ±2.05 V | ±2.10 V | 81入力列＋復帰で合格 |
+
+下限は50 mV刻みの検査点。全プロセス・任意温度・ミスマッチでの保証値ではない。
+室温±2.15 Vは10 pF || 1 MΩ・1 µsの81入力列でも合格（最大4出力誤差0.280 V）。
+±2.10 Vは復号は合うが、OR=0を期待する9サンプルで約+0.698 Vとなり精度不合格。
+10 pFの全6,480遷移を低電圧全点で試したわけではなく、公称±5 Vの全遷移検証と区別する。
 ±2.0 Vでは実際の論理不一致を確認した。低電圧で内部電圧が数百Vへ飛ぶ解析は数値的な無効解として除外した。
 調べた±7 Vまで上側の論理不合格は見つかっていないが、これは14 V動作の推奨・耐圧確認でも、物理的な上限の測定でもない。
 
@@ -72,7 +93,11 @@ HA下段給電は2 NANY＋1 INVの電流を3カットで供給し、上段はFA�
 正式な更新後TB・回路図/抽出全遷移試験・追加負荷試験は未変更PDKを使う。
 `.nodeset`はNewton初期推定のみで、電圧を固定せず、`uic`も使用しない。
 全遷移の収束設定は1 nA/10 µV。81入力の厳しい設定との差を確認し、波形の有限性・最終時刻・入力・出力を再評価する。
+81入力列での整定後4出力の設定間差は最大0.192 mV（`solver_comparison.json`）。
+抽出ネットリストの匿名インスタンス番号はLVS保存時の番号と一致するとは限らないため、各端子の接続で対応を確定する。
+全初期推定ノードの実在・動作点の物理的範囲を検査し、推定値を十分な桁数で渡す。誤った番号対応の途中試行は破棄し、合格結果へ流用しない。
 SPICEのPASS表示だけで判定せず、途中停止や測定区間外エラーを拒否する。
+RRのA/B交換をLVSは許す一方、モデルの容量はPLUS側へ集中する。回路図・抽出で容量の置かれる側が異なるRRもあるため、両方の波形を検査するが、実物の分布容量を精密に再現するPEXとは扱わない。
 
 ## 相乗りフレームへの接続条件
 
@@ -84,8 +109,32 @@ SPICEのPASS表示だけで判定せず、途中停止や測定区間外エラ�
 - VMID=0 Vは専用基準配線。VSS/基板や通常のオシロGNDと取り違えない。
 - 共通P基板・VSSを−5 Vとする合意はユーザー確認済み。実フレームの接続でこの条件を維持する。
 - ESDリング間に10 Vが掛かる接続について、5 V用セルのクランプ導通・耐圧をPDK/フレーム担当者が確認する。MOS単体が10 Vに耐えた例だけではESDセルも使用可能とは判断できない。
+- PDKのESD保護素子ガイドライン（OS04、p.3/5）は5 V系と12 V系を区別し、12 V系にはPMOSの3/4段直列構成を指定している。高電圧用保護の検討先は存在するが、相乗りフレームの実配線と保護性能を確認せず単純に交換はしない。
 - 11端子の接続層・座標は`layout/mac.ports.json`が正本。電源は細い単一ビアへ絞らず、コアの給電幅・必要カット数を維持する。
 - パッド/ボンド/プローブを含む各出力の容量合計を10 pF以下、入力抵抗を1 MΩ以上とする。
 - 最終TOPでDRC、strict LVS、マスクDRC、電源連続性、基板接続、ESDと信号範囲、領域/倍率/格子を再確認する。
 
 未確定のフレーム条件をコア側のDRC免除や仮配線で隠してはいない。
+
+## 再現と履歴
+
+物理修正の区切りはGitコミット `3dc8b7e`。元の手編集FAはテンプレートと退避アーカイブで保持した。
+公称検証は `scripts/check_mac.py`、`scripts/check_mac_extracted.py --resume`、集計は `scripts/summarize_mac.py`。
+物理検証・PCell照合・提出版のコマンドは [MAC.md](MAC.md) に記載する。
+
+電源範囲を再現する場合は、先に次を−40/27/125 ℃について実行する。
+
+```sh
+python3 scripts/qualify_mac_improvements.py --temp=27 --low=2 --high=2.5 --step=.05
+python3 scripts/qualify_mac_improvements.py --temp=27 --low=.5 --high=7 --step=.05 --numeric
+python3 scripts/qualify_mac_improvements.py --temp=-40 --low=4.5 --high=5.5 --step=.5 --power
+python3 scripts/qualify_mac_corners.py supply
+python3 scripts/qualify_mac_corners.py integration
+python3 scripts/qualify_mac_corners.py boundary
+python3 scripts/qualify_mac_corners.py stress
+python3 scripts/qualify_mac_corners.py slew_stress
+```
+
+`design/mac_dc_seeds.json` は入力状態ごとのNewton初期推定だけを保存した再現用データ。結果を固定するものではない。
+大容量波形・DC全点は`simulation/`、要約と元データのハッシュは`reports/mac_improvements/`へ保存する。
+候補評価・失敗した数値解析も履歴として区別して残す。報告ファイルの分類は [reports/mac_improvements/README.md](reports/mac_improvements/README.md)。
