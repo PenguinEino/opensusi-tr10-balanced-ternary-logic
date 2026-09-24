@@ -1,8 +1,8 @@
 {
   "passed": true,
   "scope": "LVS-extracted MOS/RR network with device geometry and intrinsic PDK capacitances. No interconnect RC.",
-  "gds_sha256": "27f22be16cac5fe157506a670efba637a03b19787db8602da430fe1dab6865a6",
-  "extracted_sha256": "eebf5368e541fa7747bc294f1dfc229e8af1ac1a635f097449836c894fabe87c",
+  "gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
+  "extracted_sha256": "e48a046cf3b58eedce493e841368e2fb8c5877e21d56edb88a2b1cd5277524a0",
   "reference_sha256": "ade4a22adf5bdb902b1851a247ef31272461809dc64077b772266a47a25831b7",
   "temperature_C": 27,
   "supplies_V": [
@@ -27,7 +27,7 @@
       "max_settle_ns": 414.265199999998,
       "unsettled": 0,
       "passed": true,
-      "requalified_by": "reports/mac_alignment/rail_stitch.json"
+      "requalified_by": "reports/mac_alignment/rightmost_vdd.json"
     },
     {
       "mode": "all_6480_10000f",
@@ -431,7 +431,7 @@
       "max_sum_cout_error_V": 0.06426232390161601,
       "max_and_or_error_V": 0.060527692577986514,
       "max_settle_ns": 503.6700000000419,
-      "requalified_by": "reports/mac_alignment/rail_stitch.json"
+      "requalified_by": "reports/mac_alignment/rightmost_vdd.json"
     },
     {
       "mode": "single_input_648_10000f",
@@ -456,7 +456,7 @@
       "max_settle_ns": 485.86799999998766,
       "unsettled": 0,
       "passed": true,
-      "requalified_by": "reports/mac_alignment/rail_stitch.json"
+      "requalified_by": "reports/mac_alignment/rightmost_vdd.json"
     }
   ],
   "model_sha256": {
@@ -685,6 +685,33 @@
     ],
     "models_reference_rules_identical": true,
     "transients": "All existing cases inherited by exact electrical equivalence; no new transient run for these four bridges.",
+    "scope": "No interconnect R/C is extracted; lower resistance and current redistribution are not quantified."
+  },
+  "rightmost_vdd_equivalence": {
+    "passed": true,
+    "baseline_commit": "fb6db90",
+    "baseline_gds_sha256": "27f22be16cac5fe157506a670efba637a03b19787db8602da430fe1dab6865a6",
+    "new_gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
+    "baseline_extracted_sha256": "eebf5368e541fa7747bc294f1dfc229e8af1ac1a635f097449836c894fabe87c",
+    "new_extracted_sha256": "e48a046cf3b58eedce493e841368e2fb8c5877e21d56edb88a2b1cd5277524a0",
+    "parameter_and_pin_exact_isomorphic_cells": [
+      "full_adder",
+      "half_adder",
+      "inverter",
+      "mac",
+      "mul",
+      "mul_inv",
+      "mul_nand",
+      "mul_nor",
+      "nany"
+    ],
+    "changed_area_um2": {
+      "13/0": 865.77,
+      "19/0": 1.96
+    },
+    "changes": "Bridge HA2 VDD to merge NANY; connect NANY VDD to output INV; remove redundant C1 via at FA (1308.45,22.35) and continue M2",
+    "models_reference_rules_identical": true,
+    "transients": "All existing cases inherited by exact electrical equivalence; no new transient run for these VDD connections.",
     "scope": "No interconnect R/C is extracted; lower resistance and current redistribution are not quantified."
   }
 }

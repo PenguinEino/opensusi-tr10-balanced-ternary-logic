@@ -209,7 +209,7 @@
         ],
         [
           1308.45,
-          22.35
+          20.65
         ]
       ],
       "width_um": 3.4
@@ -243,6 +243,29 @@
         ]
       ],
       "width_um": 4
+    },
+    {
+      "net": "VDD",
+      "layer": "M1",
+      "points_um": [
+        [
+          1460,
+          15.05
+        ],
+        [
+          1464.4,
+          15.05
+        ],
+        [
+          1464.4,
+          -33.95
+        ],
+        [
+          1476.45,
+          -33.95
+        ]
+      ],
+      "width_um": 3.4
     },
     {
       "net": "VSS",
@@ -290,7 +313,7 @@
       "width_um": 3.4
     }
   ],
-  "gds_sha256": "3382edba79849037f20d09b887b286c137335238a45d6117014ecd510c40890f",
+  "gds_sha256": "e159fbbf0bfd6b9ea943f7d53e1d88fe74aa811bb4f313da34b0e4a9430c2fbd",
   "sources": {
     "/home/ishi-kai/balanced-ternary-logic/half_adder.gds": "4ae02d9027d72ed279b6e016f4f48c2be1d0bc626206fd6fb8bee9c504aafaf9",
     "/home/ishi-kai/balanced-ternary-logic/nany.gds": "3403d325575c08cee2765c459d40985ee041db48a1ed21f1e13f3d9306af6282",

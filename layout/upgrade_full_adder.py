@@ -23,6 +23,8 @@ def build():
  ha=import_tree(ly,ROOT/'half_adder.gds','half_adder');inv=ly.cell('inverter');nany=ly.cell('nany')
  cells={'half_adder':ha,'inverter':inv,'nany':nany}
  for row in data['instances']:
+  # C1 now stays on M2 here: its old landing via would short the VDD bridge.
+  if row['name'].startswith('via_1') and row['transform']=='r0 *1 1308.45,22.35':continue
   c=cells.get(row['name'])
   if c is None:c=ly.create_cell('via_1','TR-1um',{})
   tr=db.DCplxTrans.from_s(row['transform'])
@@ -54,7 +56,7 @@ def build():
  d.route('c1','M1',[(561.65,59.75),(568.5,59.75)]);d.via('c1',568.5,59.75)
  d.route('c1','M2',[(568.5,59.75),(568.5,330)]);d.via('c1',568.5,330)
  d.route('c1','M1',[(568.5,330),(1308.45,330)]);d.via('c1',1308.45,330)
- d.route('c1','M2',[(1308.45,330),(1308.45,22.35)])
+ d.route('c1','M2',[(1308.45,330),(1308.45,20.65)])
 
  def array(net,x,y,nx=4,ny=2):
   for j in range(ny):
@@ -78,6 +80,10 @@ def build():
   d.box('M1',563.95,low,600.9,high)
  # Continue the bottom VSS to the carry-merge/output rail as well.
  d.box('M1',1260.9,-110.85,1312,-94.85)
+ # Continue lower VDD into the merge NANY; C1 crosses on M2 without a via.
+ d.box('M1',1260.9,13.35,1320,25.35)
+ # The shorter output INV has a lower VDD edge; use its empty left gutter.
+ d.route('VDD','M1',[(1460,15.05),(1464.4,15.05),(1464.4,-33.95),(1476.45,-33.95)])
  # Merge NANY and output INV share a widened bottom VSS rail, with a separate feed.
  d.box('M1',1312,-110.85,1593,-94.85)
  array('VSS',1585,-102.85)

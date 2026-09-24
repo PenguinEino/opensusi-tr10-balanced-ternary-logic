@@ -314,12 +314,12 @@
       ]
     },
     "full_adder": {
-      "gds_sha256": "3382edba79849037f20d09b887b286c137335238a45d6117014ecd510c40890f",
+      "gds_sha256": "e159fbbf0bfd6b9ea943f7d53e1d88fe74aa811bb4f313da34b0e4a9430c2fbd",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
       "off_grid_polygon_points": 0,
-      "placements": 69,
+      "placements": 68,
       "all_magnifications_one": true,
       "pcell_variants": [
         {
@@ -813,12 +813,12 @@
       ]
     },
     "mac": {
-      "gds_sha256": "27f22be16cac5fe157506a670efba637a03b19787db8602da430fe1dab6865a6",
+      "gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
       "off_grid_polygon_points": 0,
-      "placements": 131,
+      "placements": 130,
       "all_magnifications_one": true,
       "pcell_variants": [
         {
