@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "gds_sha256": "ac570a0144a04f9fa69a23c5c309e77dcc50fc468a2d7340f0bed4000fe62d5b",
+  "gds_sha256": "7e1992078c505b8e345544b162666ed626cf8a412f27eec105dab361a1562446",
   "pins_verified_on_metal": {
     "and_out": {
       "layer": [
@@ -158,8 +158,8 @@
     }
   },
   "images": {
-    "mac_layout.png": "b0ad308d383869f4085de424bcce4daf46c12664d4c0f8fff6da5d97001b7108",
-    "mac_pins.png": "cf60c0b7dc0a6515625a3952401631203fa938adc50fc520c24b27ecaebba46f",
+    "mac_layout.png": "d0c21c61d6c651aabd6dfc8c7c13466eebb50cc049657e0024d79dd422dea078",
+    "mac_pins.png": "f698a2d7f8e85152878ffaaaf85953f34be52501978005fad3c4d769b12cea11",
     "mac_schematic.svg": "5918c14a48dd882d986b3b6e22fbd9d829718dd21ffee4e92e785dd7f6b1ec3d"
   }
 }

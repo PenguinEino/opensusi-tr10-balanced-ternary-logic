@@ -49,6 +49,9 @@ def main():
  if 'alignment_equivalence' in reports['mac_extracted']:
   summary['alignment_equivalence']=reports['mac_extracted']['alignment_equivalence']
   (ROOT/'reports/mac_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+ if 'rail_stitch_equivalence' in reports['mac_extracted']:
+  summary['rail_stitch_equivalence']=reports['mac_extracted']['rail_stitch_equivalence']
+  (ROOT/'reports/mac_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
  lines=['## 検証結果（2026-09-25）','', '| 回路 | 試験 | 負荷 | 最大出力誤差（4出力） | 最大整定時間 | 判定 |','|---|---|---:|---:|---:|---|']
  for r in rows:lines.append(f"| {r['scope']} | {r['mode']} | {r['load_fF']/1000:g} pF | {r['max_error_mV']:.3f} mV | {r['max_settle_ns']:.2f} ns | PASS |")
  lines+=['',f"SUM/Coutの最大誤差は {max(r['sum_cout_error_mV'] for r in rows):.3f} mV、AND/ORの最大誤差は {max(r['and_or_error_mV'] for r in rows):.3f} mV。",f"内部の積Pも各状態で確認し、最大誤差は {summary['max_product_error_V']*1000:.1f} mV。",'表の整定時間は波形サンプルによる値であり、最大時間刻みより細かい精度を保証しない。','今回は単体算術コアの検証。5チップ直列接続の負荷・遅延は含まない。','']
@@ -60,6 +63,8 @@ def main():
   lines+=['その後、VDD/VSS幹線をy=744.3/804.3 µmへ移動し、Drawing DRC/LVS・マスクDRC・入力接続fixtureを再実行した。', '抽出SPICEはコメント・匿名ノード名・素子パラメータも含め全バイト一致し、モデル・参照回路・ルールも不変。上表は同一回路の既存合格結果を継承しており、移動後に全過渡解析を再実行したものではない。', '証跡は `reports/mac_improvements/power_placement_equivalence.json`。セル配置・素子形状・信号配線は変更していない。', '']
  if 'alignment_equivalence' in reports['mac_extracted']:
   lines+=['配置整理後にDrawing DRC/LVS、マスクDRC、入力接続fixtureと抽出81入力＋復帰を新規実行し、合格した。', '全9階層回路について、端子名・素子端子の役割・全パラメータを区別したグラフ同型性を照合し、変更前と電気的に同一であることを確認。', 'モデル・参照回路・ルールも一致するため、全6,480/648遷移は変更前の合格結果を継承した（今回は全遷移の再実行ではない）。', '証跡は `reports/mac_alignment/electrical_equivalence.json`。新規81入力波形は `simulation/mac/alignment_extracted/tb_sequence/`。', '配線寄生R/Cは抽出に含まれず、今回の整理による遅延改善は主張しない。', '']
+ if 'rail_stitch_equivalence' in reports['mac_extracted']:
+  lines+=['その後の下段電源レール4箇所の橋渡しではDRC/LVSと抽出の全パラメータ・端子同等性を再確認し、上表の過渡結果を継承した。橋渡し後の過渡再実行ではない。', '証跡は `reports/mac_alignment/rail_stitch.json`。', '']
  path=ROOT/'MAC.md';s=path.read_text();mark='<!-- verification-results -->';s=s.split(mark)[0].rstrip()+'\n\n'+mark+'\n'+'\n'.join(lines);path.write_text(s)
  print(json.dumps(summary,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()

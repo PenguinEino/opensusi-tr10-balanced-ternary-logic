@@ -15,7 +15,7 @@
 * pin x
 .SUBCKT mac VDD VMID VSS a and_out b cin cout or_out sum x
 * cell instance $1 r0 *1 180,123.2
-X$1 cout VMID VDD x \$3 cin sum VSS full_adder
+X$1 cout VMID VDD \$3 x cin sum VSS full_adder
 * cell instance $2 r0 *1 20,500
 X$2 a b \$9 \$12 VDD \$3 VSS mul
 * cell instance $3 r0 *1 1360,600
@@ -30,20 +30,20 @@ X$5 VDD \$9 and_out VSS inverter
 * pin cout
 * pin VMID
 * pin VDD
-* pin a
 * pin b
+* pin a
 * pin cin
 * pin sum
 * pin VSS
-.SUBCKT full_adder cout VMID VDD a b cin sum VSS
+.SUBCKT full_adder cout VMID VDD b a cin sum VSS
 * cell instance $1 r0 *1 1468.45,-98.25
-X$1 VDD \$5 cout VSS inverter
-* cell instance $3 r0 *1 600.9,-98.25
-X$3 \$7 VMID VDD sum \$11 cin VSS half_adder
-* cell instance $4 r0 *1 -96.05,-98.25
-X$4 \$10 VMID VDD \$11 a b VSS half_adder
-* cell instance $5 r0 *1 1312,-98.25
-X$5 VDD \$5 VMID \$10 \$7 VSS nany
+X$1 VDD \$1 cout VSS inverter
+* cell instance $2 r0 *1 1312,-98.25
+X$2 VDD \$1 VMID \$11 \$8 VSS nany
+* cell instance $5 r0 *1 600.9,-98.25
+X$5 \$8 VMID VDD sum \$12 cin VSS half_adder
+* cell instance $6 r0 *1 -96.05,-98.25
+X$6 \$11 VMID VDD \$12 a b VSS half_adder
 .ENDS full_adder
 
 * cell mul

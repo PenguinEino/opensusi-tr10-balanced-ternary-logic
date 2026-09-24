@@ -314,7 +314,7 @@
       ]
     },
     "full_adder": {
-      "gds_sha256": "7e17ca5abaf686b62df4c97bd6b2a9216fd5832bd88ea4d38a5e39fe3b5828d8",
+      "gds_sha256": "3382edba79849037f20d09b887b286c137335238a45d6117014ecd510c40890f",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
@@ -813,7 +813,7 @@
       ]
     },
     "mac": {
-      "gds_sha256": "13a8c4415aac8f88be5a9fc05792727665c7352ef444de89f1c39f2e7bcbafd6",
+      "gds_sha256": "27f22be16cac5fe157506a670efba637a03b19787db8602da430fe1dab6865a6",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,

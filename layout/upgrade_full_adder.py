@@ -72,6 +72,12 @@ def build():
   array('VSS',x,97.15)
   d.route('VSS','M2',[(x,97.15),(x,295)],4)
   array('VSS',x,295)
+ # Stitch matching HA row supplies at the FA level; child cells remain reusable.
+ # Upper VSS, lower VDD, and bottom VSS continue across the inter-HA gap.
+ for low,high in [(89.15,105.15),(13.35,25.35),(-110.85,-94.85)]:
+  d.box('M1',563.95,low,600.9,high)
+ # Continue the bottom VSS to the carry-merge/output rail as well.
+ d.box('M1',1260.9,-110.85,1312,-94.85)
  # Merge NANY and output INV share a widened bottom VSS rail, with a separate feed.
  d.box('M1',1312,-110.85,1593,-94.85)
  array('VSS',1585,-102.85)

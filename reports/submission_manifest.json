@@ -1,16 +1,16 @@
 {
-  "source_commit": "2919b60e91842fe75852a7c5c7d6e80882909987",
+  "source_commit": "b3042dc20c9fe0dcad36bec2beff3fe26368623b",
   "source_worktree_dirty": true,
   "provenance_note": "source_commit is the base revision; file hashes identify the exact packaged working-tree content.",
-  "source_gds_sha256": "13a8c4415aac8f88be5a9fc05792727665c7352ef444de89f1c39f2e7bcbafd6",
+  "source_gds_sha256": "27f22be16cac5fe157506a670efba637a03b19787db8602da430fe1dab6865a6",
   "files": {
     "README.md": {
       "bytes": 2725,
       "sha256": "9367818c2dc9e614f6b1b1ebfb770c839269ddcc43679ecaa1d01391ceaf251e"
     },
     "SPEC.md": {
-      "bytes": 12509,
-      "sha256": "3df0c3f60ed9a78665da8546a77f31d869b6d7a92c1e11a30d59935f9086fb66"
+      "bytes": 13157,
+      "sha256": "fffb9e7c868e125a6b62fc02faf0e9e94820cc3ad5005dd14ec9cc2150426310"
     },
     "full_adder.sch": {
       "bytes": 2669,
@@ -38,11 +38,11 @@
     },
     "mac.extracted": {
       "bytes": 5867,
-      "sha256": "0325246bb323e7bd1955960a6b1b7260403e7b850755d85d7b078b06abb6464c"
+      "sha256": "eebf5368e541fa7747bc294f1dfc229e8af1ac1a635f097449836c894fabe87c"
     },
     "mac.gds": {
-      "bytes": 94302,
-      "sha256": "ac570a0144a04f9fa69a23c5c309e77dcc50fc468a2d7340f0bed4000fe62d5b"
+      "bytes": 94558,
+      "sha256": "7e1992078c505b8e345544b162666ed626cf8a412f27eec105dab361a1562446"
     },
     "mac.sch": {
       "bytes": 3164,
@@ -53,12 +53,12 @@
       "sha256": "1148a5a1f53d5f301fee32d0a16af7db76ff871f93410ffcdf5e31dd4f197000"
     },
     "mac_layout.png": {
-      "bytes": 295549,
-      "sha256": "b0ad308d383869f4085de424bcce4daf46c12664d4c0f8fff6da5d97001b7108"
+      "bytes": 295809,
+      "sha256": "d0c21c61d6c651aabd6dfc8c7c13466eebb50cc049657e0024d79dd422dea078"
     },
     "mac_pins.png": {
-      "bytes": 206059,
-      "sha256": "cf60c0b7dc0a6515625a3952401631203fa938adc50fc520c24b27ecaebba46f"
+      "bytes": 206038,
+      "sha256": "f698a2d7f8e85152878ffaaaf85953f34be52501978005fad3c4d769b12cea11"
     },
     "mac_schematic.svg": {
       "bytes": 22538,
@@ -113,6 +113,6 @@
       "sha256": "d349d8c5deff1faa163d7a18358ac7b7c8002b9d4002cdfeaae80daeda3b5e7d"
     }
   },
-  "archive": "simulation/submission/mac_submission_ac570a0144a0.zip",
-  "archive_sha256": "651594cb8bfba7aeaf6bc63b12137dec55b26e92b0e7d56000ec190b2d10998d"
+  "archive": "simulation/submission/mac_submission_7e1992078c50.zip",
+  "archive_sha256": "d91438d1d530af9b561c26aadd9901de6040eb3011f74d8830f3c426efaf37be"
 }

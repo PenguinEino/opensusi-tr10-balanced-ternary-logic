@@ -664,10 +664,10 @@
       "width_um": 3.4
     }
   ],
-  "gds_sha256": "13a8c4415aac8f88be5a9fc05792727665c7352ef444de89f1c39f2e7bcbafd6",
+  "gds_sha256": "27f22be16cac5fe157506a670efba637a03b19787db8602da430fe1dab6865a6",
   "sources": {
     "/home/ishi-kai/balanced-ternary-logic/mul.gds": "71c9fae39518de9fa1d7fec9c334e717d7456199f2f65f4199542019c0b8e0fe",
-    "/home/ishi-kai/balanced-ternary-logic/full_adder.gds": "7e17ca5abaf686b62df4c97bd6b2a9216fd5832bd88ea4d38a5e39fe3b5828d8",
+    "/home/ishi-kai/balanced-ternary-logic/full_adder.gds": "3382edba79849037f20d09b887b286c137335238a45d6117014ecd510c40890f",
     "/home/ishi-kai/balanced-ternary-logic/inverter.gds": "66242f8be89020ec65350f12ffcc2a7301bc632955dfde345016224138e7e3a4"
   },
   "device_counts": {

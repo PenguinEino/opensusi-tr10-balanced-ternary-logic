@@ -1,8 +1,8 @@
 {
   "passed": true,
   "scope": "LVS-extracted MOS/RR network with device geometry and intrinsic PDK capacitances. No interconnect RC.",
-  "gds_sha256": "13a8c4415aac8f88be5a9fc05792727665c7352ef444de89f1c39f2e7bcbafd6",
-  "extracted_sha256": "0325246bb323e7bd1955960a6b1b7260403e7b850755d85d7b078b06abb6464c",
+  "gds_sha256": "27f22be16cac5fe157506a670efba637a03b19787db8602da430fe1dab6865a6",
+  "extracted_sha256": "eebf5368e541fa7747bc294f1dfc229e8af1ac1a635f097449836c894fabe87c",
   "reference_sha256": "ade4a22adf5bdb902b1851a247ef31272461809dc64077b772266a47a25831b7",
   "temperature_C": 27,
   "supplies_V": [
@@ -26,7 +26,8 @@
       "max_and_or_error_V": 0.05962498773359304,
       "max_settle_ns": 414.265199999998,
       "unsettled": 0,
-      "passed": true
+      "passed": true,
+      "requalified_by": "reports/mac_alignment/rail_stitch.json"
     },
     {
       "mode": "all_6480_10000f",
@@ -430,7 +431,7 @@
       "max_sum_cout_error_V": 0.06426232390161601,
       "max_and_or_error_V": 0.060527692577986514,
       "max_settle_ns": 503.6700000000419,
-      "requalified_by": "reports/mac_alignment/electrical_equivalence.json"
+      "requalified_by": "reports/mac_alignment/rail_stitch.json"
     },
     {
       "mode": "single_input_648_10000f",
@@ -455,7 +456,7 @@
       "max_settle_ns": 485.86799999998766,
       "unsettled": 0,
       "passed": true,
-      "requalified_by": "reports/mac_alignment/electrical_equivalence.json"
+      "requalified_by": "reports/mac_alignment/rail_stitch.json"
     }
   ],
   "model_sha256": {
@@ -624,5 +625,66 @@
       "passed": true
     },
     "reused": "6480 and 648 transitions from the proven equivalent baseline circuit"
+  },
+  "rail_stitch_equivalence": {
+    "passed": true,
+    "baseline_commit": "b3042dc",
+    "baseline_gds_sha256": "13a8c4415aac8f88be5a9fc05792727665c7352ef444de89f1c39f2e7bcbafd6",
+    "new_gds_sha256": "27f22be16cac5fe157506a670efba637a03b19787db8602da430fe1dab6865a6",
+    "baseline_extracted_sha256": "0325246bb323e7bd1955960a6b1b7260403e7b850755d85d7b078b06abb6464c",
+    "new_extracted_sha256": "eebf5368e541fa7747bc294f1dfc229e8af1ac1a635f097449836c894fabe87c",
+    "parameter_and_pin_exact_isomorphic_cells": [
+      "full_adder",
+      "half_adder",
+      "inverter",
+      "mac",
+      "mul",
+      "mul_inv",
+      "mul_nand",
+      "mul_nor",
+      "nany"
+    ],
+    "only_added_geometry": true,
+    "bridges_FA_coordinates_um": [
+      {
+        "net": "VSS",
+        "box": [
+          563.95,
+          89.15,
+          600.9,
+          105.15
+        ]
+      },
+      {
+        "net": "VDD",
+        "box": [
+          563.95,
+          13.35,
+          600.9,
+          25.35
+        ]
+      },
+      {
+        "net": "VSS",
+        "box": [
+          563.95,
+          -110.85,
+          600.9,
+          -94.85
+        ]
+      },
+      {
+        "net": "VSS",
+        "box": [
+          1260.9,
+          -110.85,
+          1312,
+          -94.85
+        ]
+      }
+    ],
+    "models_reference_rules_identical": true,
+    "transients": "All existing cases inherited by exact electrical equivalence; no new transient run for these four bridges.",
+    "scope": "No interconnect R/C is extracted; lower resistance and current redistribution are not quantified."
   }
 }

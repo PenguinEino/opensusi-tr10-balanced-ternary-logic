@@ -290,7 +290,7 @@
       "width_um": 3.4
     }
   ],
-  "gds_sha256": "7e17ca5abaf686b62df4c97bd6b2a9216fd5832bd88ea4d38a5e39fe3b5828d8",
+  "gds_sha256": "3382edba79849037f20d09b887b286c137335238a45d6117014ecd510c40890f",
   "sources": {
     "/home/ishi-kai/balanced-ternary-logic/half_adder.gds": "4ae02d9027d72ed279b6e016f4f48c2be1d0bc626206fd6fb8bee9c504aafaf9",
     "/home/ishi-kai/balanced-ternary-logic/nany.gds": "3403d325575c08cee2765c459d40985ee041db48a1ed21f1e13f3d9306af6282",

@@ -46,3 +46,8 @@
 - [更新レイアウト画像](submission/mac_layout.png) / [端子図](submission/mac_pins.png)
 
 既存の電源定格・フレーム統合・製造条件については[MAC_IMPROVEMENTS.md](MAC_IMPROVEMENTS.md)を参照。
+
+## レビュー後の追加変更：下段電源レールの橋渡し
+
+ユーザー追加指示により、左右HA間のVSS/VDD/VSSと、右HAからcarry合成部への最下段VSSを親FAで接続した。上記独立レビューは橋渡し前のハッシュを対象とする。追加4矩形以外の図形不変、Drawing DRC/LVS、全9階層の抽出端子・全パラメータ同等性を主エージェントが確認。過渡結果は同等性に基づく継承で、追加の独立レビューや過渡再実行は行っていない。
+証跡：[橋渡し検証](reports/mac_alignment/rail_stitch.json)。更新画像・提出用GDSも橋渡し後の版に更新。

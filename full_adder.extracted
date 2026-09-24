@@ -14,11 +14,11 @@
 * cell instance $1 r0 *1 1468.45,-98.25
 X$1 VDD \$1 cout VSS inverter
 * cell instance $2 r0 *1 1312,-98.25
-X$2 VDD \$1 VMID \$10 \$7 VSS nany
+X$2 VDD \$1 VMID \$11 \$8 VSS nany
 * cell instance $5 r0 *1 600.9,-98.25
-X$5 \$7 VMID VDD sum \$11 cin VSS half_adder
+X$5 \$8 VMID VDD sum \$12 cin VSS half_adder
 * cell instance $6 r0 *1 -96.05,-98.25
-X$6 \$10 VMID VDD \$11 a b VSS half_adder
+X$6 \$11 VMID VDD \$12 a b VSS half_adder
 .ENDS full_adder
 
 * cell half_adder
