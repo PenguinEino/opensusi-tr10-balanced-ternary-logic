@@ -13,37 +13,39 @@ C {devices/lab_pin.sym} 360 200 0 0 {name=l2 lab=b}
 C {devices/lab_pin.sym} 420 120 0 0 {name=l3 lab=VDD}
 C {devices/lab_pin.sym} 420 240 0 0 {name=l4 lab=VSS}
 C {devices/lab_pin.sym} 490 180 0 0 {name=l5 lab=p}
+C {devices/lab_pin.sym} 490 160 0 0 {name=l6 lab=t1}
+C {devices/lab_pin.sym} 490 200 0 0 {name=l7 lab=t3}
 N 490 180 720 180 {lab=p}
 N 720 180 720 250 {lab=p}
 C {devices/capa.sym} 720 280 0 0 {name=Cload value=10f m=1}
-C {devices/gnd.sym} 720 310 0 0 {name=l6 lab=GND}
+C {devices/gnd.sym} 720 310 0 0 {name=l8 lab=GND}
 C {devices/vsource.sym} 120 520 0 0 {name=VDD
 value="5"
 savecurrent=false
 hide_texts=true}
-C {devices/lab_pin.sym} 120 490 0 0 {name=l7 lab=VDD}
-C {devices/gnd.sym} 120 550 0 0 {name=l8 lab=GND}
+C {devices/lab_pin.sym} 120 490 0 0 {name=l9 lab=VDD}
+C {devices/gnd.sym} 120 550 0 0 {name=l10 lab=GND}
 T {VDD} 150 510 0 0 0.24 0.24 {}
 C {devices/vsource.sym} 340 520 0 0 {name=VSS
 value="-5"
 savecurrent=false
 hide_texts=true}
-C {devices/lab_pin.sym} 340 490 0 0 {name=l9 lab=VSS}
-C {devices/gnd.sym} 340 550 0 0 {name=l10 lab=GND}
+C {devices/lab_pin.sym} 340 490 0 0 {name=l11 lab=VSS}
+C {devices/gnd.sym} 340 550 0 0 {name=l12 lab=GND}
 T {VSS} 370 510 0 0 0.24 0.24 {}
 C {devices/vsource.sym} 560 520 0 0 {name=VA
 value="PWL(0 -5 200n -5 201n -5 400n -5 401n -5 600n -5 601n 0 800n 0 801n 0 1000n 0 1001n 0 1200n 0 1201n 5 1400n 5 1401n 5 1600n 5 1601n 5 1800n 5 1801n -5 2000n -5)"
 savecurrent=false
 hide_texts=true}
-C {devices/lab_pin.sym} 560 490 0 0 {name=l11 lab=a}
-C {devices/gnd.sym} 560 550 0 0 {name=l12 lab=GND}
+C {devices/lab_pin.sym} 560 490 0 0 {name=l13 lab=a}
+C {devices/gnd.sym} 560 550 0 0 {name=l14 lab=GND}
 T {VA} 590 510 0 0 0.24 0.24 {}
 C {devices/vsource.sym} 780 520 0 0 {name=VB
 value="PWL(0 -5 200n -5 201n 0 400n 0 401n 5 600n 5 601n -5 800n -5 801n 0 1000n 0 1001n 5 1200n 5 1201n -5 1400n -5 1401n 0 1600n 0 1601n 5 1800n 5 1801n -5 2000n -5)"
 savecurrent=false
 hide_texts=true}
-C {devices/lab_pin.sym} 780 490 0 0 {name=l13 lab=b}
-C {devices/gnd.sym} 780 550 0 0 {name=l14 lab=GND}
+C {devices/lab_pin.sym} 780 490 0 0 {name=l15 lab=b}
+C {devices/gnd.sym} 780 550 0 0 {name=l16 lab=GND}
 T {VB} 810 510 0 0 0.24 0.24 {}
 T {Edit VA / VB for stimuli; Cload for output load; SIMULATION for analyses.} 40 640 0 0 0.24 0.24 {}
 T {RUN: disable LVS -> Netlist -> Simulate. All devices are in child cells.} 40 690 0 0 0.24 0.24 {}
@@ -70,7 +72,7 @@ C {devices/code.sym} 1410 650 0 0 {name=SIMULATION
 only_toplevel=true
 value=".temp 27
 .options rshunt=1e12
-.nodeset v(p)=5 v(xdut.t1)=5 v(xdut.t2)=5 v(xdut.t3)=-5
+.nodeset v(p)=5 v(t1)=5 v(xdut.t2)=5 v(t3)=-5
 .control
 save all
 set wr_singlescale
@@ -95,7 +97,7 @@ let const.failures=const.failures+1
 echo FAIL: dc_0_2 expected -5.0 V
 end
 plot v(a) v(p) ylimit -5.5 5.5 title 'MUL DC: B=-5 V'
-wrdata mul_dc_0.txt v(a) v(p) v(xdut.t1) v(xdut.t2) v(xdut.t3)
+wrdata mul_dc_0.txt v(a) v(p) v(t1) v(xdut.t2) v(t3)
 alter VB dc=0
 dc VA -5 5 0.03125
 meas dc dc_1_0 find v(p) at=-5
@@ -114,7 +116,7 @@ let const.failures=const.failures+1
 echo FAIL: dc_1_2 expected 0.0 V
 end
 plot v(a) v(p) ylimit -5.5 5.5 title 'MUL DC: B=0 V'
-wrdata mul_dc_1.txt v(a) v(p) v(xdut.t1) v(xdut.t2) v(xdut.t3)
+wrdata mul_dc_1.txt v(a) v(p) v(t1) v(xdut.t2) v(t3)
 alter VB dc=5
 dc VA -5 5 0.03125
 meas dc dc_2_0 find v(p) at=-5
@@ -133,7 +135,7 @@ let const.failures=const.failures+1
 echo FAIL: dc_2_2 expected 5.0 V
 end
 plot v(a) v(p) ylimit -5.5 5.5 title 'MUL DC: B=5 V'
-wrdata mul_dc_2.txt v(a) v(p) v(xdut.t1) v(xdut.t2) v(xdut.t3)
+wrdata mul_dc_2.txt v(a) v(p) v(t1) v(xdut.t2) v(t3)
 reset
 save all
 tran 0.2n 2000n 0 0.5n
@@ -188,8 +190,8 @@ let const.failures=const.failures+1
 echo FAIL: p_9 expected 5.0 V
 end
 plot v(a) v(b) v(p) ylimit -5.5 5.5 title 'MUL: all nine input states'
-plot v(xdut.t1) v(xdut.t2) v(xdut.t3) title 'MUL internal nodes'
-wrdata mul_tran.txt v(a) v(b) v(p) v(xdut.t1) v(xdut.t2) v(xdut.t3)
+plot v(t1) v(xdut.t2) v(t3) title 'MUL internal nodes'
+wrdata mul_tran.txt v(a) v(b) v(p) v(t1) v(xdut.t2) v(t3)
 if const.failures = 0
 echo PASS: MUL truth table and transient sequence
 else

@@ -15,10 +15,10 @@ def main():
  d.route('VDD','M1',[(8,392),(769,392)])
  for x in (8,32,769):d.via('VDD',x,392)
  meta=json.loads((root/'layout/mac.ports.json').read_text())
- for n in ('sum','cout','VDD','VSS','VMID'):
+ for n in ('sum','cout','and_out','or_out','VDD','VSS','VMID'):
   p=meta['ports'][n];port(d,n,'M1' if p['layer']==[13,0] else 'M2',*p['position_um'])
  folder=verify.WORK/'mac_driver';folder.mkdir(parents=True,exist_ok=True);gds=folder/'driver.gds';ly.write(str(gds))
- ref=folder/'reference.spice';ref.write_text(verify.reference('mac').read_text()+'\n.subckt mac_driver_check sum cout VDD VSS VMID\nXdut VDD VDD VDD VDD sum cout VDD VSS VMID mac\n.ends\n')
+ ref=folder/'reference.spice';ref.write_text(verify.reference('mac').read_text()+'\n.subckt mac_driver_check sum cout and_out or_out VDD VSS VMID\nXdut VDD VDD VDD VDD sum cout VDD VSS VMID and_out or_out mac\n.ends\n')
  with ThreadPoolExecutor(max_workers=3) as pool:
   fs=[pool.submit(verify.drc,gds,top.name,folder/'drawing'),pool.submit(verify.lvs,top.name,gds,ref,folder/'lvs'),pool.submit(verify.mask,gds,top.name,folder/'manufacturing')]
   r=dict(source_sha256=verify.sha(root/'mac.gds'),scope='Separate fixture tying the four external inputs to VDD. Functional MAC unchanged. No waivers.',**dict(zip(('drawing_drc','lvs','mask_drc'),[f.result() for f in fs])))

@@ -17,7 +17,7 @@ def prepare():
  raw=(ROOT/'mac.extracted').read_text();assert raw==Path(report['lvs']['extracted']).read_text()
  extracted=normalized(raw);defs=subckts(extracted)
  assert set(defs)=={'mac','mul','mul_nand','mul_nor','mul_inv','full_adder','half_adder','nany','inverter'}
- assert set(defs['mac']['pins'])=={'x','a','b','cin','sum','cout','VDD','VSS','VMID'}
+ assert set(defs['mac']['pins'])=={'x','a','b','cin','sum','cout','VDD','VSS','VMID','and_out','or_out'}
  def instances(kind):
   return [dict(name=l[0].lower(),kind=l[-1].lower(),pins=dict(zip(defs[l[-1].lower()]['pins'],l[1:-1]))) for l in defs[kind]['lines'] if l[-1].lower() in defs]
  def find(rows,kind,**pins):
@@ -26,8 +26,11 @@ def prepare():
  mac=instances('mac');fa=find(mac,'full_adder',a='x',cin='cin');mul=find(mac,'mul',a='a',b='b');assert fa['pins']['b']==mul['pins']['p']
  mapping={k.replace('xdut.','xdut.x_fa.',1):v.replace('xdut.',f'xdut.{fa["name"]}.',1) for k,v in mapping_for(defs).items()}
  mapping['xdut.p']='xdut.'+mul['pins']['p']
+ mapping['xdut.nmin']='xdut.'+mul['pins']['t1']
+ find(mac,'inverter',vin=mul['pins']['t1'],vout='and_out')
+ assert mul['pins']['t3']=='or_out'
  children=instances('mul');t1=find(children,'mul_nand',a='a',b='b');t2=find(children,'mul_nor',a='a',b='b');t3=find(children,'mul_inv',vin=t2['pins']['vout'])
- for n,i in [('t1',t1),('t2',t2),('t3',t3)]:mapping['xdut.x_mul.'+n]=f'xdut.{mul["name"]}.'+i['pins']['vout']
+ for n,i in [('t2',t2)]:mapping['xdut.x_mul.'+n]=f'xdut.{mul["name"]}.'+i['pins']['vout']
  base=logic.netlist()
  # A coarse generic seed can find an unphysical model branch (hundreds of V).
  # Solve the fresh schematic OP, then use its corresponding nodes only as
@@ -63,23 +66,7 @@ def prepare():
  return base,report,raw
 
 def exhaustive_parallel(base):
- sequence=logic.route();parts=[];covered=[]
- # Prefix each slice with the same initial operating point and one complete
- # hold at its first source state. Only original directed edges are counted.
- for i in range(4):
-  lo=6480*i//4;hi=6480*(i+1)//4
-  seq=[logic.STATES[0]]+sequence[lo:hi+1]
-  parts.append((seq,f'all_6480_10f/chunk_{i}'));covered.extend(zip(sequence[lo:hi],sequence[lo+1:hi+1]))
- assert len(covered)==6480 and len(set(covered))==6480
- with ThreadPoolExecutor(max_workers=4) as pool:
-  fs=[pool.submit(logic.transitions,base,WORK,10,False,seq,name) for seq,name in parts]
-  rows=[f.result() for f in fs]
- result=dict(mode='all_6480_10f',load_fF=10,max_step_ns=2,hold_ns=120,transitions=6480,unique_directed_transitions=6480,
-  samples=sum(r['samples'] for r in rows),max_output_error_V=max(r['max_output_error_V'] for r in rows),max_product_error_V=max(r['max_product_error_V'] for r in rows),
-  max_settle_ns=max(r['max_settle_ns'] for r in rows),unsettled=sum(r['unsettled'] for r in rows),passed=all(r['passed'] for r in rows),
-  chunks=rows,initialization='Four slices of the Euler circuit, each prefixed by the common initial state and a full source-state hold; 6480 original edges plus setup transitions.')
- (WORK/'all_6480_10f/results_summary.json').write_text(json.dumps(result,indent=2)+'\n')
- return result
+ return logic.exhaustive_parallel(base,WORK)
 
 def main():
  base,layout,raw=prepare();rows=[logic.native(base,WORK)];print(rows[0],flush=True)

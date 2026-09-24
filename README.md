@@ -224,4 +224,4 @@ entries have been replaced; see [layout/klayout/README.md](layout/klayout/README
 ## Multiply-add slice
 
 `mac.sch` / `mac.sym` / `mac_tb.sch` は `X + A×B + Cin = Sum + 3×Cout` の組合せ算術スライス。
-`mac.gds` はMULと既存FAを階層化したコア全体。運用、検証、抽出シミュレーションは [MAC.md](MAC.md)。
+`mac.gds` はMULと既存FAを階層化したコア全体。MUL内部ノードと追加INVからAND=min(A,B)、OR=max(A,B)も出力します。共通VSSを除く10端子を使用。運用、検証、抽出シミュレーションは [MAC.md](MAC.md)。

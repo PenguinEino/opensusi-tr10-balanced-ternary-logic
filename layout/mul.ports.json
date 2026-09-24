@@ -37,6 +37,34 @@
         144
       ]
     },
+    "t1": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        476,
+        150
+      ]
+    },
+    "t3": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        476,
+        162
+      ]
+    },
     "p": {
       "layer": [
         13,
@@ -537,7 +565,7 @@
           150
         ],
         [
-          328,
+          476,
           150
         ]
       ],
@@ -567,7 +595,7 @@
           162
         ],
         [
-          322,
+          476,
           162
         ]
       ],
@@ -589,7 +617,7 @@
       "width_um": 3.4
     }
   ],
-  "gds_sha256": "42907170aa2f0491b548c3e6ff2502813325b4f87a06b58d522e13361c90f3ce",
+  "gds_sha256": "680f3fbd0478c20b3dacda411db0fd3d52b8eb2428e9111cfcef9ae49622ef67",
   "sources": {
     "/home/ishi-kai/balanced-ternary-logic/mul_nand.gds": "33e48870d367b4c41b9dd46620da3dabddefb023ba4123364cdb34e7230acbeb",
     "/home/ishi-kai/balanced-ternary-logic/mul_nor.gds": "406dcd11bb7c1d648497526c212237c167a7c218b39639349b66f0833e801fcb",

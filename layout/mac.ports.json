@@ -9,6 +9,34 @@
     783.7
   ],
   "ports": {
+    "and_out": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        706,
+        558.5
+      ]
+    },
+    "or_out": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        540,
+        600
+      ]
+    },
     "a": {
       "layer": [
         13,
@@ -103,7 +131,7 @@
         0
       ],
       "position_um": [
-        1770,
+        678,
         770
       ]
     },
@@ -117,7 +145,7 @@
         0
       ],
       "position_um": [
-        1770,
+        594,
         776
       ]
     },
@@ -131,7 +159,7 @@
         0
       ],
       "position_um": [
-        1770,
+        8,
         782
       ]
     }
@@ -154,9 +182,135 @@
         123.2
       ],
       "magnification": 1
+    },
+    {
+      "role": "x_and",
+      "cell": "inverter",
+      "origin_um": [
+        600,
+        520
+      ],
+      "magnification": 1
     }
   ],
   "routes": [
+    {
+      "net": "nmin",
+      "layer": "M1",
+      "points_um": [
+        [
+          496,
+          570
+        ],
+        [
+          560,
+          570
+        ],
+        [
+          560,
+          545
+        ],
+        [
+          602,
+          545
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "or_out",
+      "layer": "M1",
+      "points_um": [
+        [
+          496,
+          582
+        ],
+        [
+          540,
+          582
+        ],
+        [
+          540,
+          600
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "and_out",
+      "layer": "M2",
+      "points_um": [
+        [
+          682,
+          558.5
+        ],
+        [
+          700,
+          558.5
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "and_out",
+      "layer": "M1",
+      "points_um": [
+        [
+          700,
+          558.5
+        ],
+        [
+          706,
+          558.5
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "VDD",
+      "layer": "M2",
+      "points_um": [
+        [
+          672,
+          584.3
+        ],
+        [
+          672,
+          770
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "VSS",
+      "layer": "M1",
+      "points_um": [
+        [
+          601.7,
+          521.7
+        ],
+        [
+          588,
+          521.7
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "VSS",
+      "layer": "M2",
+      "points_um": [
+        [
+          588,
+          521.7
+        ],
+        [
+          588,
+          776
+        ]
+      ],
+      "width_um": 3.4
+    },
     {
       "net": "p",
       "layer": "M1",
@@ -316,7 +470,7 @@
           770
         ],
         [
-          1770,
+          678,
           770
         ]
       ],
@@ -331,7 +485,7 @@
           776
         ],
         [
-          1770,
+          594,
           776
         ]
       ],
@@ -346,7 +500,7 @@
           782
         ],
         [
-          1770,
+          8,
           782
         ]
       ],
@@ -473,15 +627,16 @@
       "width_um": 3.4
     }
   ],
-  "gds_sha256": "50897ebc7495732838c8eee3447b92ce1e3cf16c062068164a54505a7517e326",
+  "gds_sha256": "822fed3eeba3e0e83213bbe9f67fcf7930cfa63994fc546cfbc9e1ff516ad870",
   "sources": {
-    "/home/ishi-kai/balanced-ternary-logic/mul.gds": "42907170aa2f0491b548c3e6ff2502813325b4f87a06b58d522e13361c90f3ce",
-    "/home/ishi-kai/balanced-ternary-logic/full_adder.gds": "d4be4d5cc1d40a85ed7a51e51784707d37ae374dffe99d9c84f052c6bcfa628c"
+    "/home/ishi-kai/balanced-ternary-logic/mul.gds": "680f3fbd0478c20b3dacda411db0fd3d52b8eb2428e9111cfcef9ae49622ef67",
+    "/home/ishi-kai/balanced-ternary-logic/full_adder.gds": "d4be4d5cc1d40a85ed7a51e51784707d37ae374dffe99d9c84f052c6bcfa628c",
+    "/home/ishi-kai/balanced-ternary-logic/inverter.gds": "13623ddea48f53fce0fe340afd720e66905fae5bfc0bdaccd4e3f85c39579de4"
   },
   "device_counts": {
-    "PMOS": 56,
-    "NMOS": 56,
-    "F_RR": 40
+    "PMOS": 57,
+    "NMOS": 57,
+    "F_RR": 42
   },
   "embedded_fa_labels_restored": [],
   "allocation_um": [

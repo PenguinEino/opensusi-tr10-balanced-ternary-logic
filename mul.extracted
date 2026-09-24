@@ -7,15 +7,17 @@
 * pin a
 * pin b
 * pin p
-.SUBCKT mul VDD VSS a b p
+* pin t1
+* pin t3
+.SUBCKT mul VDD VSS a b p t1 t3
 * cell instance $1 r0 *1 40,200
-X$1 VDD a b \$3 VSS mul_nand
+X$1 VDD a b t1 VSS mul_nand
 * cell instance $2 r0 *1 60,0
 X$2 VDD a b \$4 VSS mul_nor
 * cell instance $3 r0 *1 340,200
-X$3 VDD \$3 \$5 p VSS mul_nand
+X$3 VDD t1 t3 p VSS mul_nand
 * cell instance $4 r0 *1 220,0
-X$4 VDD \$4 \$5 VSS mul_inv
+X$4 VDD \$4 t3 VSS mul_inv
 .ENDS mul
 
 * cell mul_inv

@@ -246,7 +246,7 @@
       ]
     },
     "mul": {
-      "gds_sha256": "42907170aa2f0491b548c3e6ff2502813325b4f87a06b58d522e13361c90f3ce",
+      "gds_sha256": "680f3fbd0478c20b3dacda411db0fd3d52b8eb2428e9111cfcef9ae49622ef67",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
@@ -374,12 +374,12 @@
       ]
     },
     "mac": {
-      "gds_sha256": "50897ebc7495732838c8eee3447b92ce1e3cf16c062068164a54505a7517e326",
+      "gds_sha256": "822fed3eeba3e0e83213bbe9f67fcf7930cfa63994fc546cfbc9e1ff516ad870",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
       "off_grid_polygon_points": 0,
-      "placements": 128,
+      "placements": 129,
       "all_magnifications_one": true,
       "pcell_variants": [
         {

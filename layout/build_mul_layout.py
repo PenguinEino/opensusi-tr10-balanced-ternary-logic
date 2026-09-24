@@ -28,9 +28,9 @@ def build():
  for net,yy in tracks.items():
   xs=ends[net].copy()
   if net in ('a','b'):xs.append(20)
-  if net=='p':xs.append(476)
+  if net in ('p','t1','t3'):xs.append(476)
   d.route(net,'M1',[(min(xs),yy),(max(xs),yy)])
-  if net in ('a','b','p'):ports[net]=port(d,net,'M1',476 if net=='p' else 20,yy)
+  if net in ('a','b','p','t1','t3'):ports[net]=port(d,net,'M1',20 if net in ('a','b') else 476,yy)
  for net,yy in [('VDD',324.3),('VSS',1.7)]:ports[net]=port(d,net,'M1',476,yy)
  assert top.dbbox()==db.DBox(0,0,480,326)
  d.save('mul',ports,sources,dict(device_counts=dict(PMOS=7,NMOS=7,F_RR=8)))

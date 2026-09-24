@@ -73,7 +73,7 @@ def run(base,cfg,mode='dc',cap=10,temp=27,supply=5,step=.5,skew=0,edge=1,hold=12
    pts.append(f'{len(rr)*hold}n {STATES[rr[-1]][col]*supply/5}')
    val='PWL('+' '.join(pts)+')'
   s=re.sub(r'(?m)^V'+net.upper()+r' .*$',f'V{net.upper()} {net} 0 {val}',s)
- vectors='v(a) v(b) v(p) v(xdut.t1) v(xdut.t2) v(xdut.t3)'
+ vectors='v(a) v(b) v(p) v(t1) v(xdut.t2) v(t3)'
  command=f'dc VA {-supply} {supply} {step} VB {-supply} {supply} {step}' if mode=='dc' else f'tran 0.2n {len(rr)*hold}n 0 0.5n'
  ctrl=f'.control\nsave {vectors}\nset wr_singlescale\nset wr_vecnames\n{command}\nwrdata data.txt {vectors}\nquit\n.endc'
  s=re.sub(r'\.control.*?\.endc',lambda _:ctrl,s,flags=re.S)

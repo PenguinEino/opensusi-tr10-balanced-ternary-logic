@@ -39,8 +39,14 @@ C {devices/lab_pin.sym} 500 160 0 0 {name=l13 lab=t1}
 C {devices/lab_pin.sym} 500 480 0 0 {name=l14 lab=t2}
 C {devices/lab_pin.sym} 840 480 0 0 {name=l15 lab=t3}
 C {devices/opin.sym} 1270 300 0 0 {name=l16 lab=p}
-C {devices/iopin.sym} 160 680 0 0 {name=l17 lab=VDD}
-C {devices/iopin.sym} 400 680 0 0 {name=l18 lab=VSS}
+N 500 160 500 60 {lab=t1}
+N 500 60 1270 60 {lab=t1}
+C {devices/opin.sym} 1270 60 0 0 {name=l17 lab=t1}
+N 840 480 840 600 {lab=t3}
+N 840 600 1270 600 {lab=t3}
+C {devices/opin.sym} 1270 600 0 0 {name=l18 lab=t3}
+C {devices/iopin.sym} 160 680 0 0 {name=l19 lab=VDD}
+C {devices/iopin.sym} 400 680 0 0 {name=l20 lab=VSS}
 T {t1 = -min(a,b)} 40 770 0 0 0.24 0.24 {}
 T {t2 = -max(a,b); t3 = -t2 = max(a,b)} 40 815 0 0 0.24 0.24 {}
 T {p = -min(t1,t3) = a*b / 5 (voltages)} 40 860 0 0 0.24 0.24 {}
