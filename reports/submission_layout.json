@@ -1,6 +1,6 @@
 {
   "gds_sha256": "da5d981d506da9e8b37c49d053109457d773966074667dd0516f9b1e2295808e",
-  "reference_sha256": "2d2ee949ad4f05eab9b671d4ae1d806981f63aa6ff939e85c727ce1fa87a8a92",
+  "reference_sha256": "c75b3119c114104664a911e22f3d50b8dc8be164b9dd5052f45c4e4c71448a23",
   "drawing_drc": {
     "passed": true,
     "items": 0,
@@ -31,8 +31,9 @@
     "categories": {
       "WAR06: Floating SG Detected": 14
     },
-    "gds_sha256": "378d1e318e385a397a1e4b34444da8f3e573a65c62b15bea35666ed38552d500"
+    "gds_sha256": "9c48a3340a8add795dc2e8cb7862e706da58aa1f651c7490b2988802f40f54ff"
   },
   "passed": true,
-  "scope": "Drawing and strict LVS pass; standalone mask input warnings match the source exactly."
+  "scope": "Drawing and strict LVS pass; standalone mask input warnings match the source exactly.",
+  "extracted_electrically_identical": true
 }

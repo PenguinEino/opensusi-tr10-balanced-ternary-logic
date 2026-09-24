@@ -101,6 +101,8 @@ OR端子はMUL内部ノードを直接引き出しているので、その容量
 |---|---|---:|---:|---:|---|
 {{RESULTS}}
 
+{{ERROR_DETAIL}}
+
 81入力はX/A/B/Cinの全3^4通りと初期状態への復帰。
 6,480遷移は異なる81状態間の全有向遷移。Euler巡回を4分割し、各分割の先頭に初期入力と開始状態の保持区間を置く。
 648遷移は入力1本だけが変わる全有向遷移。遷移ごとの状態リセットは行わない。
@@ -117,7 +119,7 @@ OR端子はMUL内部ノードを直接引き出しているので、その容量
 ## Xschem・KLayoutでの使い方
 
 TR-1um dev PDKを設定したXschemで、このフォルダの`mac_tb.sch`を開き、Netlist → Simulate。
-PDKの`TR-1umLIB`をライブラリ検索パスに含め、Tcl変数`LIB`をPDKの`libs.tech/spice/models`に設定する。
+`XSCHEM_LIBRARY_PATH`にこの提出フォルダとPDKの`libs.tech/xschem`（`TR-1umLIB`の親）を含め、Tcl変数`LIB`をPDKの`libs.tech/spice/models`に設定する。
 同梱の子回路図とsymbolは相対参照。元の作業ディレクトリは不要。
 TBには全81入力のシーケンス表・期待値・照合処理を記載し、純正ngspiceの電圧plotを使う。
 負荷容量はTBのCsum/Ccout/Cand_out/Cor_outで変更する。

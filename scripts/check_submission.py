@@ -3,7 +3,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import json,re
 import verify_arithmetic_layout as verify
-from build_submission import OUT,WORK,sha
+from build_submission import OUT,WORK,sha,electrical
 
 def main():
  gds=OUT/'mac.gds';ref=OUT/'simulation/mac.spice';before=sha(gds)
@@ -15,6 +15,8 @@ def main():
  assert results[0]['passed'] and results[1]['passed']
  source=json.loads((verify.ROOT/'reports/mac_layout.json').read_text())
  assert results[2]['items']==source['mask_drc']['items'] and results[2]['categories']==source['mask_drc']['categories']
+ assert electrical(Path(results[1]['extracted']).read_text())==electrical((OUT/'mac.extracted').read_text())
+ report['extracted_electrically_identical']=True
  report['passed']=True;report['scope']='Drawing and strict LVS pass; standalone mask input warnings match the source exactly.'
  for p in OUT.glob('*.md'):
   for link in re.findall(r'\]\(([^)]+)\)',p.read_text()):

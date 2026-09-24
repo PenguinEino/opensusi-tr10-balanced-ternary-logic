@@ -79,4 +79,3 @@ MXM7 net5 b VMID VSS NMOS w=8u l=1u
 MXM8 net6 b vout VDD PMOS w=14u l=1u
 MXM9 net6 a VMID VSS NMOS w=8u l=1u
 .ends
-

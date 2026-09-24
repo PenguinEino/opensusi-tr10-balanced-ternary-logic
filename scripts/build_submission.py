@@ -67,7 +67,7 @@ def prepare():
  assert electrical(ref)==electrical((ROOT/'simulation/mac.spice').read_text())
  (OUT/'simulation').mkdir(exist_ok=True)
  # Make default KLayout LVS work from the submission directory as well.
- (OUT/'simulation/mac.spice').write_text('\n'.join(l for l in ref.splitlines() if not l.lstrip().startswith('*'))+'\n')
+ (OUT/'simulation/mac.spice').write_text('\n'.join(l for l in ref.splitlines() if not l.lstrip().startswith('*')).rstrip()+'\n')
  shutil.copy2(ROOT/'mac.extracted',OUT/'mac.extracted')
  svg=OUT/'mac_schematic.svg';cmd=f'xschem set text_svg 1; xschem print svg {{{svg}}} 2000 1700 -20 -190 1370 1000; exit'
  p=subprocess.run(['xschem','-r','-x','--rcfile',str(rc),'--command',cmd,str(moved/'mac.sch')],capture_output=True,text=True)
@@ -80,7 +80,19 @@ def prepare():
 
 def docs(final=False):
  summary=json.loads((ROOT/'reports/mac_summary.json').read_text()) if final else None
- if final:assert summary['passed'] and summary['gds_sha256']==sha(ROOT/'mac.gds')
+ if final:
+  assert summary['passed'] and summary['gds_sha256']==sha(ROOT/'mac.gds')
+  portability=json.loads((ROOT/'reports/submission_portability.json').read_text())
+  physical=json.loads((ROOT/'reports/submission_layout.json').read_text())
+  figures=json.loads((ROOT/'reports/submission_figures.json').read_text())
+  assert portability['passed'] and physical['passed'] and figures['passed']
+  assert portability['layout']['source_sha256']==summary['gds_sha256']
+  assert portability['layout']['submitted_sha256']==physical['gds_sha256']==figures['gds_sha256']==sha(OUT/'mac.gds')
+  assert physical['reference_sha256']==sha(OUT/'simulation/mac.spice')
+  assert sha(OUT/'mac.extracted')==sha(ROOT/'mac.extracted')
+  assert portability['schematic_image_source_sha256']==sha(OUT/'mac.sch')
+  for name,digest in figures['images'].items():assert sha(OUT/name)==digest,name
+  for p in dependencies():assert (OUT/p.name).read_text()==p.read_text().replace(str(ROOT)+'/', ''),p.name
  ports=json.loads((ROOT/'layout/mac.ports.json').read_text())['ports']
  functions={'VDD':('電源','+5 V'),'VMID':('電源','0 V基準'),'VSS':('電源','−5 V（共通VSS）'),'x':('入力','加算値・外部で保持する累積値'),'a':('入力','被乗数'),'b':('入力','乗数、ADD時+1、SUB時−1'),'cin':('入力','下位桁からのcarry'),'sum':('出力','演算結果の下位trit'),'cout':('出力','上位桁へのcarry'),'and_out':('出力','min(a,b)'),'or_out':('出力','max(a,b)')}
  rows=[]
@@ -92,7 +104,7 @@ def docs(final=False):
   results='\n'.join(f"| {r['scope']} | {r['mode']} | {r['load_fF']} fF/出力 | {r['max_error_mV']:.3f} mV | {r['max_settle_ns']:.2f} ns | PASS |" for r in summary['cases'])
  else:results='| 検証更新中 | 全遷移の実行完了後に結果を反映 | — | — | — | 実行中 |'
  for name in ('README.md','SPEC.md'):
-  s=(ROOT/'design/submission'/name).read_text().replace('{{PORTS}}',table).replace('{{RESULTS}}',results).replace('{{STATUS}}','検証完了。条件と未評価範囲は仕様書を参照。' if final else '全遷移検証を実行中。完了後に仕様書の検証結果を更新する。')
+  s=(ROOT/'design/submission'/name).read_text().replace('{{PORTS}}',table).replace('{{RESULTS}}',results).replace('{{ERROR_DETAIL}}',f"SUM/Coutの最大誤差は {max(r['sum_cout_error_mV'] for r in summary['cases']):.3f} mV、AND/ORの最大誤差は {max(r['and_or_error_mV'] for r in summary['cases']):.3f} mV。" if final else '各出力群の誤差は全検証終了後に集計する。').replace('{{STATUS}}','検証完了。条件と未評価範囲は仕様書を参照。' if final else '全遷移検証を実行中。完了後に仕様書の検証結果を更新する。')
   (OUT/name).write_text(s)
 
 def manifest():
