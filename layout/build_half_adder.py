@@ -4,6 +4,7 @@ from pathlib import Path
 import hashlib
 import json
 import pya as db
+from arithmetic_helpers import import_tree
 
 ROOT = Path(__file__).resolve().parents[1]
 DBU = .001
@@ -21,13 +22,9 @@ TRACKS = {name:128+6*i for i,name in enumerate(['a','b','t','u','na','carry','d'
 
 def build():
     sources = [ROOT/'inverter.gds', ROOT/'nany.gds']
-    lib = db.Library.library_by_name('BT')
-    assert lib is not None, 'Install layout/klayout/bt_library_context.lym before building'
-    assert lib.layout().technology_name == 'TR-1um'
-    assert all('defunct' not in c.display_title() for c in lib.layout().each_cell())
     layout = db.Layout(); layout.dbu = DBU; layout.technology_name = 'TR-1um'
     top = layout.create_cell('half_adder')
-    cells = {name:layout.cell(layout.add_lib_cell(lib,lib.layout().cell(name).cell_index())) for name in ('inverter','nany')}
+    cells = {name:import_tree(layout,ROOT/(name+'.gds'),name) for name in ('inverter','nany')}
     metadata = {name:json.loads((ROOT/f'layout/{name}.ports.json').read_text()) for name in cells}
     routes = []; endpoints = {name:[] for name in TRACKS}; placements=[]
     def box(layer,x0,y0,x1,y1):
@@ -53,8 +50,8 @@ def build():
         upper=y>0
         for port,net in dict(pins,**({'VMID':'VMID'} if kind=='nany' else {})).items():
             px,py=ports[port]['position_um']; px+=x; py+=y
-            if port=='vout':ex=x+width+6
-            elif kind=='inverter':ex=x-18
+            if port=='vout':ex=x+width-4
+            elif kind=='inverter':ex=x-14
             else:
                 offsets={'a':18,'b':12,'VMID':6} if upper else {'a':6,'b':12,'VMID':18}
                 ex=x-offsets[port]
@@ -69,10 +66,16 @@ def build():
             _,py=ports['VDD']['position_um'];py+=y
             wire('VDD',M1,[(x+width-1.7,py),(x+width+12,py),(x+width+12,y+113.3)])
     # Shared row power rails. Vertical signals use M2 and cross these without vias.
+    # Preserve the right-side lower-row VMID access used by the hand-routed FA.
+    wire('VMID',M2,[(588,38),(642,38)])
     for y in (0,200):
         for net,dy,gx in [('VSS',1.7,10),('VDD',113.3,4)]:
-            box(M1,0,y+dy-1.7,660,y+dy+1.7)
-            via(net,gx,y+dy)
+            lo,hi=(-14.3,1.7) if net=='VSS' else (-1.7,10.3)
+            box(M1,0,y+dy+lo,660,y+dy+hi)
+            direction=-1 if net=='VSS' else 1
+            count=4 if net=='VSS' else 3
+            for j in range(count):via(net,gx,y+dy+direction*4*j)
+            wire(net,M2,[(gx,y+dy),(gx,y+dy+direction*4*(count-1))])
     wire('VDD',M2,[(4,113.3),(4,313.3)])
     wire('VSS',M2,[(10,1.7),(10,201.7)])
     portspec={}

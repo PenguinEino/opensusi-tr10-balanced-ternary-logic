@@ -20,7 +20,7 @@ def build(out):
     layout.technology_name = 'TR-1um'
     top = layout.create_cell('nany')
     d = Drawing(layout, top)
-    width, height = 132., 115.
+    width, height = 148., 115.
 
     for role, kind, x, y, w in [
         ('XM5', 'fet_p', 20, 88, 34), ('XM3', 'fet_p', 35, 88, 34),
@@ -31,24 +31,24 @@ def build(out):
         d.pcell(role, kind, x, y, dict(w=w, l=1., n=1,
                                      cont_between_gates=True, y0='c'))
     for role, y in [('R2', 72), ('R1', 42)]:
-        d.pcell(role, 'res_diff', 108, y, dict(w=2.8, l=16.))
+        d.pcell(role, 'res_diff', 112.5, y, dict(w=2.8, l=30.))
 
     d.box('WN', 6.3, 64, 75.3, 112)
-    d.box('WN', 87.5, 30.6, 128.5, 83.4)
+    d.box('WN', 85, 30.6, 140, 83.4)
     d.pcell('PMOS well tap', 'cont_n', 12.6, 88)
-    d.pcell('RR well tap', 'cont_n', 108, 57)
+    d.pcell('RR well tap', 'cont_n', 112.5, 57)
     for x in (8, 76):
         d.pcell('VSS bulk tap', 'cont_p', x, 15)
         d.wire('M1', [(x, 15), (x, 1.7)], 2.6)
     d.box('M1', 0, 111.6, width, 115)
     d.box('M1', 0, 0, width, 3.4)
     d.wire('M1', [(12.6, 88), (15, 88), (15, 113.3)], 2.6)
-    d.wire('M1', [(108, 57), (108, 98), (123.5, 98), (123.5, 113.3)], 2.6)
+    d.wire('M1', [(112.5, 57), (112.5, 98), (135, 98), (135, 113.3)], 2.6)
     for y in (42, 72):
         # dev GC.R3: extend GC out of the RR recognition region before contacting it.
-        d.wire('GC', [(121.5, y), (123.5, y)], 2.6)
-        d.pcell('RR GC tie', 'cont_g', 123.5, y)
-    d.wire('M1', [(123.5, 42), (123.5, 98)], 2.6)
+        d.wire('GC', [(133, y), (135, y)], 2.6)
+        d.pcell('RR GC tie', 'cont_g', 135, y)
+    d.wire('M1', [(135, 42), (135, 98)], 2.6)
 
     def via(x, y, role):
         d.pcell(role, 'via_1', x, y)
@@ -104,12 +104,12 @@ def build(out):
     trunk(75, 26.3, 75, 52, 'clamp n a')
 
     # RR terminals; SUB and both GC rings are already physically tied to VDD.
-    trunk(99.5, 72, 99.5, 64, 'R2 input')
-    trunk(99.5, 42, 99.5, 32, 'R1 input')
-    d.wire('M1', [(116.5, 42), (116.5, 72)], 2.6)
-    via(116.5, 58, 'RR output')
-    for xa, xb, y in [(15, 99.5, 32), (40, 99.5, 64),
-                       (45, width-1.7, 58), (1.7, width-1.7, 38),
+    trunk(97, 72, 97, 64, 'R2 input')
+    trunk(97, 42, 97, 32, 'R1 input')
+    d.wire('M1', [(128, 42), (128, 72)], 2.6)
+    via(128, 58, 'RR output')
+    for xa, xb, y in [(15, 97, 32), (40, 97, 64),
+                       (45, width-1.7, 58), (1.7, 80, 38),
                        (1.7, 75, 52), (1.7, 65, 46)]:
         d.wire('M2', [(xa, y), (xb, y)], 3.4)
 
@@ -120,7 +120,7 @@ def build(out):
         ('vout', 'M2', width-2, 58, 'right', 'output'),
         ('VDD', 'M1', width/2, 113.3, 'top', 'power'),
         ('VSS', 'M1', width/2, 1.7, 'bottom', 'power'),
-        ('VMID', 'M2', width/2, 38, 'left/right', 'power'),
+        ('VMID', 'M2', width/2, 38, 'left', 'power'),
     ]:
         d.label(layer, name, x, y)
         ports[name] = dict(layer=[13 if layer == 'M1' else 20, 0],

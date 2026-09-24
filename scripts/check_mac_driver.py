@@ -12,8 +12,11 @@ def main():
  # Physically tie the four inputs to existing VDD spines, using the
  # current floorplan's dedicated gap between MUL and FA.
  for net,y in [('a',558),('b',564)]:d.route(net,'M1',[(24,y),(40,y)]);d.via(net,24,y)
- d.route('VDD','M1',[(8,392),(769,392)])
- for x in (8,32,769):d.via('VDD',x,392)
+ d.route('VDD','M1',[(2,392),(32,392)])
+ for x in (2,32):d.via('VDD',x,392)
+ d.route('VDD','M2',[(2,392),(2,880)]);d.via('VDD',2,880)
+ d.route('VDD','M1',[(2,880),(560,880)])
+ d.route('VDD','M2',[(800.9,392),(800.9,900)]);d.via('VDD',800.9,900)
  meta=json.loads((root/'layout/mac.ports.json').read_text())
  for n in ('sum','cout','and_out','or_out','VDD','VSS','VMID'):
   p=meta['ports'][n];port(d,n,'M1' if p['layer']==[13,0] else 'M2',*p['position_um'])

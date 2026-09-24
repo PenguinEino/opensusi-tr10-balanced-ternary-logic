@@ -17,7 +17,7 @@ XM$3 \$4 a V\x2d V\x2d NMOS L=1u W=6.5u AS=18.2p AD=18.2p PS=18.6u PD=18.6u
 * device instance $4 r0 *1 35,16 NMOS
 XM$4 \$4 b V\x2d V\x2d NMOS L=1u W=6.5u AS=18.2p AD=18.2p PS=18.6u PD=18.6u
 * device instance $5 r0 *1 90,42 F_RR
-XR$5 \$4 vout V+ F_RR R=5.35714285714 L=15u W=2.8u A=42p P=35.6u m=1
+XR$5 \$4 vout V+ F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
 * device instance $6 r0 *1 90,78 F_RR
-XR$6 \$3 vout V+ F_RR R=5.35714285714 L=15u W=2.8u A=42p P=35.6u m=1
+XR$6 \$3 vout V+ F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
 .ENDS mul_nor

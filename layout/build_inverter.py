@@ -81,33 +81,33 @@ def build(out: Path):
                                        "cont_between_gates": True, "y0": "c"})
     d.pcell("XM2", "fet_n", 13.2, 14, {"w": 5., "l": 1., "n": 1,
                                        "cont_between_gates": True, "y0": "c"})
-    d.pcell("R1", "res_diff", 58, 45, {"w": 2.8, "l": 20.})
-    d.pcell("R2", "res_diff", 58, 32, {"w": 2.8, "l": 20.})
+    d.pcell("R1", "res_diff", 64, 45, {"w": 2.8, "l": 30.})
+    d.pcell("R2", "res_diff", 64, 32, {"w": 2.8, "l": 30.})
 
     # Distinct PMOS and RR wells: the PDK prohibits PMOS active in an RR well.
     d.box("WN", 2.9, 30.25, 23.5, 61.3)
     # The mask deck requires 10 um around an RR-well tap, while the drawing
     # deck's generic N+ tap rule is only 5 um. Honor the stronger mask rule.
-    d.box("WN", 35.5, 20.6, 80.5, 65.3)
+    d.box("WN", 36.5, 20.6, 91.5, 65.3)
     d.pcell("PMOS well tap", "cont_n", 13.2, 55)
-    d.pcell("RR well tap", "cont_n", 58, 54)
+    d.pcell("RR well tap", "cont_n", 64, 54)
     d.pcell("NMOS bulk tap", "cont_p", 5.8, 14)
 
     # Parent-accessible power rails and their physically connected taps.
-    d.box("M1", 0, 62.6, 84, 66)
-    d.box("M1", 0, 0, 84, 3.4)
+    d.box("M1", 0, 62.6, 96, 66)
+    d.box("M1", 0, 0, 96, 3.4)
     d.wire("M1", [(11.2, 44), (11.2, 64.3)], 2.6)
     d.wire("M1", [(11.2, 55), (13.2, 55)], 2.6)
     d.wire("M1", [(11.2, 14), (11.2, 1.7)], 2.6)
     d.wire("M1", [(5.8, 14), (5.8, 1.7)], 2.6)
-    d.wire("M1", [(58, 54), (58, 64.3)], 2.6)
+    d.wire("M1", [(64, 54), (64, 64.3)], 2.6)
 
     # Both resistor GC guard rings are tied to their common VDD well.
     for y in (32, 45):
         # dev GC.R3 forbids contacts in the RR recognition region.
-        d.wire("GC", [(73.5, y), (75.5, y)], 2.6)
-        d.pcell(f"RR GC tie at y={y}", "cont_g", 75.5, y)
-    d.wire("M1", [(75.5, 32), (75.5, 54), (58, 54)], 2.6)
+        d.wire("GC", [(84.5, y), (86.5, y)], 2.6)
+        d.pcell(f"RR GC tie at y={y}", "cont_g", 86.5, y)
+    d.wire("M1", [(86.5, 32), (86.5, 54), (64, 54)], 2.6)
 
     # Shared gate input. Only the two intended active crossings form MOS gates.
     d.wire("GC", [(13.2, 14), (13.2, 44)], 1.)
@@ -115,32 +115,32 @@ def build(out: Path):
     d.box("M1", 0, 23.7, 13.2, 26.3)
 
     # XM1.D -> R1.A and XM2.D -> R2.A; right RR terminals form vout.
-    d.wire("M1", [(15.2, 44), (30, 44), (30, 45), (47.5, 45)], 2.6)
-    d.wire("M1", [(15.2, 14), (30, 14), (30, 32), (47.5, 32)], 2.6)
-    d.wire("M1", [(68.5, 32), (68.5, 45)], 2.6)
+    d.wire("M1", [(15.2, 44), (30, 44), (30, 45), (48.5, 45)], 2.6)
+    d.wire("M1", [(15.2, 14), (30, 14), (30, 32), (48.5, 32)], 2.6)
+    d.wire("M1", [(79.5, 32), (79.5, 45)], 2.6)
     # M2 crosses the RR guard supply without a short. Via is between GC rings.
-    d.pcell("vout M1-M2 access", "via_1", 68.5, 38.5)
-    d.box("M2", 68.5, 36.8, 84, 40.2)
+    d.pcell("vout M1-M2 access", "via_1", 79.5, 38.5)
+    d.box("M2", 79.5, 36.8, 96, 40.2)
 
     ports = {
         "vin": {"layer": [13, 0], "label_layer": [48, 0],
                 "position_um": [2, 25], "access_box_um": [0, 23.7, 4, 26.3],
                 "edge": "left", "direction": "input"},
         "vout": {"layer": [20, 0], "label_layer": [49, 0],
-                 "position_um": [82, 38.5], "access_box_um": [80, 36.8, 84, 40.2],
+                 "position_um": [94, 38.5], "access_box_um": [92, 36.8, 96, 40.2],
                  "edge": "right", "direction": "output"},
         "VDD": {"layer": [13, 0], "label_layer": [48, 0],
-                "position_um": [42, 64.3], "access_box_um": [0, 62.6, 84, 66],
+                "position_um": [48, 64.3], "access_box_um": [0, 62.6, 96, 66],
                 "edge": "top", "direction": "power", "voltage_V": 5},
         "VSS": {"layer": [13, 0], "label_layer": [48, 0],
-                "position_um": [42, 1.7], "access_box_um": [0, 0, 84, 3.4],
+                "position_um": [48, 1.7], "access_box_um": [0, 0, 96, 3.4],
                 "edge": "bottom", "direction": "power", "voltage_V": -5},
     }
     for name, port in ports.items():
         layer = "M1" if port["layer"] == [13, 0] else "M2"
         d.label(layer, name, *port["position_um"])
 
-    assert top.dbbox() == db.DBox(0, 0, 84, 66), top.dbbox()
+    assert top.dbbox() == db.DBox(0, 0, 96, 66), top.dbbox()
     target = (ROOT if out == HERE else out) / "inverter.gds"
     # Use a single canonical top-level macro; child PCells retain their names.
     write_gds(layout, target)
@@ -148,10 +148,10 @@ def build(out: Path):
         "top_cell": "inverter", "gds": os.path.relpath(target, out),
         "gds_sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
         "generator": "build_inverter.py", "pdk": str(PDK),
-        "database_unit_um": GDS_DBU, "placement_grid_um": GDS_DBU,
+        "database_unit_um": GDS_DBU, "placement_grid_um": 0.05,
         "static_pcell_variants": [],
-        "bbox_um": [0, 0, 84, 66], "width_um": 84, "height_um": 66,
-        "area_um2": 5544, "ports": ports,
+        "bbox_um": [0, 0, 96, 66], "width_um": 96, "height_um": 66,
+        "area_um2": 6336, "ports": ports,
         "source_schematic": "../inverter.sch",
         "supply_contract": {"VDD": "former V+; +5 V; PMOS body and RR SUB",
                             "VSS": "former V-; -5 V; NMOS body and global bulk",

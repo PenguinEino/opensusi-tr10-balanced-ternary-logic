@@ -1,13 +1,13 @@
 {
   "top": "mul_inv",
-  "gds_sha256": "ca48216a540ba03cca26bf62f56fc8e2e7568b23f75ce04494cf24506b984d9e",
-  "schematic_sha256": "991208956eabcea4b0614b78b82afc3b492f30933297ee6916ff3e7e19a4aeee",
-  "reference_sha256": "1564b1e0cb780ba74980aab313934754ed5c6fd2e1badd78895f6043fb4425d4",
+  "gds_sha256": "e316bb94a0bb1ef31a19aa5ffcdeff0ea264cd727582f41e977f23ad38d986fc",
+  "schematic_sha256": "015e068c3dc97c81e8b14964e72137bc8e1101cca91d1bed7fa820e6e7e0829e",
+  "reference_sha256": "decbe8a0df688b0a4ff6a2cd3ca7d532db880cbc32e2a5c66d18200298ca4e7c",
   "dbu_um": 0.001,
   "bbox_um": [
     0.0,
     0.0,
-    84.0,
+    96.0,
     66.0
   ],
   "waiver_regions": 0,
@@ -33,7 +33,7 @@
     "categories": {
       "WAR06: Floating SG Detected": 1
     },
-    "gds_sha256": "4899f244dd22574a3c708dd6495a6f2a553497757d712ef59bad13911d138efa"
+    "gds_sha256": "ec035c7f3fe117d03553a82ddf862f6c778e6afa3472fbc340b8f7d81140e928"
   },
   "rules_sha256": {
     "libs.tech/klayout/tech/drc/00_Layers.drc": "6e029f7adeb58062bd8f5a1983d8c71188d23b5d5c5a2c404501026df8174e86",

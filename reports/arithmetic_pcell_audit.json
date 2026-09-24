@@ -2,170 +2,8 @@
   "passed": true,
   "cold_read_before_library_registration": true,
   "cells": {
-    "mul_nand": {
-      "gds_sha256": "33e48870d367b4c41b9dd46620da3dabddefb023ba4123364cdb34e7230acbeb",
-      "dbu_um": 0.001,
-      "grid_um": 0.05,
-      "saved_vs_regenerated_xor_um2": 0,
-      "off_grid_polygon_points": 0,
-      "placements": 21,
-      "all_magnifications_one": true,
-      "pcell_variants": [
-        {
-          "cell": "via_1",
-          "parameters": {
-            "x": 3.4000000000000004,
-            "x0": "c",
-            "y": 3.4000000000000004,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "cont_g",
-          "parameters": {
-            "x": 2.6,
-            "x0": "c",
-            "y": 2.6,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "cont_p",
-          "parameters": {
-            "hole": false,
-            "x": 2.6,
-            "x0": "c",
-            "y": 2.6,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "cont_n",
-          "parameters": {
-            "hole": false,
-            "x": 2.6,
-            "x0": "c",
-            "y": 2.6,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "res_diff",
-          "parameters": {
-            "l": 15,
-            "w": 2.8000000000000003
-          }
-        },
-        {
-          "cell": "fet_n",
-          "parameters": {
-            "cont_between_gates": true,
-            "l": 1.0,
-            "n": 1,
-            "type": "NFET",
-            "w": 13,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "fet_p",
-          "parameters": {
-            "cont_between_gates": true,
-            "l": 1.0,
-            "n": 1,
-            "type": "PFET",
-            "w": 19,
-            "y0": "c"
-          }
-        }
-      ],
-      "logical_cells": [
-        "mul_nand"
-      ]
-    },
-    "mul_nor": {
-      "gds_sha256": "406dcd11bb7c1d648497526c212237c167a7c218b39639349b66f0833e801fcb",
-      "dbu_um": 0.001,
-      "grid_um": 0.05,
-      "saved_vs_regenerated_xor_um2": 0,
-      "off_grid_polygon_points": 0,
-      "placements": 21,
-      "all_magnifications_one": true,
-      "pcell_variants": [
-        {
-          "cell": "via_1",
-          "parameters": {
-            "x": 3.4000000000000004,
-            "x0": "c",
-            "y": 3.4000000000000004,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "cont_g",
-          "parameters": {
-            "x": 2.6,
-            "x0": "c",
-            "y": 2.6,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "cont_p",
-          "parameters": {
-            "hole": false,
-            "x": 2.6,
-            "x0": "c",
-            "y": 2.6,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "cont_n",
-          "parameters": {
-            "hole": false,
-            "x": 2.6,
-            "x0": "c",
-            "y": 2.6,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "res_diff",
-          "parameters": {
-            "l": 15,
-            "w": 2.8000000000000003
-          }
-        },
-        {
-          "cell": "fet_n",
-          "parameters": {
-            "cont_between_gates": true,
-            "l": 1.0,
-            "n": 1,
-            "type": "NFET",
-            "w": 6.5,
-            "y0": "c"
-          }
-        },
-        {
-          "cell": "fet_p",
-          "parameters": {
-            "cont_between_gates": true,
-            "l": 1.0,
-            "n": 1,
-            "type": "PFET",
-            "w": 37,
-            "y0": "c"
-          }
-        }
-      ],
-      "logical_cells": [
-        "mul_nor"
-      ]
-    },
-    "mul_inv": {
-      "gds_sha256": "ca48216a540ba03cca26bf62f56fc8e2e7568b23f75ce04494cf24506b984d9e",
+    "inverter": {
+      "gds_sha256": "66242f8be89020ec65350f12ffcc2a7301bc632955dfde345016224138e7e3a4",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
@@ -214,7 +52,7 @@
         {
           "cell": "res_diff",
           "parameters": {
-            "l": 15,
+            "l": 30.0,
             "w": 2.8000000000000003
           }
         },
@@ -225,7 +63,7 @@
             "l": 1.0,
             "n": 1,
             "type": "NFET",
-            "w": 5,
+            "w": 5.0,
             "y0": "c"
           }
         },
@@ -242,11 +80,114 @@
         }
       ],
       "logical_cells": [
-        "mul_inv"
+        "inverter"
       ]
     },
-    "mul": {
-      "gds_sha256": "680f3fbd0478c20b3dacda411db0fd3d52b8eb2428e9111cfcef9ae49622ef67",
+    "nany": {
+      "gds_sha256": "3403d325575c08cee2765c459d40985ee041db48a1ed21f1e13f3d9306af6282",
+      "dbu_um": 0.001,
+      "grid_um": 0.05,
+      "saved_vs_regenerated_xor_um2": 0,
+      "off_grid_polygon_points": 0,
+      "placements": 39,
+      "all_magnifications_one": true,
+      "pcell_variants": [
+        {
+          "cell": "via_1",
+          "parameters": {
+            "x": 3.4000000000000004,
+            "x0": "c",
+            "y": 3.4000000000000004,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_g",
+          "parameters": {
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_p",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_n",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "res_diff",
+          "parameters": {
+            "l": 30.0,
+            "w": 2.8000000000000003
+          }
+        },
+        {
+          "cell": "fet_n$1",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 8,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_n",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 11,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p$1",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 14,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 34,
+            "y0": "c"
+          }
+        }
+      ],
+      "logical_cells": [
+        "nany"
+      ]
+    },
+    "half_adder": {
+      "gds_sha256": "4ae02d9027d72ed279b6e016f4f48c2be1d0bc626206fd6fb8bee9c504aafaf9",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
@@ -261,7 +202,505 @@
             "l": 1.0,
             "n": 1,
             "type": "NFET",
-            "w": 5,
+            "w": 8,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_n$1",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 11,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p$2",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 14,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p$1",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 34,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "via_1",
+          "parameters": {
+            "x": 3.4000000000000004,
+            "x0": "c",
+            "y": 3.4000000000000004,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_g",
+          "parameters": {
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_p",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_n",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "res_diff",
+          "parameters": {
+            "l": 30.0,
+            "w": 2.8000000000000003
+          }
+        },
+        {
+          "cell": "fet_n",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 5.0,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 13.5,
+            "y0": "c"
+          }
+        }
+      ],
+      "logical_cells": [
+        "nany",
+        "inverter",
+        "half_adder"
+      ]
+    },
+    "full_adder": {
+      "gds_sha256": "8da06e19207e97f183959d32ace7a30034a8895fab7252edfdf097570cace621",
+      "dbu_um": 0.001,
+      "grid_um": 0.05,
+      "saved_vs_regenerated_xor_um2": 0,
+      "off_grid_polygon_points": 0,
+      "placements": 69,
+      "all_magnifications_one": true,
+      "pcell_variants": [
+        {
+          "cell": "fet_n$2",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 8,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_n$1",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 11,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p$2",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 14,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p$1",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 34,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "via_1",
+          "parameters": {
+            "x": 3.4000000000000004,
+            "x0": "c",
+            "y": 3.4000000000000004,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_g",
+          "parameters": {
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_p",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_n",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "res_diff",
+          "parameters": {
+            "l": 30.0,
+            "w": 2.8000000000000003
+          }
+        },
+        {
+          "cell": "fet_n",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 5.0,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 13.5,
+            "y0": "c"
+          }
+        }
+      ],
+      "logical_cells": [
+        "nany",
+        "inverter",
+        "half_adder",
+        "full_adder"
+      ]
+    },
+    "mul_nand": {
+      "gds_sha256": "2e33be77ea2bb0ca714aa35bff585bf1f109c195958a8d1d632cb1ec52bf25ff",
+      "dbu_um": 0.001,
+      "grid_um": 0.05,
+      "saved_vs_regenerated_xor_um2": 0,
+      "off_grid_polygon_points": 0,
+      "placements": 21,
+      "all_magnifications_one": true,
+      "pcell_variants": [
+        {
+          "cell": "via_1",
+          "parameters": {
+            "x": 3.4000000000000004,
+            "x0": "c",
+            "y": 3.4000000000000004,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_g",
+          "parameters": {
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_p",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_n",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "res_diff",
+          "parameters": {
+            "l": 30,
+            "w": 2.8000000000000003
+          }
+        },
+        {
+          "cell": "fet_n",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 13,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 19,
+            "y0": "c"
+          }
+        }
+      ],
+      "logical_cells": [
+        "mul_nand"
+      ]
+    },
+    "mul_nor": {
+      "gds_sha256": "704347b70467b0547ded933987a8e6145860cabc08bb68903f4e80ea5d77f9f5",
+      "dbu_um": 0.001,
+      "grid_um": 0.05,
+      "saved_vs_regenerated_xor_um2": 0,
+      "off_grid_polygon_points": 0,
+      "placements": 21,
+      "all_magnifications_one": true,
+      "pcell_variants": [
+        {
+          "cell": "via_1",
+          "parameters": {
+            "x": 3.4000000000000004,
+            "x0": "c",
+            "y": 3.4000000000000004,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_g",
+          "parameters": {
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_p",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_n",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "res_diff",
+          "parameters": {
+            "l": 30,
+            "w": 2.8000000000000003
+          }
+        },
+        {
+          "cell": "fet_n",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 6.5,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_p",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 37,
+            "y0": "c"
+          }
+        }
+      ],
+      "logical_cells": [
+        "mul_nor"
+      ]
+    },
+    "mul_inv": {
+      "gds_sha256": "e316bb94a0bb1ef31a19aa5ffcdeff0ea264cd727582f41e977f23ad38d986fc",
+      "dbu_um": 0.001,
+      "grid_um": 0.05,
+      "saved_vs_regenerated_xor_um2": 0,
+      "off_grid_polygon_points": 0,
+      "placements": 11,
+      "all_magnifications_one": true,
+      "pcell_variants": [
+        {
+          "cell": "fet_p",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "PFET",
+            "w": 13.5,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "fet_n",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 5.0,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "res_diff",
+          "parameters": {
+            "l": 30.0,
+            "w": 2.8000000000000003
+          }
+        },
+        {
+          "cell": "cont_n",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_p",
+          "parameters": {
+            "hole": false,
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "cont_g",
+          "parameters": {
+            "x": 2.6,
+            "x0": "c",
+            "y": 2.6,
+            "y0": "c"
+          }
+        },
+        {
+          "cell": "via_1",
+          "parameters": {
+            "x": 3.4000000000000004,
+            "x0": "c",
+            "y": 3.4000000000000004,
+            "y0": "c"
+          }
+        }
+      ],
+      "logical_cells": [
+        "mul_inv"
+      ]
+    },
+    "mul": {
+      "gds_sha256": "fd10a53c5e3081ba686b7d44ff54cef931d024d1b3129ea9f4b14051ffc61367",
+      "dbu_um": 0.001,
+      "grid_um": 0.05,
+      "saved_vs_regenerated_xor_um2": 0,
+      "off_grid_polygon_points": 0,
+      "placements": 57,
+      "all_magnifications_one": true,
+      "pcell_variants": [
+        {
+          "cell": "fet_n$2",
+          "parameters": {
+            "cont_between_gates": true,
+            "l": 1.0,
+            "n": 1,
+            "type": "NFET",
+            "w": 5.0,
             "y0": "c"
           }
         },
@@ -339,7 +778,7 @@
         {
           "cell": "res_diff",
           "parameters": {
-            "l": 15,
+            "l": 30,
             "w": 2.8000000000000003
           }
         },
@@ -374,21 +813,14 @@
       ]
     },
     "mac": {
-      "gds_sha256": "822fed3eeba3e0e83213bbe9f67fcf7930cfa63994fc546cfbc9e1ff516ad870",
+      "gds_sha256": "83a38ddc0e8dbc2aab769d2b50253850a343b6e1863eb4ad9c0464ce39502155",
       "dbu_um": 0.001,
       "grid_um": 0.05,
       "saved_vs_regenerated_xor_um2": 0,
       "off_grid_polygon_points": 0,
-      "placements": 129,
+      "placements": 131,
       "all_magnifications_one": true,
       "pcell_variants": [
-        {
-          "cell": "res_diff$2",
-          "parameters": {
-            "l": 16.0,
-            "w": 2.8000000000000003
-          }
-        },
         {
           "cell": "fet_n$4",
           "parameters": {
@@ -434,20 +866,13 @@
           }
         },
         {
-          "cell": "res_diff$1",
-          "parameters": {
-            "l": 20.0,
-            "w": 2.8000000000000003
-          }
-        },
-        {
           "cell": "fet_n$2",
           "parameters": {
             "cont_between_gates": true,
             "l": 1.0,
             "n": 1,
             "type": "NFET",
-            "w": 5,
+            "w": 5.0,
             "y0": "c"
           }
         },
@@ -501,6 +926,13 @@
           }
         },
         {
+          "cell": "res_diff",
+          "parameters": {
+            "l": 30,
+            "w": 2.8000000000000003
+          }
+        },
+        {
           "cell": "fet_n$1",
           "parameters": {
             "cont_between_gates": true,
@@ -520,13 +952,6 @@
             "type": "PFET",
             "w": 37,
             "y0": "c"
-          }
-        },
-        {
-          "cell": "res_diff",
-          "parameters": {
-            "l": 15,
-            "w": 2.8000000000000003
           }
         },
         {

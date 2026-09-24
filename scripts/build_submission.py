@@ -69,7 +69,7 @@ def prepare():
  # Make default KLayout LVS work from the submission directory as well.
  (OUT/'simulation/mac.spice').write_text('\n'.join(l for l in ref.splitlines() if not l.lstrip().startswith('*')).rstrip()+'\n')
  shutil.copy2(ROOT/'mac.extracted',OUT/'mac.extracted')
- svg=OUT/'mac_schematic.svg';cmd=f'xschem set text_svg 1; xschem print svg {{{svg}}} 2000 1700 -20 -190 1370 1000; exit'
+ svg=OUT/'mac_schematic.svg';cmd=f'xschem set text_svg 1; xschem print svg {{{svg}}} 2000 2000 -20 -190 1370 1200; exit'
  p=subprocess.run(['xschem','-r','-x','--rcfile',str(rc),'--command',cmd,str(moved/'mac.sch')],capture_output=True,text=True)
  assert p.returncode==0 and svg.exists() and svg.stat().st_size>1000
  # Increase only exported vector stroke width for readable white-background previews.

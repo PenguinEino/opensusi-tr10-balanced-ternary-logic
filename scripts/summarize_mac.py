@@ -27,7 +27,7 @@ def main():
    elif len(l)>5 and l[5] in ('PMOS','NMOS'):c[l[5]]+=1
    elif len(l)>4 and l[4]=='F_RR':c['F_RR']+=1
   return c
- devices=dict(count('mac'));assert devices==dict(PMOS=57,NMOS=57,F_RR=42)
+ devices=dict(count('mac'));assert devices==dict(PMOS=59,NMOS=59,F_RR=46)
  rows=[]
  for n,label in [('mac','回路図'),('mac_extracted','抽出回路')]:
   cases=reports[n]['cases'];assert len(cases)==3 and [r['transitions'] for r in cases]==[81,6480,648]

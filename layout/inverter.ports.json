@@ -1,21 +1,21 @@
 {
   "top_cell": "inverter",
   "gds": "../inverter.gds",
-  "gds_sha256": "42bc2c653b2c5287d169be09d208bde4e7e9eecf50f5a3238f10762b18e4a5eb",
+  "gds_sha256": "66242f8be89020ec65350f12ffcc2a7301bc632955dfde345016224138e7e3a4",
   "generator": "build_inverter.py",
   "pdk": "/home/ishi-kai/pdk/TR-1um",
   "database_unit_um": 0.001,
-  "placement_grid_um": 0.001,
+  "placement_grid_um": 0.05,
   "static_pcell_variants": [],
   "bbox_um": [
     0,
     0,
-    84,
+    96,
     66
   ],
-  "width_um": 84,
+  "width_um": 96,
   "height_um": 66,
-  "area_um2": 5544,
+  "area_um2": 6336,
   "ports": {
     "vin": {
       "layer": [
@@ -49,13 +49,13 @@
         0
       ],
       "position_um": [
-        82,
+        94,
         38.5
       ],
       "access_box_um": [
-        80,
+        92,
         36.8,
-        84,
+        96,
         40.2
       ],
       "edge": "right",
@@ -71,13 +71,13 @@
         0
       ],
       "position_um": [
-        42,
+        48,
         64.3
       ],
       "access_box_um": [
         0,
         62.6,
-        84,
+        96,
         66
       ],
       "edge": "top",
@@ -94,13 +94,13 @@
         0
       ],
       "position_um": [
-        42,
+        48,
         1.7
       ],
       "access_box_um": [
         0,
         0,
-        84,
+        96,
         3.4
       ],
       "edge": "bottom",
@@ -156,12 +156,12 @@
       "cell": "res_diff",
       "pcell": "res_diff",
       "origin_um": [
-        58,
+        64,
         45
       ],
       "rotation_deg": 0,
       "parameters": {
-        "l": 20.0,
+        "l": 30.0,
         "w": 2.8
       }
     },
@@ -170,12 +170,12 @@
       "cell": "res_diff",
       "pcell": "res_diff",
       "origin_um": [
-        58,
+        64,
         32
       ],
       "rotation_deg": 0,
       "parameters": {
-        "l": 20.0,
+        "l": 30.0,
         "w": 2.8
       }
     },
@@ -201,7 +201,7 @@
       "cell": "cont_n",
       "pcell": "cont_n",
       "origin_um": [
-        58,
+        64,
         54
       ],
       "rotation_deg": 0,
@@ -235,7 +235,7 @@
       "cell": "cont_g",
       "pcell": "cont_g",
       "origin_um": [
-        75.5,
+        86.5,
         32
       ],
       "rotation_deg": 0,
@@ -251,7 +251,7 @@
       "cell": "cont_g",
       "pcell": "cont_g",
       "origin_um": [
-        75.5,
+        86.5,
         45
       ],
       "rotation_deg": 0,
@@ -283,7 +283,7 @@
       "cell": "via_1",
       "pcell": "via_1",
       "origin_um": [
-        68.5,
+        79.5,
         38.5
       ],
       "rotation_deg": 0,
@@ -324,7 +324,5 @@
     "net": "vin",
     "explanation": "An unconnected external MOS-gate input has no active discharge path. The official warning is retained, without waiver or extra devices.",
     "integration_evidence": "The unchanged 2-INV driven fixture has zero drawing/mask markers and strict LVS match."
-  },
-  "pdk_branch": "dev",
-  "pdk_revision": "9ef2ac38e1717b3ba2a4b0b374e48c53017e952c"
+  }
 }

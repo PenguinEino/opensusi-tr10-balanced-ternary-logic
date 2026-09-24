@@ -1,13 +1,13 @@
 {
   "top_cell": "nany",
   "gds": "/home/ishi-kai/balanced-ternary-logic/nany.gds",
-  "gds_sha256": "d7d071a8bd197239d1959d5e8680fe69c28d66cc9e2e3e27cf98d712bd381bae",
+  "gds_sha256": "3403d325575c08cee2765c459d40985ee041db48a1ed21f1e13f3d9306af6282",
   "source_schematic": "/home/ishi-kai/balanced-ternary-logic/nany.sch",
   "pdk": "/home/ishi-kai/pdk/TR-1um",
   "dbu_um": 0.001,
-  "width_um": 132.0,
+  "width_um": 148.0,
   "height_um": 115.0,
-  "area_um2": 15180.0,
+  "area_um2": 17020.0,
   "ports": {
     "a": {
       "layer": [
@@ -63,15 +63,15 @@
         0
       ],
       "position_um": [
-        130.0,
+        146.0,
         58
       ],
       "edge": "right",
       "direction": "output",
       "access_box_um": [
-        128.3,
+        144.3,
         56.3,
-        131.7,
+        147.7,
         59.7
       ]
     },
@@ -85,15 +85,15 @@
         0
       ],
       "position_um": [
-        66.0,
+        74.0,
         113.3
       ],
       "edge": "top",
       "direction": "power",
       "access_box_um": [
-        64.3,
+        72.3,
         111.6,
-        67.7,
+        75.7,
         115.0
       ]
     },
@@ -107,15 +107,15 @@
         0
       ],
       "position_um": [
-        66.0,
+        74.0,
         1.7
       ],
       "edge": "bottom",
       "direction": "power",
       "access_box_um": [
-        64.3,
+        72.3,
         0.0,
-        67.7,
+        75.7,
         3.4
       ]
     },
@@ -129,15 +129,15 @@
         0
       ],
       "position_um": [
-        66.0,
+        74.0,
         38
       ],
-      "edge": "left/right",
+      "edge": "left",
       "direction": "power",
       "access_box_um": [
-        64.3,
+        72.3,
         36.3,
-        67.7,
+        75.7,
         39.7
       ]
     }
@@ -292,12 +292,12 @@
       "cell": "res_diff",
       "pcell": "res_diff",
       "origin_um": [
-        108,
+        112.5,
         72
       ],
       "rotation_deg": 0,
       "parameters": {
-        "l": 16.0,
+        "l": 30.0,
         "w": 2.8
       }
     },
@@ -306,12 +306,12 @@
       "cell": "res_diff",
       "pcell": "res_diff",
       "origin_um": [
-        108,
+        112.5,
         42
       ],
       "rotation_deg": 0,
       "parameters": {
-        "l": 16.0,
+        "l": 30.0,
         "w": 2.8
       }
     },
@@ -337,7 +337,7 @@
       "cell": "cont_n",
       "pcell": "cont_n",
       "origin_um": [
-        108,
+        112.5,
         57
       ],
       "rotation_deg": 0,
@@ -388,7 +388,7 @@
       "cell": "cont_g",
       "pcell": "cont_g",
       "origin_um": [
-        123.5,
+        135,
         42
       ],
       "rotation_deg": 0,
@@ -404,7 +404,7 @@
       "cell": "cont_g",
       "pcell": "cont_g",
       "origin_um": [
-        123.5,
+        135,
         72
       ],
       "rotation_deg": 0,
@@ -740,7 +740,7 @@
       "cell": "via_1",
       "pcell": "via_1",
       "origin_um": [
-        99.5,
+        97,
         64
       ],
       "rotation_deg": 0,
@@ -756,7 +756,7 @@
       "cell": "via_1",
       "pcell": "via_1",
       "origin_um": [
-        99.5,
+        97,
         32
       ],
       "rotation_deg": 0,
@@ -772,7 +772,7 @@
       "cell": "via_1",
       "pcell": "via_1",
       "origin_um": [
-        116.5,
+        128,
         58
       ],
       "rotation_deg": 0,
@@ -800,7 +800,5 @@
       "R180"
     ],
     "qualification": "12 um gap geometric check for four orientations; two R0 cells with real interconnect also verified. No zero-gap abutment."
-  },
-  "pdk_branch": "dev",
-  "pdk_revision": "9ef2ac38e1717b3ba2a4b0b374e48c53017e952c"
+  }
 }

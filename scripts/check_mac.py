@@ -64,46 +64,49 @@ def native(base,root):
  d=root/'tb_sequence';s=re.sub(r'^plot .*\n','',base,flags=re.M).replace('save all',f'save {VECTORS}').replace('.endc','quit\n.endc')
  log=simulate(d,s);assert 'PASS: multiply-add all 81 states' in log
  assert len(re.findall(r'^tran_\d+_\w+\s+=',log,re.M))==82*5
- r=evaluate(d/'mac_tran.txt',STATES+[STATES[0]],200)
+ r=evaluate(d/'mac_tran.txt',STATES+[STATES[0]],1000)
  (d/'view.spice').write_text(base);(d/'results.json').write_text(json.dumps(r,indent=2)+'\n')
- return dict(mode='all_81_inputs',load_fF=10,**{k:v for k,v in r.items() if k!='rows'})
+ return dict(mode='all_81_inputs',load_fF=10000,hold_ns=1000,max_step_ns=10,load_resistance_ohm=1e6,**{k:v for k,v in r.items() if k!='rows'})
 
-def transitions(base,root,cap=10,single=False,sequence=None,name=None):
- sequence=route(single) if sequence is None else sequence;hold=120
+def transitions(base,root,cap=10000,single=False,sequence=None,name=None):
+ sequence=route(single) if sequence is None else sequence;hold=1000
  name=name or f'{"single_input_648" if single else "all_6480"}_{cap}f';d=root/name;s=base
+ # 81-state comparison against the tighter 1e-4 / 1 pA run changes settled
+ # voltages by <1 mV. Use 1 nA to avoid resolving irrelevant off-state noise.
+ s=s.replace('reltol=1e-4','reltol=1e-3 abstol=1e-9 vntol=1e-5 trtol=10')
  for j,net in enumerate(PROBES[:4]):
   pts=[f'0 {sequence[0][j]}']
   for k in range(1,len(sequence)):pts.extend([f'{hold*k}n {sequence[k-1][j]}',f'{hold*k+1}n {sequence[k][j]}'])
   pts.append(f'{hold*len(sequence)}n {sequence[-1][j]}')
   s,n=re.subn(r'(?m)^V'+net.upper()+r' .*$',f'V{net.upper()} {net} 0 PWL('+' '.join(pts)+')',s);assert n==1
  for net in ('sum','cout','and_out','or_out'):s,n=re.subn(r'(?m)^C'+net+r' .*$',f'C{net} {net} 0 {cap}f',s);assert n==1
- ctrl=f'.control\nsave {VECTORS}\nset wr_singlescale\nset wr_vecnames\ntran 2n {len(sequence)*hold}n 0 2n\nwrdata data.txt {VECTORS}\nquit\n.endc'
+ ctrl=f'.control\nsave {VECTORS}\nset wr_singlescale\nset wr_vecnames\ntran 20n {len(sequence)*hold}n 0 20n\nwrdata data.txt {VECTORS}\nquit\n.endc'
  s=re.sub(r'\.control.*?\.endc',lambda _:ctrl,s,flags=re.S);simulate(d,s)
  (d/'view.spice').write_text(s.replace('\nquit\n',"\nplot v(x) v(a) v(b) v(cin) v(sum) title 'MAC SUM'\nplot v(sum) v(cout) title 'MAC outputs'\nplot v(and_out) v(or_out) title 'AND OR'\n"))
  r=evaluate(d/'data.txt',sequence,hold);(d/'results.json').write_text(json.dumps(r,indent=2)+'\n')
- return dict(mode=name,load_fF=cap,max_step_ns=2,hold_ns=hold,**{k:v for k,v in r.items() if k!='rows'})
+ return dict(mode=name,load_fF=cap,max_step_ns=20,hold_ns=hold,load_resistance_ohm=1e6,solver=dict(method='gear',maxord=2,reltol=1e-3,abstol_A=1e-9,vntol_V=1e-5,trtol=10),**{k:v for k,v in r.items() if k!='rows'})
 
-def exhaustive_parallel(base,root,workers=2):
+def exhaustive_parallel(base,root,workers=4):
  sequence=route();parts=[];covered=[]
- for i in range(4):
-  lo=6480*i//4;hi=6480*(i+1)//4
-  parts.append(([STATES[0]]+sequence[lo:hi+1],f'all_6480_10f/chunk_{i}'))
+ for i in range(16):
+  lo=6480*i//16;hi=6480*(i+1)//16
+  parts.append(([STATES[0]]+sequence[lo:hi+1],f'all_6480_10000f/chunk_{i}'))
   covered.extend(zip(sequence[lo:hi],sequence[lo+1:hi+1]))
  assert len(covered)==6480 and len(set(covered))==6480
  with ThreadPoolExecutor(max_workers=workers) as pool:
-  fs=[pool.submit(transitions,base,root,10,False,seq,name) for seq,name in parts];rows=[f.result() for f in fs]
- result=dict(mode='all_6480_10f',load_fF=10,max_step_ns=2,hold_ns=120,transitions=6480,unique_directed_transitions=6480,samples=sum(r['samples'] for r in rows),
+  fs=[pool.submit(transitions,base,root,10000,False,seq,name) for seq,name in parts];rows=[f.result() for f in fs]
+ result=dict(mode='all_6480_10000f',load_fF=10000,max_step_ns=20,hold_ns=1000,transitions=6480,unique_directed_transitions=6480,samples=sum(r['samples'] for r in rows),
   unsettled=sum(r['unsettled'] for r in rows),passed=all(r['passed'] for r in rows),chunks=rows,
-  initialization='Four Euler slices, each preceded by initial and source-state holds. Original 6480 edges plus setup transitions.')
+  initialization='Sixteen Euler slices, each preceded by initial and source-state holds. Original 6480 edges plus setup transitions.')
  for k in ('max_output_error_V','max_product_error_V','max_sum_cout_error_V','max_and_or_error_V','max_settle_ns'):result[k]=max(r[k] for r in rows)
- (root/'all_6480_10f/results_summary.json').write_text(json.dumps(result,indent=2)+'\n')
+ (root/'all_6480_10000f/results_summary.json').write_text(json.dumps(result,indent=2)+'\n')
  return result
 
 def main(quick=False):
  base=netlist();root=WORK/'schematic';rows=[native(base,root)];print(rows[0],flush=True)
  if not quick:
   rows.append(exhaustive_parallel(base,root));print(rows[-1],flush=True)
-  rows.append(transitions(base,root,100,True));print(rows[-1],flush=True)
+  rows.append(transitions(base,root,10000,True));print(rows[-1],flush=True)
  files=['mac.sch','mac.sym','mac_tb.sch','mul.sch','mul_nand.sch','mul_nor.sch','mul_inv.sch','full_adder.sch','half_adder.sch','inverter.sch','nany.sch']
  r=dict(passed=all(v['passed'] for v in rows),scope='schematic',cases=rows,temperature_C=27,supplies_V=[-5,0,5],source_sha256={name:sha(ROOT/name) for name in files},model_sha256={str(p.relative_to(PDK)):sha(p) for p in (PDK/'libs.tech/spice/models').rglob('*') if p.is_file()})
  (ROOT/f'reports/mac{"_quick" if quick else ""}.json').write_text(json.dumps(r,indent=2)+'\n')

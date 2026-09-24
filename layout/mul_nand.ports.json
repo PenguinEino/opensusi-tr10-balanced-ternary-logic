@@ -5,10 +5,10 @@
   "bbox_um": [
     0,
     0,
-    116,
+    132,
     126
   ],
-  "width_um": 116,
+  "width_um": 132,
   "height_um": 126,
   "ports": {
     "a": {
@@ -49,7 +49,7 @@
         0
       ],
       "position_um": [
-        114,
+        130,
         59
       ]
     },
@@ -63,7 +63,7 @@
         0
       ],
       "position_um": [
-        58,
+        66.0,
         124.3
       ]
     },
@@ -77,7 +77,7 @@
         0
       ],
       "position_um": [
-        58,
+        66.0,
         1.7
       ]
     }
@@ -165,7 +165,7 @@
       ],
       "rotation_deg": 0,
       "parameters": {
-        "l": 15,
+        "l": 30,
         "w": 2.8
       }
     },
@@ -179,7 +179,7 @@
       ],
       "rotation_deg": 0,
       "parameters": {
-        "l": 15,
+        "l": 30,
         "w": 2.8
       }
     },
@@ -239,7 +239,7 @@
       "cell": "cont_g",
       "pcell": "cont_g",
       "origin_um": [
-        105,
+        112.5,
         42
       ],
       "rotation_deg": 0,
@@ -255,7 +255,7 @@
       "cell": "cont_g",
       "pcell": "cont_g",
       "origin_um": [
-        105,
+        112.5,
         78
       ],
       "rotation_deg": 0,
@@ -383,7 +383,7 @@
       "cell": "via_1",
       "pcell": "via_1",
       "origin_um": [
-        82,
+        74.5,
         65
       ],
       "rotation_deg": 0,
@@ -399,7 +399,7 @@
       "cell": "via_1",
       "pcell": "via_1",
       "origin_um": [
-        82,
+        74.5,
         30
       ],
       "rotation_deg": 0,
@@ -415,7 +415,7 @@
       "cell": "via_1",
       "pcell": "via_1",
       "origin_um": [
-        98,
+        105.5,
         59
       ],
       "rotation_deg": 0,
@@ -428,5 +428,5 @@
     }
   ],
   "schematic": "/home/ishi-kai/balanced-ternary-logic/mul_nand.sch",
-  "gds_sha256": "33e48870d367b4c41b9dd46620da3dabddefb023ba4123364cdb34e7230acbeb"
+  "gds_sha256": "2e33be77ea2bb0ca714aa35bff585bf1f109c195958a8d1d632cb1ec52bf25ff"
 }

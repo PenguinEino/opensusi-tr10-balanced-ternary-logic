@@ -10,14 +10,14 @@
 * pin t1
 * pin t3
 .SUBCKT mul VDD VSS a b p t1 t3
-* cell instance $1 r0 *1 40,200
-X$1 VDD a b t1 VSS mul_nand
-* cell instance $2 r0 *1 60,0
-X$2 VDD a b \$4 VSS mul_nor
-* cell instance $3 r0 *1 340,200
-X$3 VDD t1 t3 p VSS mul_nand
-* cell instance $4 r0 *1 220,0
-X$4 VDD \$4 t3 VSS mul_inv
+* cell instance $1 r0 *1 60,0
+X$1 VDD a b \$2 VSS mul_nor
+* cell instance $2 r0 *1 220,0
+X$2 VDD \$2 t3 VSS mul_inv
+* cell instance $3 r0 *1 40,200
+X$3 VDD a b t1 VSS mul_nand
+* cell instance $4 r0 *1 340,200
+X$4 VDD t1 t3 p VSS mul_nand
 .ENDS mul
 
 * cell mul_inv
@@ -30,10 +30,10 @@ X$4 VDD \$4 t3 VSS mul_inv
 XM$1 \$4 vin VDD VDD PMOS L=1u W=13.5u AS=37.8p AD=37.8p PS=32.6u PD=32.6u
 * device instance $2 r0 *1 13.2,14 NMOS
 XM$2 \$5 vin VSS VSS NMOS L=1u W=5u AS=14p AD=14p PS=15.6u PD=15.6u
-* device instance $3 r0 *1 58,32 F_RR
-XR$3 \$5 vout VDD F_RR R=5.35714285714 L=15u W=2.8u A=42p P=35.6u m=1
-* device instance $4 r0 *1 58,45 F_RR
-XR$4 \$4 vout VDD F_RR R=5.35714285714 L=15u W=2.8u A=42p P=35.6u m=1
+* device instance $3 r0 *1 64,32 F_RR
+XR$3 \$5 vout VDD F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
+* device instance $4 r0 *1 64,45 F_RR
+XR$4 \$4 vout VDD F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
 .ENDS mul_inv
 
 * cell mul_nor
@@ -52,9 +52,9 @@ XM$3 \$4 a V\x2d V\x2d NMOS L=1u W=6.5u AS=18.2p AD=18.2p PS=18.6u PD=18.6u
 * device instance $4 r0 *1 35,16 NMOS
 XM$4 \$4 b V\x2d V\x2d NMOS L=1u W=6.5u AS=18.2p AD=18.2p PS=18.6u PD=18.6u
 * device instance $5 r0 *1 90,42 F_RR
-XR$5 \$4 vout V+ F_RR R=5.35714285714 L=15u W=2.8u A=42p P=35.6u m=1
+XR$5 \$4 vout V+ F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
 * device instance $6 r0 *1 90,78 F_RR
-XR$6 \$3 vout V+ F_RR R=5.35714285714 L=15u W=2.8u A=42p P=35.6u m=1
+XR$6 \$3 vout V+ F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
 .ENDS mul_nor
 
 * cell mul_nand
@@ -73,7 +73,7 @@ XM$3 \$15 a \$5 V\x2d NMOS L=1u W=13u AS=36.4p AD=36.4p PS=31.6u PD=31.6u
 * device instance $4 r0 *1 35,16 NMOS
 XM$4 V\x2d b \$15 V\x2d NMOS L=1u W=13u AS=36.4p AD=36.4p PS=31.6u PD=31.6u
 * device instance $5 r0 *1 90,42 F_RR
-XR$5 \$5 vout V+ F_RR R=5.35714285714 L=15u W=2.8u A=42p P=35.6u m=1
+XR$5 \$5 vout V+ F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
 * device instance $6 r0 *1 90,78 F_RR
-XR$6 \$3 vout V+ F_RR R=5.35714285714 L=15u W=2.8u A=42p P=35.6u m=1
+XR$6 \$3 vout V+ F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
 .ENDS mul_nand

@@ -4,9 +4,9 @@
   "placement_grid_um": 0.05,
   "bbox_um": [
     0.0,
-    0.0,
+    -12.6,
     480.0,
-    326.0
+    334.0
   ],
   "ports": {
     "a": {
@@ -212,11 +212,11 @@
       "layer": "M2",
       "points_um": [
         [
-          154,
+          170,
           259
         ],
         [
-          162,
+          168,
           259
         ]
       ],
@@ -227,11 +227,11 @@
       "layer": "M2",
       "points_um": [
         [
-          162,
+          168,
           259
         ],
         [
-          162,
+          168,
           150
         ]
       ],
@@ -302,11 +302,11 @@
       "layer": "M2",
       "points_um": [
         [
-          174,
+          190,
           59
         ],
         [
-          182,
+          188,
           59
         ]
       ],
@@ -317,11 +317,11 @@
       "layer": "M2",
       "points_um": [
         [
-          182,
+          188,
           59
         ],
         [
-          182,
+          188,
           156
         ]
       ],
@@ -362,11 +362,11 @@
       "layer": "M2",
       "points_um": [
         [
-          302,
+          314,
           38.5
         ],
         [
-          310,
+          312,
           38.5
         ]
       ],
@@ -377,11 +377,11 @@
       "layer": "M2",
       "points_um": [
         [
-          310,
+          312,
           38.5
         ],
         [
-          310,
+          312,
           162
         ]
       ],
@@ -392,15 +392,15 @@
       "layer": "M1",
       "points_um": [
         [
-          302.3,
+          314.3,
           64.3
         ],
         [
-          316,
+          328,
           64.3
         ],
         [
-          316,
+          328,
           124.3
         ]
       ],
@@ -471,11 +471,11 @@
       "layer": "M2",
       "points_um": [
         [
-          454,
+          470,
           259
         ],
         [
-          462,
+          468,
           259
         ]
       ],
@@ -486,12 +486,72 @@
       "layer": "M2",
       "points_um": [
         [
-          462,
+          468,
           259
         ],
         [
-          462,
+          468,
           168
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "VSS",
+      "layer": "M2",
+      "points_um": [
+        [
+          10,
+          1.7
+        ],
+        [
+          10,
+          -10.3
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "VDD",
+      "layer": "M2",
+      "points_um": [
+        [
+          4,
+          124.3
+        ],
+        [
+          4,
+          132.3
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "VSS",
+      "layer": "M2",
+      "points_um": [
+        [
+          10,
+          201.7
+        ],
+        [
+          10,
+          189.7
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "VDD",
+      "layer": "M2",
+      "points_um": [
+        [
+          4,
+          324.3
+        ],
+        [
+          4,
+          332.3
         ]
       ],
       "width_um": 3.4
@@ -561,7 +621,7 @@
       "layer": "M1",
       "points_um": [
         [
-          162,
+          168,
           150
         ],
         [
@@ -576,7 +636,7 @@
       "layer": "M1",
       "points_um": [
         [
-          182,
+          188,
           156
         ],
         [
@@ -591,7 +651,7 @@
       "layer": "M1",
       "points_um": [
         [
-          310,
+          312,
           162
         ],
         [
@@ -606,7 +666,7 @@
       "layer": "M1",
       "points_um": [
         [
-          462,
+          468,
           168
         ],
         [
@@ -617,11 +677,11 @@
       "width_um": 3.4
     }
   ],
-  "gds_sha256": "680f3fbd0478c20b3dacda411db0fd3d52b8eb2428e9111cfcef9ae49622ef67",
+  "gds_sha256": "fd10a53c5e3081ba686b7d44ff54cef931d024d1b3129ea9f4b14051ffc61367",
   "sources": {
-    "/home/ishi-kai/balanced-ternary-logic/mul_nand.gds": "33e48870d367b4c41b9dd46620da3dabddefb023ba4123364cdb34e7230acbeb",
-    "/home/ishi-kai/balanced-ternary-logic/mul_nor.gds": "406dcd11bb7c1d648497526c212237c167a7c218b39639349b66f0833e801fcb",
-    "/home/ishi-kai/balanced-ternary-logic/mul_inv.gds": "ca48216a540ba03cca26bf62f56fc8e2e7568b23f75ce04494cf24506b984d9e"
+    "/home/ishi-kai/balanced-ternary-logic/mul_nand.gds": "2e33be77ea2bb0ca714aa35bff585bf1f109c195958a8d1d632cb1ec52bf25ff",
+    "/home/ishi-kai/balanced-ternary-logic/mul_nor.gds": "704347b70467b0547ded933987a8e6145860cabc08bb68903f4e80ea5d77f9f5",
+    "/home/ishi-kai/balanced-ternary-logic/mul_inv.gds": "e316bb94a0bb1ef31a19aa5ffcdeff0ea264cd727582f41e977f23ad38d986fc"
   },
   "device_counts": {
     "PMOS": 7,

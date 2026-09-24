@@ -297,7 +297,7 @@ def mos_instances(base):
 def simulate_case(base, name, temp=27, rail=5, cap_ff=10, hold_ns=200,
                   edge_ns=1, no_nodeset=False, resistance=None, zero_offset=0,
                   supply_resistance=0, stress=False, extra='', extra_vectors=(),
-                  product_node='xdut.p', states=None, power_ramp_ns=0):
+                  product_node='xdut.p', states=None, power_ramp_ns=0, maximum_step_ns=None):
     folder = WORK / 'simulations' / name
     folder.mkdir(parents=True, exist_ok=True)
     text = re.sub(r'\.control.*?\.endc', '', base, flags=re.S | re.I)
@@ -323,6 +323,7 @@ def simulate_case(base, name, temp=27, rail=5, cap_ff=10, hold_ns=200,
         text = re.sub(r'(?im)^V' + net.upper() + r' .*$', f'V{net.upper()} {net} 0 PWL(' + ' '.join(points) + ')', text)
     for net in ('sum', 'cout', 'and_out', 'or_out'):
         text = re.sub(r'(?im)^C' + net + r' .*$', f'C{net} {net} 0 {cap_ff}f', text)
+        text = re.sub(r'(?im)^Rload_' + net + r' .*\n', '', text)
         if resistance:
             extra += f'\nRload_{net} {net} 0 {resistance}\n'
     nodes = ['x', 'a', 'b', 'cin', 'sum', 'cout', 'and_out', 'or_out', product_node]
@@ -330,7 +331,7 @@ def simulate_case(base, name, temp=27, rail=5, cap_ff=10, hold_ns=200,
     if stress:
         nodes += sorted(set(n for m in mos for n in m['terminals']) - set(nodes))
     vectors = [f'v({n})' for n in nodes] + list(extra_vectors) + ['i(vdd)', 'i(vss)', 'i(vmid)']
-    maximum_step = min(2, edge_ns if edge_ns > 0 else 1)
+    maximum_step = maximum_step_ns or min(2, edge_ns if edge_ns > 0 else 1)
     ctrl = '\n.control\nset wr_singlescale\nset wr_vecnames\nsave ' + ' '.join(vectors)
     ctrl += f'\ntran {maximum_step}n {len(sequence)*hold_ns}n 0 {maximum_step}n\nwrdata data.txt ' + ' '.join(vectors) + '\nquit\n.endc\n'
     text = re.sub(r'(?im)^\.end\s*$', lambda _: extra + '\n' + ctrl + '.end', text)
@@ -374,6 +375,7 @@ def simulate_case(base, name, temp=27, rail=5, cap_ff=10, hold_ns=200,
     if extra_vectors:
         result['extra_vector_peaks'] = {n: dict(max_abs=float(np.max(abs(samples[:,len(nodes)+j]))),
             state_trits=sequence[int(np.argmax(abs(samples[:,len(nodes)+j])))]) for j,n in enumerate(extra_vectors)}
+        result['transient_vector_peaks']={n:float(np.max(abs(data[:,len(nodes)+j+1]))) for j,n in enumerate(extra_vectors)}
     if stress:
         terminal_index = {n:i for i,n in enumerate(nodes)}
         device_rows = []

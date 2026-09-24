@@ -1,11 +1,41 @@
 {
-  "gds": "/home/ishi-kai/balanced-ternary-logic/nany.gds",
-  "gds_sha256": "d7d071a8bd197239d1959d5e8680fe69c28d66cc9e2e3e27cf98d712bd381bae",
-  "schematic_sha256": "ccb2fe30da68a0ef2bbcda8836d70b65579f0c6be58fd024a511a6e90fdb64cc",
-  "reference_sha256": "323aaa168ccded6aa74b18643e6e82b21effa13f57696ab044c212f82f4da5d3",
   "top": "nany",
-  "pdk": "/home/ishi-kai/pdk/TR-1um",
-  "rule_sha256": {
+  "gds_sha256": "3403d325575c08cee2765c459d40985ee041db48a1ed21f1e13f3d9306af6282",
+  "schematic_sha256": "ed54832af23ea507d6cc0302abf85cc9f281199c8d422346cd3499aabcdb4630",
+  "reference_sha256": "d92ba0746fc45627a60d9bcfc7b60fda10bc591ead226028be81e5516b3f0420",
+  "dbu_um": 0.001,
+  "bbox_um": [
+    0.0,
+    0.0,
+    148.0,
+    115.0
+  ],
+  "waiver_regions": 0,
+  "drawing_drc": {
+    "passed": true,
+    "items": 0,
+    "categories": {}
+  },
+  "lvs": {
+    "passed": true,
+    "circuits": [
+      "Match"
+    ],
+    "errors": [],
+    "log_entries": [],
+    "strict_ports": true,
+    "extracted": "/home/ishi-kai/balanced-ternary-logic/simulation/arithmetic_layout/nany/lvs/nany.extracted",
+    "report": "/home/ishi-kai/balanced-ternary-logic/simulation/arithmetic_layout/nany/lvs/lvs.lvsdb"
+  },
+  "mask_drc": {
+    "passed": false,
+    "items": 6,
+    "categories": {
+      "WAR06: Floating SG Detected": 6
+    },
+    "gds_sha256": "7a47b1dedafd41425fe53484eaa3b72f8b32d8bef9100a77e46b7dc2de2fe6c6"
+  },
+  "rules_sha256": {
     "libs.tech/klayout/tech/drc/00_Layers.drc": "6e029f7adeb58062bd8f5a1983d8c71188d23b5d5c5a2c404501026df8174e86",
     "libs.tech/klayout/tech/drc/01_Basics.drc": "b8cfb0df7b6e98db833a8019b50fad3be9672b91793d215690c4e0dfb480c2ff",
     "libs.tech/klayout/tech/drc/02_Device.drc": "f2a79da0cfe7f1bca89b2b00bd7576393eb302a20b8568f16f6214f4bf2729bc",
@@ -41,33 +71,6 @@
     "libs.tech/klayout/tech/lvs/lvs.lylvs": "1fdbec8c7f76a2f2c93584cefb8b250535f40ab41ffe5f426d14be1248eae70a",
     "libs.tech/klayout/tech/lvs/run.lvs": "bc765ce4cb5a23c15866ed1727b83484965394da2f557ac508431c7c58addec3"
   },
-  "waiver_regions": 0,
-  "drc": {
-    "passed": true,
-    "items": 0,
-    "categories": {}
-  },
-  "lvs": {
-    "passed": true,
-    "circuits": [
-      "Match"
-    ],
-    "errors": [],
-    "strict_ports": true
-  },
-  "mask_drc": {
-    "passed": false,
-    "items": 6,
-    "categories": {
-      "WAR06: Floating SG Detected": 6
-    },
-    "gds_sha256": "a9b881ec58283eada782c3bd33b1d2ecb951977fc322014968777d641b1be304"
-  },
-  "bbox_um": [
-    0.0,
-    0.0,
-    132.0,
-    115.0
-  ],
-  "passed": false
+  "drawing_lvs_passed": true,
+  "all_rules_passed": false
 }

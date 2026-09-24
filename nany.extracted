@@ -25,8 +25,8 @@ XM$6 \$10 a VMID VSS NMOS L=1u W=8u AS=22.4p AD=22.4p PS=21.6u PD=21.6u
 XM$7 \$33 a \$4 VSS NMOS L=1u W=11u AS=30.8p AD=30.8p PS=27.6u PD=27.6u
 * device instance $8 r0 *1 35,15 NMOS
 XM$8 VSS b \$33 VSS NMOS L=1u W=11u AS=30.8p AD=30.8p PS=27.6u PD=27.6u
-* device instance $9 r0 *1 108,42 F_RR
-XR$9 \$4 vout VDD F_RR R=5.71428571429 L=16u W=2.8u A=44.8p P=37.6u m=1
-* device instance $10 r0 *1 108,72 F_RR
-XR$10 \$3 vout VDD F_RR R=5.71428571429 L=16u W=2.8u A=44.8p P=37.6u m=1
+* device instance $9 r0 *1 112.5,42 F_RR
+XR$9 \$4 vout VDD F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
+* device instance $10 r0 *1 112.5,72 F_RR
+XR$10 \$3 vout VDD F_RR R=10.7142857143 L=30u W=2.8u A=84p P=65.6u m=1
 .ENDS nany

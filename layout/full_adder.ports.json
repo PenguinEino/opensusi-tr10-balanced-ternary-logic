@@ -1,191 +1,351 @@
 {
   "top_cell": "full_adder",
   "dbu_um": 0.001,
-  "grid_um": 0.05,
-  "gds_sha256": "1bf31dfe2323cff80d45e4f4686e0a4f59642abb613944dfadea76e01ba6ef81",
+  "placement_grid_um": 0.05,
+  "bbox_um": [
+    -132.0,
+    -110.85000000000001,
+    1601.0,
+    301.7
+  ],
   "ports": {
     "a": {
-      "label_layer": [
-        48,
+      "layer": [
+        13,
         0
       ],
-      "metal_layer": [
-        13,
+      "label_layer": [
+        48,
         0
       ],
       "position_um": [
         -128.45,
         29.5
-      ],
-      "direction": "input"
-    },
-    "sum": {
-      "label_layer": [
-        48,
-        0
-      ],
-      "metal_layer": [
-        13,
-        0
-      ],
-      "position_um": [
-        1340.9,
-        78.10000000000001
-      ],
-      "direction": "output"
-    },
-    "cout": {
-      "label_layer": [
-        48,
-        0
-      ],
-      "metal_layer": [
-        13,
-        0
-      ],
-      "position_um": [
-        1576.25,
-        -59.1
-      ],
-      "direction": "output"
-    },
-    "cin": {
-      "label_layer": [
-        48,
-        0
-      ],
-      "metal_layer": [
-        13,
-        0
-      ],
-      "position_um": [
-        620.9,
-        35.75
-      ],
-      "direction": "input"
+      ]
     },
     "b": {
-      "label_layer": [
-        48,
+      "layer": [
+        13,
         0
       ],
-      "metal_layer": [
-        13,
+      "label_layer": [
+        48,
         0
       ],
       "position_um": [
         -128.75,
         36.1
-      ],
-      "direction": "input"
+      ]
     },
-    "VDD": {
+    "cin": {
+      "layer": [
+        13,
+        0
+      ],
       "label_layer": [
         48,
         0
       ],
-      "metal_layer": [
+      "position_um": [
+        620.9,
+        35.75
+      ]
+    },
+    "sum": {
+      "layer": [
         13,
         0
       ],
-      "position_um": [
-        -123.15,
-        215.5
-      ],
-      "direction": "inout"
-    },
-    "VSS": {
       "label_layer": [
         48,
         0
       ],
-      "metal_layer": [
+      "position_um": [
+        1340.9,
+        78.1
+      ]
+    },
+    "cout": {
+      "layer": [
         13,
         0
       ],
-      "position_um": [
-        -123.15,
-        104.15
+      "label_layer": [
+        48,
+        0
       ],
-      "direction": "inout"
+      "position_um": [
+        1576.25,
+        -59.1
+      ]
     },
     "VMID": {
-      "label_layer": [
-        48,
+      "layer": [
+        13,
         0
       ],
-      "metal_layer": [
-        13,
+      "label_layer": [
+        48,
         0
       ],
       "position_um": [
         -121.65,
         83.8
+      ]
+    },
+    "VDD": {
+      "layer": [
+        13,
+        0
       ],
-      "direction": "inout"
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        600,
+        235
+      ]
+    },
+    "VSS": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        650,
+        275
+      ]
     }
   },
-  "instances": [
+  "instances": [],
+  "routes": [
     {
-      "cell": "half_adder",
-      "transform": "r0 *1 -96.05,-98.25"
+      "net": "cout",
+      "layer": "M2",
+      "points_um": [
+        [
+          1562.45,
+          -59.75
+        ],
+        [
+          1569,
+          -59.75
+        ]
+      ],
+      "width_um": 3.4
     },
     {
-      "cell": "half_adder",
-      "transform": "r0 *1 600.9,-98.25"
+      "net": "cout",
+      "layer": "M1",
+      "points_um": [
+        [
+          1569,
+          -59.75
+        ],
+        [
+          1577.6,
+          -59.75
+        ]
+      ],
+      "width_um": 3.4
     },
     {
-      "cell": "inverter",
-      "transform": "r0 *1 1468.45,-98.25"
+      "net": "c1",
+      "layer": "M1",
+      "points_um": [
+        [
+          561.65,
+          59.75
+        ],
+        [
+          568.5,
+          59.75
+        ]
+      ],
+      "width_um": 3.4
     },
     {
-      "cell": "nany",
-      "transform": "r0 *1 1312,-98.25"
+      "net": "c1",
+      "layer": "M2",
+      "points_um": [
+        [
+          568.5,
+          59.75
+        ],
+        [
+          568.5,
+          300
+        ]
+      ],
+      "width_um": 3.4
     },
     {
-      "cell": "via_1",
-      "transform": "r0 *1 575.55,31.8"
+      "net": "c1",
+      "layer": "M1",
+      "points_um": [
+        [
+          568.5,
+          300
+        ],
+        [
+          1308.45,
+          300
+        ]
+      ],
+      "width_um": 3.4
     },
     {
-      "cell": "via_1",
-      "transform": "r0 *1 575.55,-121.5"
+      "net": "c1",
+      "layer": "M2",
+      "points_um": [
+        [
+          1308.45,
+          300
+        ],
+        [
+          1308.45,
+          22.35
+        ]
+      ],
+      "width_um": 3.4
     },
     {
-      "cell": "via_1",
-      "transform": "r0 *1 1286.35,-121.5"
+      "net": "VDD",
+      "layer": "M1",
+      "points_um": [
+        [
+          -116,
+          235
+        ],
+        [
+          1585,
+          235
+        ]
+      ],
+      "width_um": 32
     },
     {
-      "cell": "via_1",
-      "transform": "r0 *1 1297.2,30.65"
+      "net": "VSS",
+      "layer": "M1",
+      "points_um": [
+        [
+          -116,
+          275
+        ],
+        [
+          1585,
+          275
+        ]
+      ],
+      "width_um": 32
     },
     {
-      "cell": "via_1",
-      "transform": "r0 *1 1297.2,-23.45"
+      "net": "VSS",
+      "layer": "M2",
+      "points_um": [
+        [
+          -116.05,
+          97.15
+        ],
+        [
+          -116.05,
+          275
+        ]
+      ],
+      "width_um": 4
     },
     {
-      "cell": "via_1",
-      "transform": "r0 *1 1310.3,-52.25"
+      "net": "VSS",
+      "layer": "M2",
+      "points_um": [
+        [
+          580.9,
+          97.15
+        ],
+        [
+          580.9,
+          275
+        ]
+      ],
+      "width_um": 4
     },
     {
-      "cell": "via_1",
-      "transform": "r0 *1 1466.75,-73.25"
+      "net": "VSS",
+      "layer": "M2",
+      "points_um": [
+        [
+          1585,
+          -102.85
+        ],
+        [
+          1585,
+          275
+        ]
+      ],
+      "width_um": 4
     },
     {
-      "cell": "via_1",
-      "transform": "r0 *1 1554.15,-59.75"
+      "net": "VDD",
+      "layer": "M2",
+      "points_um": [
+        [
+          1432,
+          19.05
+        ],
+        [
+          1432,
+          235
+        ]
+      ],
+      "width_um": 3.4
     },
     {
-      "cell": "via_1",
-      "transform": "r0 *1 1265.7,-60.25"
-    },
-    {
-      "cell": "via_1",
-      "transform": "r0 *1 1310.3,-60.25"
+      "net": "VDD",
+      "layer": "M2",
+      "points_um": [
+        [
+          1542,
+          -29.950000000000003
+        ],
+        [
+          1542,
+          235
+        ]
+      ],
+      "width_um": 3.4
     }
   ],
-  "extracted_devices": {
+  "gds_sha256": "8da06e19207e97f183959d32ace7a30034a8895fab7252edfdf097570cace621",
+  "sources": {
+    "/home/ishi-kai/balanced-ternary-logic/half_adder.gds": "4ae02d9027d72ed279b6e016f4f48c2be1d0bc626206fd6fb8bee9c504aafaf9",
+    "/home/ishi-kai/balanced-ternary-logic/nany.gds": "3403d325575c08cee2765c459d40985ee041db48a1ed21f1e13f3d9306af6282",
+    "/home/ishi-kai/balanced-ternary-logic/inverter.gds": "66242f8be89020ec65350f12ffcc2a7301bc632955dfde345016224138e7e3a4",
+    "/home/ishi-kai/balanced-ternary-logic/layout/full_adder_signal_template.json": "a47b3d226c19f785d09cfccc3370a068fb5b5141c50b11820aeb53dddcd845a5"
+  },
+  "device_counts": {
     "PMOS": 49,
     "NMOS": 49,
     "F_RR": 32
-  }
+  },
+  "manual_signal_routing_preserved_except": [
+    "C1 lifted over widened power rails",
+    "Cout via moved outside widened RR guard tie"
+  ],
+  "power_paths_replaced": [
+    "path (1260900,-96550;1312000,-96550) w=3400 bx=0 ex=0 r=false",
+    "path (1260900,15050;1312000,15050) w=3400 bx=0 ex=0 r=false",
+    "path (1444000,-96550;1468450,-96550) w=3400 bx=0 ex=0 r=false",
+    "path (1444000,15050;1464400,15050;1464400,-33950;1468450,-33950) w=3400 bx=0 ex=0 r=false",
+    "path (-96050,215050;-125700,215050) w=3400 bx=0 ex=0 r=false",
+    "path (-96050,103450;-125700,103450) w=3400 bx=0 ex=0 r=false",
+    "path (563950,215050;600900,215050) w=3400 bx=0 ex=0 r=false",
+    "path (563950,103450;600900,103450) w=3400 bx=0 ex=0 r=false",
+    "path (563950,15050;600900,15050) w=3400 bx=0 ex=0 r=false",
+    "path (563950,-96550;600900,-96550) w=3400 bx=0 ex=0 r=false"
+  ]
 }

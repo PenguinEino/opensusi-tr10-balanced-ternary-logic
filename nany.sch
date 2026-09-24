@@ -67,7 +67,7 @@ C {devices/ipin.sym} -240 -170 0 0 {name=lab2 lab=b}
 C {TR-1umLIB/RR.sym} 0 -50 0 0 {name=R2
 w=2.8e-06
 R=1
-l=16e-06
+l=30e-06
 model=F_RR
 spiceprefix=X
 tc1=0
@@ -76,7 +76,7 @@ m=1}
 C {TR-1umLIB/RR.sym} 0 110 0 0 {name=R1
 w=2.8e-06
 R=1
-l=16e-06
+l=30e-06
 model=F_RR
 spiceprefix=X
 tc1=0

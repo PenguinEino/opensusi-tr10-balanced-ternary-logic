@@ -1,18 +1,44 @@
 {
-  "gds": "/home/ishi-kai/balanced-ternary-logic/full_adder.gds",
-  "gds_sha256": "1bf31dfe2323cff80d45e4f4686e0a4f59642abb613944dfadea76e01ba6ef81",
+  "top": "full_adder",
+  "gds_sha256": "8da06e19207e97f183959d32ace7a30034a8895fab7252edfdf097570cace621",
   "schematic_sha256": "dc0a3a0b776e23fad1a34190746a4eafe2dfdbeb6fa18cdcf8bc24e28805ee26",
-  "reference_sha256": "ad0abc331645c16f170e28441c71978500fc9333625e72b7004b798a90dd81eb",
-  "pdk": "/home/ishi-kai/pdk/TR-1um",
+  "reference_sha256": "019e7e1a8073d20e630a8d7bb26b807fc14b8bdefea99496b01adae54fb4e9dd",
   "dbu_um": 0.001,
   "bbox_um": [
-    -130.45,
-    -123.2,
-    1577.6000000000001,
-    216.75
+    -132.0,
+    -110.85000000000001,
+    1601.0,
+    301.7
   ],
   "waiver_regions": 0,
-  "rule_sha256": {
+  "drawing_drc": {
+    "passed": true,
+    "items": 0,
+    "categories": {}
+  },
+  "lvs": {
+    "passed": true,
+    "circuits": [
+      "Match",
+      "Match",
+      "Match",
+      "Match"
+    ],
+    "errors": [],
+    "log_entries": [],
+    "strict_ports": true,
+    "extracted": "/home/ishi-kai/balanced-ternary-logic/simulation/arithmetic_layout/full_adder/lvs/full_adder.extracted",
+    "report": "/home/ishi-kai/balanced-ternary-logic/simulation/arithmetic_layout/full_adder/lvs/lvs.lvsdb"
+  },
+  "mask_drc": {
+    "passed": false,
+    "items": 16,
+    "categories": {
+      "WAR06: Floating SG Detected": 16
+    },
+    "gds_sha256": "cc07864f213d9a64fabaf54082ee757adcb58aac300670d020072e276e9abded"
+  },
+  "rules_sha256": {
     "libs.tech/klayout/tech/drc/00_Layers.drc": "6e029f7adeb58062bd8f5a1983d8c71188d23b5d5c5a2c404501026df8174e86",
     "libs.tech/klayout/tech/drc/01_Basics.drc": "b8cfb0df7b6e98db833a8019b50fad3be9672b91793d215690c4e0dfb480c2ff",
     "libs.tech/klayout/tech/drc/02_Device.drc": "f2a79da0cfe7f1bca89b2b00bd7576393eb302a20b8568f16f6214f4bf2729bc",
@@ -48,30 +74,6 @@
     "libs.tech/klayout/tech/lvs/lvs.lylvs": "1fdbec8c7f76a2f2c93584cefb8b250535f40ab41ffe5f426d14be1248eae70a",
     "libs.tech/klayout/tech/lvs/run.lvs": "bc765ce4cb5a23c15866ed1727b83484965394da2f557ac508431c7c58addec3"
   },
-  "drc": {
-    "passed": true,
-    "items": 0,
-    "categories": {}
-  },
-  "lvs": {
-    "passed": true,
-    "circuits": [
-      "Match",
-      "Match",
-      "Match",
-      "Match"
-    ],
-    "errors": [],
-    "strict_ports": true,
-    "extracted": "/home/ishi-kai/balanced-ternary-logic/simulation/full_adder_layout/verify/lvs/full_adder.extracted"
-  },
-  "mask_drc": {
-    "passed": false,
-    "items": 16,
-    "categories": {
-      "WAR06: Floating SG Detected": 16
-    },
-    "gds_sha256": "8dc1e71d553c5c7ad8e015dac1ed27d5c9f5f7e5771041fa8d9331ea8624d592"
-  },
-  "passed": false
+  "drawing_lvs_passed": true,
+  "all_rules_passed": false
 }

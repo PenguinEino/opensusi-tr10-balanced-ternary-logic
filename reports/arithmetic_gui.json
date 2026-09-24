@@ -2,7 +2,7 @@
   "passed": true,
   "cells": {
     "mul": {
-      "gds_sha256": "680f3fbd0478c20b3dacda411db0fd3d52b8eb2428e9111cfcef9ae49622ef67",
+      "gds_sha256": "fd10a53c5e3081ba686b7d44ff54cef931d024d1b3129ea9f4b14051ffc61367",
       "drawing_drc_items": 0,
       "lvs_errors": [],
       "lvs_logs": [],
@@ -16,7 +16,7 @@
       "passed": true
     },
     "mac": {
-      "gds_sha256": "822fed3eeba3e0e83213bbe9f67fcf7930cfa63994fc546cfbc9e1ff516ad870",
+      "gds_sha256": "83a38ddc0e8dbc2aab769d2b50253850a343b6e1863eb4ad9c0464ce39502155",
       "drawing_drc_items": 0,
       "lvs_errors": [],
       "lvs_logs": [],
