@@ -79,6 +79,8 @@ def prepare():
  return report
 
 def docs(final=False):
+ from spec_gate_figures import main as gate_figures
+ gate_figures()
  summary=json.loads((ROOT/'reports/mac_summary.json').read_text()) if final else None
  if final:
   assert summary['passed'] and summary['gds_sha256']==sha(ROOT/'mac.gds')
