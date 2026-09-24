@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "layout": {
+    "source_sha256": "822fed3eeba3e0e83213bbe9f67fcf7930cfa63994fc546cfbc9e1ff516ad870",
+    "submitted_sha256": "da5d981d506da9e8b37c49d053109457d773966074667dd0516f9b1e2295808e",
+    "geometry_and_labels_identical": true,
+    "hierarchy_preserved": true,
+    "external_library_context_removed": true,
+    "dbu_um": 0.001
+  },
+  "local_schematic_dependencies": [
+    "full_adder.sch",
+    "full_adder.sym",
+    "half_adder.sch",
+    "half_adder.sym",
+    "inverter.sch",
+    "inverter.sym",
+    "mac.sch",
+    "mac.sym",
+    "mac_tb.sch",
+    "mul.sch",
+    "mul.sym",
+    "mul_inv.sch",
+    "mul_inv.sym",
+    "mul_nand.sch",
+    "mul_nand.sym",
+    "mul_nor.sch",
+    "mul_nor.sym",
+    "nany.sch",
+    "nany.sym"
+  ],
+  "portable_tb_electrically_identical": true,
+  "portable_lvs_reference_identical": true,
+  "external_dependency": "TR-1um dev PDK and Xschem devices library",
+  "schematic_image_source_sha256": "2b1174fce0a7ef94b5516be0335c300aa68b03f2fa16e70c641a5078f3a13d93"
+}

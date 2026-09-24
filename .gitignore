@@ -4,3 +4,8 @@ __pycache__/
 layout/backups/
 *.bak
 *.swp
+
+# Keep the submission default LVS reference; other simulation outputs stay ignored.
+!submission/simulation/
+submission/simulation/*
+!submission/simulation/mac.spice

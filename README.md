@@ -225,3 +225,5 @@ entries have been replaced; see [layout/klayout/README.md](layout/klayout/README
 
 `mac.sch` / `mac.sym` / `mac_tb.sch` は `X + A×B + Cin = Sum + 3×Cout` の組合せ算術スライス。
 `mac.gds` はMULと既存FAを階層化したコア全体。MUL内部ノードと追加INVからAND=min(A,B)、OR=max(A,B)も出力します。共通VSSを除く10端子を使用。運用、検証、抽出シミュレーションは [MAC.md](MAC.md)。
+
+提出用のGDS、階層回路図/TB、仕様書と画像は [submission/README.md](submission/README.md) にまとめています。

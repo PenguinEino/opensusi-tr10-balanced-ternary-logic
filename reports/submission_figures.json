@@ -1,0 +1,165 @@
+{
+  "passed": true,
+  "gds_sha256": "da5d981d506da9e8b37c49d053109457d773966074667dd0516f9b1e2295808e",
+  "pins_verified_on_metal": {
+    "and_out": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        706,
+        558.5
+      ]
+    },
+    "or_out": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        540,
+        600
+      ]
+    },
+    "a": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        40,
+        558
+      ]
+    },
+    "b": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        40,
+        564
+      ]
+    },
+    "x": {
+      "layer": [
+        20,
+        0
+      ],
+      "label_layer": [
+        49,
+        0
+      ],
+      "position_um": [
+        32,
+        392
+      ]
+    },
+    "cin": {
+      "layer": [
+        20,
+        0
+      ],
+      "label_layer": [
+        49,
+        0
+      ],
+      "position_um": [
+        769,
+        392
+      ]
+    },
+    "sum": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        1520.9,
+        201.3
+      ]
+    },
+    "cout": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        1770,
+        64.1
+      ]
+    },
+    "VDD": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        678,
+        770
+      ]
+    },
+    "VSS": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        594,
+        776
+      ]
+    },
+    "VMID": {
+      "layer": [
+        13,
+        0
+      ],
+      "label_layer": [
+        48,
+        0
+      ],
+      "position_um": [
+        8,
+        782
+      ]
+    }
+  },
+  "images": {
+    "mac_layout.png": "7e42143ec34c208053657f0144b886ebf1034837f57a68ca61ffd65b66a8528b",
+    "mac_pins.png": "55dd50fbcfa62a44f689513b9c64be4d7324d39c7ddaf0540cdcc7fcb3b3c216",
+    "mac_schematic.svg": "213f476303d3515f0f6fef6a8e8041f2101988b8b1ac35e74e125d85bef796e0"
+  }
+}
