@@ -22,7 +22,7 @@ def add_art(ly,top):
   q=poly.to_itype(.05).to_dtype(.05).to_itype(ly.dbu)
   art.shapes(layer).insert(q)
  for text,y in [('EINOSUKE',666),('OKAZAKI',630)]:
-  pixel=4;advance=24;width=len(text)*advance-4;left=1625-width/2
+  pixel=4;advance=28;width=(len(text)-1)*advance+5*pixel;left=1625-width/2
   r=db.Region()
   for i,letter in enumerate(text):
    for row,pattern in enumerate(FONT[letter]):

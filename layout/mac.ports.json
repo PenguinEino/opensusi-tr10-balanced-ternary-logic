@@ -702,7 +702,7 @@
       "width_um": 3.4
     }
   ],
-  "gds_sha256": "ca53a54953e8da90ea40b992f6d52c59af7e2e77311f42c6d4e724ad1e3bc964",
+  "gds_sha256": "2f49b2a272a53948975812ee1e56e9bba871c229cf169a93b8595d7f7860a6dd",
   "sources": {
     "/home/ishi-kai/balanced-ternary-logic/mul.gds": "71c9fae39518de9fa1d7fec9c334e717d7456199f2f65f4199542019c0b8e0fe",
     "/home/ishi-kai/balanced-ternary-logic/full_adder.gds": "e159fbbf0bfd6b9ea943f7d53e1d88fe74aa811bb4f313da34b0e4a9430c2fbd",
@@ -723,7 +723,6 @@
   "fits_allocation": true,
   "aligned_upper_cell_origin_y_um": 600,
   "main_supply_width_um": 44,
-  "scope": "Core macro without pad frame or interconnect RC extraction",
   "silicon_art": {
     "cell": "silicon_art",
     "layer": [
@@ -735,5 +734,6 @@
       "OKAZAKI"
     ],
     "drawing": "Penguin from original inverter GDS"
-  }
+  },
+  "scope": "Core macro without pad frame or interconnect RC extraction"
 }
