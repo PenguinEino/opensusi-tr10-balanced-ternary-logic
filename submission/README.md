@@ -12,6 +12,7 @@
 | シミュレーション用回路図 | [mac_tb.sch](mac_tb.sch) |
 | レイアウト | [mac.gds](mac.gds) — top: `mac` |
 | 仕様書・説明書・端子座標 | [SPEC.md](SPEC.md) |
+| 最終レビュー | [FINAL_REVIEW.md](FINAL_REVIEW.md) |
 | 通常LVS用の階層SPICE | [simulation/mac.spice](simulation/mac.spice) |
 | レイアウトからの素子抽出 | [mac.extracted](mac.extracted) |
 

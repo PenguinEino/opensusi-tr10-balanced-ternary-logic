@@ -1,16 +1,24 @@
 {
-  "source_commit": "fb6db906f444b2affcd373b2d05759d675a5d8c8",
+  "source_commit": "894b4a1758f4de0cff262a7f3c3616f294ff2b60",
   "source_worktree_dirty": true,
   "provenance_note": "source_commit is the base revision; file hashes identify the exact packaged working-tree content.",
   "source_gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
   "files": {
+    "FINAL_REVIEW.md": {
+      "bytes": 7560,
+      "sha256": "28008a7d05f8611dbcf90d965c5310a1093ce8b0f94b4df7e86672206e7b83a2"
+    },
     "README.md": {
-      "bytes": 2725,
-      "sha256": "9367818c2dc9e614f6b1b1ebfb770c839269ddcc43679ecaa1d01391ceaf251e"
+      "bytes": 2785,
+      "sha256": "baafc013670ba4c0813244f473cb0682e863dba74ab1b38a197d724c61b555d9"
     },
     "SPEC.md": {
-      "bytes": 13676,
-      "sha256": "9ad8550bf8a1c798c2461f33769def542a6fc149a4dd8efb05ac29e05845b3d7"
+      "bytes": 12722,
+      "sha256": "3054d4e26e4b6efcae57e7d084f661076c0afadb2a938ac2f7af322bf5552413"
+    },
+    "chain5_carry.png": {
+      "bytes": 127173,
+      "sha256": "fc4a32b7beb12d603f13701554c58fd67127b95cbb26dafca48080fc898fa068"
     },
     "full_adder.sch": {
       "bytes": 2669,
@@ -114,5 +122,5 @@
     }
   },
   "archive": "simulation/submission/mac_submission_66299d3dcbe0.zip",
-  "archive_sha256": "d49c1e1d820d6e2c9218a860e9b35855d3e110157e3271f0032f07422b968ce7"
+  "archive_sha256": "d9a92297784988061b89978ff21edc9aabfa9cd1ff2f33a2bb9dad6e65260e3d"
 }

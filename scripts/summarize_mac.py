@@ -70,6 +70,8 @@ def main():
   lines+=['その後の下段電源レール4箇所の橋渡しではDRC/LVSと抽出の全パラメータ・端子同等性を再確認し、上表の過渡結果を継承した。橋渡し後の過渡再実行ではない。', '証跡は `reports/mac_alignment/rail_stitch.json`。', '']
  if 'rightmost_vdd_equivalence' in reports['mac_extracted']:
   lines+=['右端NANY/INVへのVDD接続後もDRC/LVSと抽出の同等性を確認し、過渡結果を継承。今回の接続後に過渡解析を再実行したものではない。', '証跡は `reports/mac_alignment/rightmost_vdd.json`。', '']
+ if 'final_review' in reports['mac_extracted']:
+  lines+=['最終版の抽出回路で、81入力・全6,480遷移・単一入力648遷移を新規実行し、全て合格。全遷移は独立した期待値計算でも波形を再評価した。', '包括レビューと5段連結の代表試験は `MAC_FINAL_REVIEW.md` / `reports/final_review/`。5段連結の単体1 µs規定への適用は不可（±0.5 V基準で最大約1.181 µs、代表試験の保持時間は5 µs）。', '']
  path=ROOT/'MAC.md';s=path.read_text();mark='<!-- verification-results -->';s=s.split(mark)[0].rstrip()+'\n\n'+mark+'\n'+'\n'.join(lines);path.write_text(s)
  print(json.dumps(summary,ensure_ascii=False,indent=2))
 if __name__=='__main__':main()

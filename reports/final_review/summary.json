@@ -1,17 +1,14 @@
 {
-  "passed": true,
-  "scope": "Fresh current extracted simulations; 27 C, +/-5 V, 10 pF || 1 Mohm, 1 us hold, no wire RC.",
+  "verdict": "Core passes tested conditions; final manufacturing signoff pending frame/ESD and accepted voltage exception.",
+  "source_commit": "894b4a1758f4de0cff262a7f3c3616f294ff2b60",
   "gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
+  "submitted_gds_sha256": "66299d3dcbe0bb877e9014607ac4cb35b85d079cc12ffe0d6c3752778236b937",
   "extracted_sha256": "e48a046cf3b58eedce493e841368e2fb8c5877e21d56edb88a2b1cd5277524a0",
-  "reference_sha256": "ade4a22adf5bdb902b1851a247ef31272461809dc64077b772266a47a25831b7",
-  "temperature_C": 27,
-  "supplies_V": [
-    -5,
-    0,
-    5
-  ],
-  "tolerance_V": 0.5,
-  "cases": [
+  "physical_cells": 10,
+  "drawing_and_strict_lvs_passed": true,
+  "standalone_mask_items": 14,
+  "driven_fixture_mask_items": 0,
+  "fresh_extracted": [
     {
       "mode": "all_81_inputs",
       "load_fF": 10000,
@@ -456,12 +453,560 @@
       "passed": true
     }
   ],
-  "model_sha256": {
-    "libs.tech/spice/models/models_IP62_cap_v5p1.lib": "265c1e2b5228381633ec936f208101b64a0538905c41bdf53e760df10f347bed",
-    "libs.tech/spice/models/models_IP62_diode_v2.lib": "37c19bd4f6d631a5862f2b6aeda62e5eb73ed15fe0de9932296a81a144f1550f",
-    "libs.tech/spice/models/models_IP62_res_v5.lib": "0d6e2e4b7739fd68946c746830ed8896f4ec5ee98e984fdb5c8dd1116ad78311",
-    "libs.tech/spice/models/models_IP62_mos_v2.lib": "251864d489d0e15a3081871763af29e1bbc8654ae55662bede40e0a7bbac1400",
-    "libs.tech/spice/models/ip62_models": "219ca479adc7d6d960f83e18e0081da153a479f34615333d74c946869bc4c6ec"
+  "chain5": {
+    "passed": true,
+    "cases": [
+      {
+        "name": "initial",
+        "x": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "a": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.058511038746937416,
+        "settle_ns": 0,
+        "passed": true
+      },
+      {
+        "name": "carry_1_-1",
+        "x": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "a": [
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.058511038746937416,
+        "settle_ns": 405.3274063540357,
+        "passed": true
+      },
+      {
+        "name": "carry_1_0",
+        "x": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "a": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.058511038746938304,
+        "settle_ns": 418.30074131969013,
+        "passed": true
+      },
+      {
+        "name": "carry_1_1",
+        "x": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "a": [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.05851104401766083,
+        "settle_ns": 985.4676754390985,
+        "passed": true
+      },
+      {
+        "name": "carry_1_0",
+        "x": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "a": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.058511038746937416,
+        "settle_ns": 651.3458251423108,
+        "passed": true
+      },
+      {
+        "name": "carry_1_-1",
+        "x": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "a": [
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.058511038746938304,
+        "settle_ns": 296.025491455508,
+        "passed": true
+      },
+      {
+        "name": "carry_-1_1",
+        "x": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "a": [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.05851103878077968,
+        "settle_ns": 421.83779846586185,
+        "passed": true
+      },
+      {
+        "name": "carry_-1_0",
+        "x": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "a": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.058511038746938304,
+        "settle_ns": 386.32338440868625,
+        "passed": true
+      },
+      {
+        "name": "carry_-1_-1",
+        "x": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "a": [
+          -1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.058511038746937416,
+        "settle_ns": 1181.4355628629492,
+        "passed": true
+      },
+      {
+        "name": "carry_-1_0",
+        "x": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "a": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.05851103874693919,
+        "settle_ns": 595.8045747801661,
+        "passed": true
+      },
+      {
+        "name": "carry_-1_1",
+        "x": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "a": [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        "b": 1,
+        "max_error_V": 0.05851103878077968,
+        "settle_ns": 307.5914114146508,
+        "passed": true
+      },
+      {
+        "name": "subtract",
+        "x": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "a": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "b": -1,
+        "max_error_V": 0.05851444629875502,
+        "settle_ns": 839.6350918522876,
+        "passed": true
+      },
+      {
+        "name": "subtract_reverse",
+        "x": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "a": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "b": -1,
+        "max_error_V": 0.058511038746938304,
+        "settle_ns": 443.60916495706624,
+        "passed": true
+      },
+      {
+        "name": "multiply",
+        "x": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "a": [
+          1,
+          -1,
+          0,
+          1,
+          -1
+        ],
+        "b": -1,
+        "max_error_V": 0.058511038746938304,
+        "settle_ns": 426.9187371067892,
+        "passed": true
+      },
+      {
+        "name": "zero_product",
+        "x": [
+          1,
+          0,
+          -1,
+          0,
+          1
+        ],
+        "a": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "b": 0,
+        "max_error_V": 0.05851103874694008,
+        "settle_ns": 439.3965265283332,
+        "passed": true
+      },
+      {
+        "name": "mac_0",
+        "x": [
+          1,
+          -1,
+          0,
+          -1,
+          0
+        ],
+        "a": [
+          0,
+          0,
+          0,
+          -1,
+          0
+        ],
+        "b": -1,
+        "max_error_V": 0.05787530324434531,
+        "settle_ns": 379.13029092241777,
+        "passed": true
+      },
+      {
+        "name": "mac_1",
+        "x": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "a": [
+          -1,
+          0,
+          1,
+          -1,
+          -1
+        ],
+        "b": 0,
+        "max_error_V": 0.05851103874692942,
+        "settle_ns": 429.25998852304474,
+        "passed": true
+      },
+      {
+        "name": "mac_2",
+        "x": [
+          0,
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        "a": [
+          -1,
+          0,
+          -1,
+          1,
+          -1
+        ],
+        "b": 0,
+        "max_error_V": 0.05851103874692676,
+        "settle_ns": 442.66486562706996,
+        "passed": true
+      },
+      {
+        "name": "mac_3",
+        "x": [
+          1,
+          0,
+          0,
+          1,
+          -1
+        ],
+        "a": [
+          -1,
+          1,
+          1,
+          0,
+          1
+        ],
+        "b": 1,
+        "max_error_V": 0.05851103878077257,
+        "settle_ns": 443.473594875235,
+        "passed": true
+      },
+      {
+        "name": "mac_4",
+        "x": [
+          0,
+          1,
+          0,
+          1,
+          0
+        ],
+        "a": [
+          0,
+          0,
+          0,
+          -1,
+          1
+        ],
+        "b": -1,
+        "max_error_V": 0.05851418852035817,
+        "settle_ns": 456.0534149190207,
+        "passed": true
+      },
+      {
+        "name": "mac_5",
+        "x": [
+          -1,
+          1,
+          0,
+          1,
+          1
+        ],
+        "a": [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "b": 1,
+        "max_error_V": 0.05851103878077257,
+        "settle_ns": 438.1581496328872,
+        "passed": true
+      },
+      {
+        "name": "mac_6",
+        "x": [
+          -1,
+          1,
+          0,
+          1,
+          -1
+        ],
+        "a": [
+          -1,
+          1,
+          1,
+          -1,
+          0
+        ],
+        "b": -1,
+        "max_error_V": 0.058514188724404725,
+        "settle_ns": 439.89651864040934,
+        "passed": true
+      },
+      {
+        "name": "mac_7",
+        "x": [
+          0,
+          0,
+          -1,
+          -1,
+          -1
+        ],
+        "a": [
+          0,
+          -1,
+          0,
+          -1,
+          0
+        ],
+        "b": 0,
+        "max_error_V": 0.05582159541305565,
+        "settle_ns": 392.8486121550086,
+        "passed": true
+      }
+    ],
+    "max_error_V": 0.05851444629875502,
+    "max_settle_ns": 1181.4355628629492,
+    "extracted_sha256": "e48a046cf3b58eedce493e841368e2fb8c5877e21d56edb88a2b1cd5277524a0",
+    "gds_sha256": "a9ff0fec14150144d8bbeee7ecfe4f348d0035a6e7206696a63669becdeb60bb",
+    "wall_s": 247.36823725700378,
+    "scope": "Selected 5-chip equivalent chain, 27 C ideal shared rails, 10 pF || 1 Mohm per output plus next Cin gate load, 5 us hold. No wire RC/pad/package, not exhaustive.",
+    "samples": 23,
+    "transitions": 22,
+    "unique_inputs": 19,
+    "one_us_sampling_failures": [
+      {
+        "index": 8,
+        "name": "carry_-1_-1",
+        "output": "sum",
+        "stage": 4,
+        "max_error_V": 1.938015406021277,
+        "actual_V": 3.061984593978723,
+        "expected_V": 5.0
+      }
+    ]
   },
-  "final_review": "reports/final_review/summary.json"
+  "prior_corner_source_model_hashes_revalidated": {
+    "corners_supply": "3ed9d8662e8eff5cbc665d085681ee9599681820697fd343c3e468030f4acbdb",
+    "corners_stress": "df878b4b41c415c16eef2fd9bc589edbd523ad317c8347cd0060df071470175a",
+    "corners_integration": "8042222777020dae3c9e8cfb45600395013ed35c7a1a0d817a6f4c51eaec8515",
+    "corners_boundary": "4881fda918819c66f24b35cd191f617f6030bff5a6db71954073e07bb4481ab0",
+    "corners_slew_stress": "54607324dbe8cfc1bca58bcc1e50d7768689146f3f033e17498a227bfa612545"
+  },
+  "existing_cold_stress_peak_V": {
+    "VDS": 11.01076781,
+    "VGS": 10.75403955,
+    "VGD": 11.23710123,
+    "VGB": 10.619588570000001,
+    "VDB": 11.060215379999999,
+    "VSB": 10.619588570000001
+  },
+  "findings": [
+    {
+      "priority": "manufacturing",
+      "topic": "Actual pad/ESD frame integration and final mask DRC incomplete"
+    },
+    {
+      "priority": "accepted_exception",
+      "topic": "10 V span exceeds public 5 V MOS VDS rating; cold transient peak remains about 11.24 V"
+    },
+    {
+      "priority": "validation_scope",
+      "topic": "Wire RC, supply current redistribution/IR/EM and statistical/process variation remain unqualified"
+    },
+    {
+      "priority": "timing",
+      "topic": "Five-stage chain requires a separate settling specification; one 1 us sample misses +/-0.5 V, selected 5 us test passes"
+    },
+    {
+      "priority": "documentation",
+      "topic": "Five primitive schematics contain obsolete RR length annotations; actual SCH/GDS/extracted W2.8 L30 agree"
+    }
+  ],
+  "legacy_waveform_issue": {
+    "mismatches": [
+      {
+        "path": "/home/ishi-kai/balanced-ternary-logic/simulation/mac/extracted/mac_extracted.spice",
+        "recorded": "9e06ee2eeb85bdb6cc2130ebe6025589f23764b39df9ea8afb4afc5fa19ee250",
+        "current": "86cca8ae7566eb2ffe3d9367618a8b9e36dcbb43c9d97bf325721f56005b4f31"
+      }
+    ],
+    "disposition": "Excluded legacy extracted waves from this review; freshly simulate final extracted 81/6480/648 cases and independently re-evaluate them.",
+    "note": "Historical Git-based netlist equivalence remains separate; this is a mutable include-path archival issue."
+  }
 }
