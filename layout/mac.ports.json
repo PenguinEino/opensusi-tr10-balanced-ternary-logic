@@ -3,10 +3,10 @@
   "dbu_um": 0.001,
   "placement_grid_um": 0.05,
   "bbox_um": [
-    6.3,
+    3.3000000000000003,
     12.35,
-    1790.0,
-    791.7
+    1791.7,
+    793.2
   ],
   "ports": {
     "and_out": {
@@ -47,7 +47,7 @@
         0
       ],
       "position_um": [
-        40,
+        10,
         500
       ]
     },
@@ -61,36 +61,36 @@
         0
       ],
       "position_um": [
-        40,
-        506
+        10,
+        530
       ]
     },
     "x": {
       "layer": [
-        20,
+        13,
         0
       ],
       "label_layer": [
-        49,
+        48,
         0
       ],
       "position_um": [
-        32,
+        10,
         485
       ]
     },
     "cin": {
       "layer": [
-        20,
+        13,
         0
       ],
       "label_layer": [
-        49,
+        48,
         0
       ],
       "position_um": [
-        800.9,
-        485
+        10,
+        475
       ]
     },
     "sum": {
@@ -103,7 +103,7 @@
         0
       ],
       "position_um": [
-        1520.9,
+        1780,
         201.3
       ]
     },
@@ -117,7 +117,7 @@
         0
       ],
       "position_um": [
-        1770,
+        1780,
         64.1
       ]
     },
@@ -145,8 +145,8 @@
         0
       ],
       "position_um": [
-        1480,
-        581.4
+        1780,
+        418.2
       ]
     },
     "VMID": {
@@ -159,7 +159,7 @@
         0
       ],
       "position_um": [
-        100,
+        10,
         790
       ]
     }
@@ -700,9 +700,137 @@
         ]
       ],
       "width_um": 3.4
+    },
+    {
+      "net": "a",
+      "layer": "M1",
+      "points_um": [
+        [
+          40,
+          500
+        ],
+        [
+          5,
+          500
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "b",
+      "layer": "M1",
+      "points_um": [
+        [
+          40,
+          506
+        ],
+        [
+          20,
+          506
+        ],
+        [
+          20,
+          530
+        ],
+        [
+          5,
+          530
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "x",
+      "layer": "M1",
+      "points_um": [
+        [
+          32,
+          485
+        ],
+        [
+          5,
+          485
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "cin",
+      "layer": "M1",
+      "points_um": [
+        [
+          800.9,
+          475
+        ],
+        [
+          5,
+          475
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "sum",
+      "layer": "M1",
+      "points_um": [
+        [
+          1520.9,
+          201.3
+        ],
+        [
+          1790,
+          201.3
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "cout",
+      "layer": "M1",
+      "points_um": [
+        [
+          1770,
+          64.1
+        ],
+        [
+          1790,
+          64.1
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "and_out",
+      "layer": "M2",
+      "points_um": [
+        [
+          1780,
+          715
+        ],
+        [
+          1790,
+          715
+        ]
+      ],
+      "width_um": 3.4
+    },
+    {
+      "net": "or_out",
+      "layer": "M2",
+      "points_um": [
+        [
+          1780,
+          705
+        ],
+        [
+          1790,
+          705
+        ]
+      ],
+      "width_um": 3.4
     }
   ],
-  "gds_sha256": "2f49b2a272a53948975812ee1e56e9bba871c229cf169a93b8595d7f7860a6dd",
+  "gds_sha256": "653da52bad1220d17bb5bac5464fc6a04b2f29e9e8f5dec04108883622b4514c",
   "sources": {
     "/home/ishi-kai/balanced-ternary-logic/mul.gds": "71c9fae39518de9fa1d7fec9c334e717d7456199f2f65f4199542019c0b8e0fe",
     "/home/ishi-kai/balanced-ternary-logic/full_adder.gds": "e159fbbf0bfd6b9ea943f7d53e1d88fe74aa811bb4f313da34b0e4a9430c2fbd",

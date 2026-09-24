@@ -55,6 +55,11 @@ def main():
  if 'rightmost_vdd_equivalence' in reports['mac_extracted']:
   summary['rightmost_vdd_equivalence']=reports['mac_extracted']['rightmost_vdd_equivalence']
   (ROOT/'reports/mac_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+ if 'edge_ports_equivalence' in reports['mac_extracted']:
+  access=json.loads((ROOT/'reports/mac_edge_access.json').read_text());assert access['passed'] and access['gds_sha256']==digest
+  summary['edge_ports_equivalence']=reports['mac_extracted']['edge_ports_equivalence']
+  summary['edge_access']='reports/mac_edge_access.json'
+  (ROOT/'reports/mac_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
  lines=['## 検証結果（2026-09-25）','', '| 回路 | 試験 | 負荷 | 最大出力誤差（4出力） | 最大整定時間 | 判定 |','|---|---|---:|---:|---:|---|']
  for r in rows:lines.append(f"| {r['scope']} | {r['mode']} | {r['load_fF']/1000:g} pF | {r['max_error_mV']:.3f} mV | {r['max_settle_ns']:.2f} ns | PASS |")
  lines+=['',f"SUM/Coutの最大誤差は {max(r['sum_cout_error_mV'] for r in rows):.3f} mV、AND/ORの最大誤差は {max(r['and_or_error_mV'] for r in rows):.3f} mV。",f"内部の積Pも各状態で確認し、最大誤差は {summary['max_product_error_V']*1000:.1f} mV。",'表の整定時間は波形サンプルによる値であり、最大時間刻みより細かい精度を保証しない。','今回は単体算術コアの検証。5チップ直列接続の負荷・遅延は含まない。','']
@@ -70,6 +75,8 @@ def main():
   lines+=['その後の下段電源レール4箇所の橋渡しではDRC/LVSと抽出の全パラメータ・端子同等性を再確認し、上表の過渡結果を継承した。橋渡し後の過渡再実行ではない。', '証跡は `reports/mac_alignment/rail_stitch.json`。', '']
  if 'rightmost_vdd_equivalence' in reports['mac_extracted']:
   lines+=['右端NANY/INVへのVDD接続後もDRC/LVSと抽出の同等性を確認し、過渡結果を継承。今回の接続後に過渡解析を再実行したものではない。', '証跡は `reports/mac_alignment/rightmost_vdd.json`。', '']
+ if 'edge_ports_equivalence' in reports['mac_extracted']:
+  lines+=['全11端子を左右の境界付近へ引き出した後、Drawing DRC/LVSと抽出81入力を再実行して合格。全9電気回路が同等なため、全6,480/648遷移は前版の結果を引き継いだ。', '証跡は `reports/mac_edge_ports.json` と `reports/mac_edge_access.json`。各端子から領域外への水平経路を確認した。']
  if 'art_equivalence' in reports['mac_extracted']:
   lines+=['右端端子配線とM2の名前・ペンギン追加後にDrawing DRC/LVSと抽出81入力を再実行して合格。全9電気回路の端子名・素子端子・モデル・全パラメータが一致するため、全6,480/648遷移は同等な回路の検証結果を引き継いだ。', '証跡は `reports/mac_art.json` と `reports/mac_art_geometry.json`。配置と再生成方法は `layout/SILICON_ART.md`。', '']
  if 'final_review' in reports['mac_extracted']:

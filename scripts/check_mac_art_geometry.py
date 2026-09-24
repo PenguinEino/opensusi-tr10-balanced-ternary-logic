@@ -8,8 +8,9 @@ def main():
  old=db.Layout();old.read(str(oldfile));new=db.Layout();new.read(str(ROOT/'mac.gds'));a=old.cell('mac');b=new.cell('mac');art=new.cell('silicon_art');assert art
  added={}
  for info in set(old.layer_infos()+new.layer_infos()):
+  if info.layer in (48,49):continue  # Terminal label placement is checked separately.
   r=db.Region(a.begin_shapes_rec(old.layer(info)));t=db.Region(b.begin_shapes_rec(new.layer(info)))
-  if info.layer in (13,20):assert (r-t).is_empty(),info
+  if info.layer in (13,19,20):assert (r-t).is_empty(),info
   else:assert (r^t).is_empty(),info
   if not (t-r).is_empty():added[str(info)]=(t-r).area()*.001**2
  ar=db.Region(art.begin_shapes_rec(new.layer(20,0))).merged()

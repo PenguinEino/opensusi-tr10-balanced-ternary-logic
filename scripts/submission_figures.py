@@ -36,7 +36,7 @@ def main():
  plt.rcParams.update({'font.family':'DejaVu Sans','font.size':10})
  fig=plt.figure(figsize=(17,12),facecolor='white',layout='constrained');grid=fig.add_gridspec(3,6,height_ratios=[3.5,1,1]);ax=fig.add_subplot(grid[0,:])
  draw(ax,(-130,-50,1870,1040));ax.add_patch(Rectangle((0,0),1800,1000,fill=False,ec='#777',ls='--',lw=1))
- labels={'VDD':(1760,820),'VSS':(1590,560),'VMID':(110,890),'a':(-70,470),'b':(-70,560),'x':(170,460),'cin':(790,460),'and_out':(1835,745),'or_out':(1835,670),'sum':(1520,310),'cout':(1690,0)}
+ labels={'VDD':(1835,805),'VSS':(1835,418.2),'VMID':(-70,820),'a':(-70,500),'b':(-70,555),'x':(-70,450),'cin':(-70,400),'and_out':(1835,745),'or_out':(1835,670),'sum':(1835,201.3),'cout':(1835,64.1)}
  for name,p in ports.items():
   x,y=p['position_um'];ax.plot(x,y,'o',mfc='none',mec='#d52d38',ms=9,mew=1.5)
   ax.annotate(name,(x,y),xytext=labels[name],ha='center',va='center',fontsize=11,color='#96202a',arrowprops={'arrowstyle':'-','color':'#d52d38','lw':1})

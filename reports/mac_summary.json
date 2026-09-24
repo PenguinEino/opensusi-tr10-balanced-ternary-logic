@@ -1,16 +1,16 @@
 {
   "passed": true,
-  "gds_sha256": "2f49b2a272a53948975812ee1e56e9bba871c229cf169a93b8595d7f7860a6dd",
+  "gds_sha256": "653da52bad1220d17bb5bac5464fc6a04b2f29e9e8f5dec04108883622b4514c",
   "device_counts": {
     "PMOS": 59,
     "NMOS": 59,
     "F_RR": 46
   },
   "bbox_um": [
-    6.3,
+    3.3000000000000003,
     12.35,
-    1790.0,
-    791.7
+    1791.7,
+    793.2
   ],
   "allocation_um": [
     0,
@@ -82,5 +82,7 @@
     }
   ],
   "max_product_error_V": 0.10091075198887532,
-  "scope": "Nominal 27 C ideal rails. Device extraction, no wire RC, no pad frame, no 5-chip chain test."
+  "scope": "Nominal 27 C ideal rails. Device extraction, no wire RC, no pad frame, no 5-chip chain test.",
+  "edge_ports_equivalence": "reports/mac_edge_ports.json",
+  "edge_access": "reports/mac_edge_access.json"
 }

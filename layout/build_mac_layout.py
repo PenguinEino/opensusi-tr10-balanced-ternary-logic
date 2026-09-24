@@ -58,7 +58,21 @@ def build():
  d.route('and_out','M2',[(1080,638.5),(1080,715),(1780,715)])
  d.route('or_out','M2',[(1480,638.5),(1480,705),(1780,705)])
  add_art(ly,top)
- ports={n:port(d,n,l,x,y) for n,l,x,y in [('and_out','M2',1780,715),('or_out','M2',1780,705),('a','M1',40,500),('b','M1',40,506),('x','M2',32,485),('cin','M2',800.9,485),('sum','M1',1520.9,201.3),('cout','M1',1770,64.1),('VDD','M1',1780,VDD_Y),('VSS','M1',1480,VSS_Y),('VMID','M1',100,790)]}
+ # Shuttle access: inputs leave the left edge, outputs and supplies the right.
+ # Cross existing internal vertical M2 trunks on M1, without adding vias there.
+ d.route('a','M1',[(40,500),(5,500)])
+ d.route('b','M1',[(40,506),(20,506),(20,530),(5,530)])
+ d.via('x',32,485);d.route('x','M1',[(32,485),(5,485)])
+ d.via('cin',800.9,475);d.route('cin','M1',[(800.9,475),(5,475)])
+ d.route('sum','M1',[(1520.9,201.3),(1790,201.3)])
+ d.route('cout','M1',[(1770,64.1),(1790,64.1)])
+ d.box('M1',1781,396.2,1790,440.2)
+ for net,y in [('and_out',715),('or_out',705)]:
+  d.route(net,'M2',[(1780,y),(1790,y)])
+ for net,x,y in [('a',10,500),('b',10,530),('x',10,485),('cin',10,475),('sum',1780,201.3),('cout',1780,64.1),('VMID',10,790)]:
+  d.box('M1',x-3.2,y-3.2,x+3.2,y+3.2)
+ for y in (705,715):d.box('M2',1776.8,y-3.2,1783.2,y+3.2)
+ ports={n:port(d,n,l,x,y) for n,l,x,y in [('and_out','M2',1780,715),('or_out','M2',1780,705),('a','M1',10,500),('b','M1',10,530),('x','M1',10,485),('cin','M1',10,475),('sum','M1',1780,201.3),('cout','M1',1780,64.1),('VDD','M1',1780,VDD_Y),('VSS','M1',1780,418.2),('VMID','M1',10,790)]}
  b=top.dbbox();assert b.left>=0 and b.bottom>=0 and b.right<=1800 and b.top<=1000,b
  sources.append(ROOT/'layout/art/original_inverter_art.gds')
  d.save('mac',ports,sources,dict(device_counts=dict(PMOS=59,NMOS=59,F_RR=46),allocation_um=list(ALLOCATION_UM),fits_allocation=True,aligned_upper_cell_origin_y_um=ROW_Y,main_supply_width_um=MAIN_WIDTH,silicon_art=dict(cell='silicon_art',layer=[20,0],name=['EINOSUKE','OKAZAKI'],drawing='Penguin from original inverter GDS'),scope='Core macro without pad frame or interconnect RC extraction'))
