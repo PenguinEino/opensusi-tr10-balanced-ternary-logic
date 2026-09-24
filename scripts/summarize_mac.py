@@ -42,7 +42,7 @@ def main():
   (ROOT/'reports/mac_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
  lines=['## 検証結果（2026-09-24）','', '| 回路 | 試験 | 負荷 | 最大出力誤差（4出力） | 最大整定時間 | 判定 |','|---|---|---:|---:|---:|---|']
  for r in rows:lines.append(f"| {r['scope']} | {r['mode']} | {r['load_fF']} fF | {r['max_error_mV']:.3f} mV | {r['max_settle_ns']:.2f} ns | PASS |")
- lines+=['',f"内部の積Pも各状態で確認し、最大誤差は {summary['max_product_error_V']*1000:.1f} mV。",'表の整定時間は波形サンプルによる値であり、最大時間刻みより細かい精度を保証しない。','今回は単体算術コアの検証。5チップ直列接続の負荷・遅延は含まない。','']
+ lines+=['',f"SUM/Coutの最大誤差は {max(r['sum_cout_error_mV'] for r in rows):.3f} mV、AND/ORの最大誤差は {max(r['and_or_error_mV'] for r in rows):.3f} mV。",f"内部の積Pも各状態で確認し、最大誤差は {summary['max_product_error_V']*1000:.1f} mV。",'表の整定時間は波形サンプルによる値であり、最大時間刻みより細かい精度を保証しない。','今回は単体算術コアの検証。5チップ直列接続の負荷・遅延は含まない。','']
  if 'relayout_equivalence' in reports['mac_extracted']:
   lines+=['1800×1000 µm対応の再配置後、抽出回路の81入力を再実行して合格。', '全6,480遷移・100 fFの648遷移は、コメント以外のSPICE全文、モデル、参照回路、LVSルールが完全一致する前版の合格結果を継承。', '同一性の証跡は `reports/mac_relayout_equivalence.json`。配線寄生R/Cの影響は評価に含まれない。', '']
  path=ROOT/'MAC.md';s=path.read_text();mark='<!-- verification-results -->';s=s.split(mark)[0].rstrip()+'\n\n'+mark+'\n'+'\n'.join(lines);path.write_text(s)

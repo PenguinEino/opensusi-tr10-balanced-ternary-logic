@@ -1,10 +1,10 @@
 {
   "passed": true,
-  "gds_sha256": "50897ebc7495732838c8eee3447b92ce1e3cf16c062068164a54505a7517e326",
+  "gds_sha256": "822fed3eeba3e0e83213bbe9f67fcf7930cfa63994fc546cfbc9e1ff516ad870",
   "device_counts": {
-    "PMOS": 56,
-    "NMOS": 56,
-    "F_RR": 40
+    "PMOS": 57,
+    "NMOS": 57,
+    "F_RR": 42
   },
   "bbox_um": [
     0.3,
@@ -30,61 +30,57 @@
       "scope": "\u56de\u8def\u56f3",
       "mode": "81\u5165\u529b\uff0b\u5fa9\u5e30",
       "load_fF": 10,
-      "max_error_mV": 2.574979157675894,
-      "max_settle_ns": 54.745640000000094
+      "max_error_mV": 358.46228,
+      "max_settle_ns": 54.653729999999996,
+      "sum_cout_error_mV": 2.5749905038306355,
+      "and_or_error_mV": 358.46228
     },
     {
       "scope": "\u56de\u8def\u56f3",
       "mode": "\u51686,480\u9077\u79fb",
       "load_fF": 10,
-      "max_error_mV": 2.5839861359503145,
-      "max_settle_ns": 67.3530000000028
+      "max_error_mV": 358.4658256361295,
+      "max_settle_ns": 67.56200000000536,
+      "sum_cout_error_mV": 2.5872010182939964,
+      "and_or_error_mV": 358.4658256361295
     },
     {
       "scope": "\u56de\u8def\u56f3",
       "mode": "1\u5165\u529b648\u9077\u79fb",
       "load_fF": 100,
-      "max_error_mV": 2.5792651417536487,
-      "max_settle_ns": 69.02599999999802
+      "max_error_mV": 358.462995504282,
+      "max_settle_ns": 67.94300000000658,
+      "sum_cout_error_mV": 2.577552942608698,
+      "and_or_error_mV": 358.462995504282
     },
     {
       "scope": "\u62bd\u51fa\u56de\u8def",
       "mode": "81\u5165\u529b\uff0b\u5fa9\u5e30",
       "load_fF": 10,
-      "max_error_mV": 2.5749672143797473,
-      "max_settle_ns": 55.014360000000124
+      "max_error_mV": 358.46228,
+      "max_settle_ns": 54.786229999999705,
+      "sum_cout_error_mV": 2.5749862768507907,
+      "and_or_error_mV": 358.46228
     },
     {
       "scope": "\u62bd\u51fa\u56de\u8def",
       "mode": "\u51686,480\u9077\u79fb",
       "load_fF": 10,
-      "max_error_mV": 2.5890437059408824,
-      "max_settle_ns": 66.75899999999092
+      "max_error_mV": 358.46572331343293,
+      "max_settle_ns": 67.23300000000745,
+      "sum_cout_error_mV": 2.5936305558811297,
+      "and_or_error_mV": 358.46572331343293
     },
     {
       "scope": "\u62bd\u51fa\u56de\u8def",
       "mode": "1\u5165\u529b648\u9077\u79fb",
       "load_fF": 100,
-      "max_error_mV": 2.5769612442286216,
-      "max_settle_ns": 68.68419999999605
+      "max_error_mV": 358.4623651258571,
+      "max_settle_ns": 68.36009999999806,
+      "sum_cout_error_mV": 2.5761559008455643,
+      "and_or_error_mV": 358.4623651258571
     }
   ],
-  "max_product_error_V": 0.2083073644590164,
-  "scope": "Nominal 27 C ideal rails. Device extraction, no wire RC, no pad frame, no 5-chip chain test.",
-  "relayout_equivalence": {
-    "baseline_commit": "f4a704d",
-    "baseline_report_sha256": "4b60caebeee2543899ac16cf3c80eda7e5863d170a1eac647e8ec6ad02932c0d",
-    "baseline_gds_sha256": "592dcd2f119b57d5a580c4c08423a48db2513533a0f54628050f6eb1d253e7a5",
-    "new_gds_sha256": "50897ebc7495732838c8eee3447b92ce1e3cf16c062068164a54505a7517e326",
-    "baseline_extracted_sha256": "44cfcf95c294cc711159aaa79144c7c826ca6aa4f4c836426d03b6150caac1a2",
-    "new_extracted_sha256": "e6e5c8e4e0c3e8479a18f40e48bb7d93db7cdd6e7caa5e3cced46498e68660c6",
-    "noncomment_spice_sha256": "ef12844cf2122cd9e0ebbde305eff1d20803db8bb8cc3d85d20aaaf77719edf9",
-    "identical_noncomment_spice": true,
-    "identical_pdk_models": true,
-    "identical_lvs_rules": true,
-    "identical_schematic_reference": true,
-    "rerun": "81-state native extracted TB",
-    "reused": "6480 directed transitions at 10 fF and 648 one-input transitions at 100 fF",
-    "limitation": "Extraction contains no interconnect RC; rerouting has no electrical effect in this model."
-  }
+  "max_product_error_V": 0.20830685774103583,
+  "scope": "Nominal 27 C ideal rails. Device extraction, no wire RC, no pad frame, no 5-chip chain test."
 }

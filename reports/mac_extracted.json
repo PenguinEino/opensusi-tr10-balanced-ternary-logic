@@ -1,9 +1,9 @@
 {
   "passed": true,
   "scope": "LVS-extracted MOS/RR network with device geometry and intrinsic PDK capacitances. No interconnect RC.",
-  "gds_sha256": "50897ebc7495732838c8eee3447b92ce1e3cf16c062068164a54505a7517e326",
-  "extracted_sha256": "e6e5c8e4e0c3e8479a18f40e48bb7d93db7cdd6e7caa5e3cced46498e68660c6",
-  "reference_sha256": "1f5ac18dc802197dfb1350f26982bf31841d631b3ae12bcd4174b7308ff9ff98",
+  "gds_sha256": "822fed3eeba3e0e83213bbe9f67fcf7930cfa63994fc546cfbc9e1ff516ad870",
+  "extracted_sha256": "d4d72b935d2519861165526518f6e60f4ae3df849405f75f776778d63bae02cc",
+  "reference_sha256": "02d42f9ff4d1eb6e33455382c8d0da83c4ed0d924699a61aadc1f7be58a7e9e0",
   "temperature_C": 27,
   "supplies_V": [
     -5,
@@ -17,9 +17,11 @@
       "load_fF": 10,
       "samples": 82,
       "transitions": 81,
-      "max_output_error_V": 0.002574967214379747,
-      "max_product_error_V": 0.2082903020881459,
-      "max_settle_ns": 55.014360000000124,
+      "max_output_error_V": 0.35846228,
+      "max_product_error_V": 0.20829026077171628,
+      "max_sum_cout_error_V": 0.0025749862768507906,
+      "max_and_or_error_V": 0.35846228,
+      "max_settle_ns": 54.786229999999705,
       "unsettled": 0,
       "passed": true
     },
@@ -31,9 +33,6 @@
       "transitions": 6480,
       "unique_directed_transitions": 6480,
       "samples": 6488,
-      "max_output_error_V": 0.002589043705940882,
-      "max_product_error_V": 0.2083073644590164,
-      "max_settle_ns": 66.75899999999092,
       "unsettled": 0,
       "passed": true,
       "chunks": [
@@ -44,9 +43,11 @@
           "hold_ns": 120,
           "samples": 1622,
           "transitions": 1621,
-          "max_output_error_V": 0.0025830443133335337,
-          "max_product_error_V": 0.2083073644590164,
-          "max_settle_ns": 64.72179999999935,
+          "max_output_error_V": 0.3584629360546369,
+          "max_product_error_V": 0.20830685774103583,
+          "max_sum_cout_error_V": 0.0025817858503202956,
+          "max_and_or_error_V": 0.3584629360546369,
+          "max_settle_ns": 64.66800000000512,
           "unsettled": 0,
           "passed": true
         },
@@ -57,9 +58,11 @@
           "hold_ns": 120,
           "samples": 1622,
           "transitions": 1621,
-          "max_output_error_V": 0.002589043705940882,
-          "max_product_error_V": 0.20830649265765752,
-          "max_settle_ns": 65.45960000000196,
+          "max_output_error_V": 0.3584657233134329,
+          "max_product_error_V": 0.20830524462080316,
+          "max_sum_cout_error_V": 0.002587438449849801,
+          "max_and_or_error_V": 0.3584657233134329,
+          "max_settle_ns": 65.23600000000442,
           "unsettled": 0,
           "passed": true
         },
@@ -70,9 +73,11 @@
           "hold_ns": 120,
           "samples": 1622,
           "transitions": 1621,
-          "max_output_error_V": 0.0025827241010711747,
-          "max_product_error_V": 0.20828715711280424,
-          "max_settle_ns": 62.06599999999162,
+          "max_output_error_V": 0.3584630034018547,
+          "max_product_error_V": 0.20828717395113322,
+          "max_sum_cout_error_V": 0.0025825107238518132,
+          "max_and_or_error_V": 0.3584630034018547,
+          "max_settle_ns": 61.763000000006286,
           "unsettled": 0,
           "passed": true
         },
@@ -83,15 +88,21 @@
           "hold_ns": 120,
           "samples": 1622,
           "transitions": 1621,
-          "max_output_error_V": 0.00258781330334976,
-          "max_product_error_V": 0.20828176430831974,
-          "max_settle_ns": 66.75899999999092,
+          "max_output_error_V": 0.3584629427254354,
+          "max_product_error_V": 0.20828189193785868,
+          "max_sum_cout_error_V": 0.0025936305558811297,
+          "max_and_or_error_V": 0.3584629427254354,
+          "max_settle_ns": 67.23300000000745,
           "unsettled": 0,
           "passed": true
         }
       ],
-      "initialization": "Four slices of the Euler circuit, each prefixed by the common initial state and a full source-state hold; 6480 original edges plus setup transitions.",
-      "reused_from_equivalent_extraction": "f4a704d"
+      "initialization": "Four Euler slices, each preceded by initial and source-state holds. Original 6480 edges plus setup transitions.",
+      "max_output_error_V": 0.3584657233134329,
+      "max_product_error_V": 0.20830685774103583,
+      "max_sum_cout_error_V": 0.0025936305558811297,
+      "max_and_or_error_V": 0.3584657233134329,
+      "max_settle_ns": 67.23300000000745
     },
     {
       "mode": "single_input_648_100f",
@@ -100,12 +111,13 @@
       "hold_ns": 120,
       "samples": 649,
       "transitions": 648,
-      "max_output_error_V": 0.0025769612442286217,
-      "max_product_error_V": 0.20828880108414238,
-      "max_settle_ns": 68.68419999999605,
+      "max_output_error_V": 0.3584623651258571,
+      "max_product_error_V": 0.20828880140251949,
+      "max_sum_cout_error_V": 0.0025761559008455645,
+      "max_and_or_error_V": 0.3584623651258571,
+      "max_settle_ns": 68.36009999999806,
       "unsettled": 0,
-      "passed": true,
-      "reused_from_equivalent_extraction": "f4a704d"
+      "passed": true
     }
   ],
   "model_sha256": {
@@ -114,21 +126,5 @@
     "libs.tech/spice/models/models_IP62_res_v5.lib": "0d6e2e4b7739fd68946c746830ed8896f4ec5ee98e984fdb5c8dd1116ad78311",
     "libs.tech/spice/models/models_IP62_mos_v2.lib": "251864d489d0e15a3081871763af29e1bbc8654ae55662bede40e0a7bbac1400",
     "libs.tech/spice/models/ip62_models": "219ca479adc7d6d960f83e18e0081da153a479f34615333d74c946869bc4c6ec"
-  },
-  "relayout_equivalence": {
-    "baseline_commit": "f4a704d",
-    "baseline_report_sha256": "4b60caebeee2543899ac16cf3c80eda7e5863d170a1eac647e8ec6ad02932c0d",
-    "baseline_gds_sha256": "592dcd2f119b57d5a580c4c08423a48db2513533a0f54628050f6eb1d253e7a5",
-    "new_gds_sha256": "50897ebc7495732838c8eee3447b92ce1e3cf16c062068164a54505a7517e326",
-    "baseline_extracted_sha256": "44cfcf95c294cc711159aaa79144c7c826ca6aa4f4c836426d03b6150caac1a2",
-    "new_extracted_sha256": "e6e5c8e4e0c3e8479a18f40e48bb7d93db7cdd6e7caa5e3cced46498e68660c6",
-    "noncomment_spice_sha256": "ef12844cf2122cd9e0ebbde305eff1d20803db8bb8cc3d85d20aaaf77719edf9",
-    "identical_noncomment_spice": true,
-    "identical_pdk_models": true,
-    "identical_lvs_rules": true,
-    "identical_schematic_reference": true,
-    "rerun": "81-state native extracted TB",
-    "reused": "6480 directed transitions at 10 fF and 648 one-input transitions at 100 fF",
-    "limitation": "Extraction contains no interconnect RC; rerouting has no electrical effect in this model."
   }
 }
